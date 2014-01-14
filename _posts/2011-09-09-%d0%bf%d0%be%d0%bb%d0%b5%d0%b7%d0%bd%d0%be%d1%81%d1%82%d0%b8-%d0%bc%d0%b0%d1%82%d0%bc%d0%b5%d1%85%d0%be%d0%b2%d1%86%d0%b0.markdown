@@ -1,0 +1,31 @@
+---
+layout: page
+status: publish
+published: true
+title: Полезности матмеховца
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+wordpress_id: 7
+wordpress_url: http://messiah.ks8.ru/wordpress/?page_id=7
+date: 2011-09-09 00:27:11.000000000 +06:00
+categories: []
+tags: []
+comments: []
+---
+<table class="simple" border="2">
+<tbody>
+<tr>
+<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a title="Java" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;java">JAVA<&#47;a><&#47;td>
+<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a title="Perl" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;Perl">Perl<&#47;a><&#47;td>
+<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a title="Linux" href="http:&#47;&#47;messiah.ks8.ru&#47;linux">Linux&#47;Unix<&#47;a><&#47;td>
+<&#47;tr>
+<tr>
+<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<a title="C++" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;cpp&#47;">C++<&#47;a><&#47;td>
+<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<a title="SQL" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;SQL">SQL<&#47;a><&#47;td>
+<td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<a title="SQL" href="http:&#47;&#47;messiah.ks8.ru&#47;Python">Python<&#47;a><&#47;td>
+<&#47;tr>
+<&#47;tbody>
+<&#47;table>
+<p style="text-align: left;"><a href="https:&#47;&#47;github.com&#47;m-muzafarov"><img class="wp-image-258 alignright" alt="github-button" src="http:&#47;&#47;messiah.ks8.ru&#47;wp-content&#47;uploads&#47;github-button.png" width="83" height="35" &#47;><&#47;a><&#47;p>

@@ -1,0 +1,21 @@
+---
+layout: post
+status: publish
+published: true
+title: Счётчик
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+wordpress_id: 86
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=86
+date: 2012-06-26 22:04:43.000000000 +06:00
+categories:
+- Perl
+tags: []
+comments: []
+---
+&nbsp;
+<pre class="brush: perl; gutter: false">$|=1;
+ for ($i=0;$i<101;$i++) {print "[$i%]\a\r"; sleep 1;}
+ print "Complete!\n\a\a\a";<&#47;pre>

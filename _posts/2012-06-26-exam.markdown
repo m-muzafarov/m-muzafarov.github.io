@@ -1,0 +1,112 @@
+---
+layout: post
+status: publish
+published: true
+title: Зачётные задачки
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "<h1>Несколько задачек с зачёта<&#47;h1>\r\n"
+wordpress_id: 104
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=104
+date: 2012-06-26 22:44:23.000000000 +06:00
+categories:
+- Perl&#47;Tasks
+tags: []
+comments: []
+---
+<h1>Несколько задачек с зачёта<&#47;h1>
+<a id="more"></a><a id="more-104"></a>
+<h1><&#47;h1>
+<h1>Строка с дефисами<&#47;h1>
+<pre class="brush: perl; gutter: true">use re &#039;eval&#039;;
+ $_=<>;
+ &#47;
+ ***
+ &#47;gx;<&#47;pre>
+Сама задачка: написать регвыр который будет выцеплять из строки все слова внутри которых есть дефис ну и выведет их, причем если одно и то же слово повторяется дважды то вывести его только один раз
+
+например, вводится строчка:
+
+"qqq-qq eee-ee- 4353sfdg-gsd-fdg- qw-dfg --- qw-dfg - fg-gf -fg"
+
+Выведет:
+qqq-qq
+eee-ee
+sfdg-gsd-fdg
+qw-dfg
+fg-gf
+
+А если таких слов нет вывести "No -"
+
+Весь код писать вместо ***
+<h2>Обычная версия<&#47;h2>
+<pre class="brush: perl; gutter: true">use re &#039;eval&#039;;
+ $_=<>;
+ &#47;(?:
+ (([A-z]+-)+[A-z]+)(?{$h{$1}=1})
+ |.
+ )*
+ (?{ $,="\n"; if (keys %h) {print keys (%h);} else {print "No -"}})
+ &#47;gx;
+ <><&#47;pre>
+<h2>Укороченная версия<&#47;h2>
+<pre class="brush: perl; gutter: true">use re &#039;eval&#039;;
+ $_ = <>;
+ &#47;
+ ((([A-z]+-)+[A-z]+)(?{$h{$2}++||print $2})|.)*(?{ %h || print "No -"})
+ &#47;gx;
+ <><&#47;pre>
+<h1>Список уникальных товаров по характеристике<&#47;h1>
+Имеется файл, содержащий описание отношения "иметь цвет"
+
+Назв1 цвет1
+назв2 цвет1
+назв1 цвет4
+
+Требуется по заданному цвету вывести количества различных названий.
+
+Программа должна иметь вид:
+<pre class="brush: perl; gutter: false">use re &#039;eval&#039;; $_ = join ",<файл>; &#47; ...&#47;gxms<&#47;pre>
+<h2>Решение<&#47;h2>
+<pre class="brush: perl; gutter: true"> use re &#039;eval&#039;;
+ %names=();
+ # $_="myass is red\nyour green\nhi there red\nbye blue\nanton red\nanton red\n";
+ open F,"input.txt";
+ $_=join &#039;&#039;,<F>;
+ &#47;(^([\w ]+?)\s(\w+)\n)(??{ %names->{"$3"}{"$2"}=1;})&#47;gxm;
+ for $color(keys(%names)) { print "$color - > ".keys(%{$names{$color}})."\n";}<&#47;pre>
+<h1>Класс скаляр<&#47;h1>
+Написать класс для связывания скаляра.
+
+Наследник StdScalar. Без собственного конструктора, но с собственными методами STORE и getvalues, в которых реализована возможность выдать все различные значения, когда-либо присвоенные скаляру.
+
+P.S. 1 и '1' - это разные значения.
+<h2>Код класса<&#47;h2>
+<pre class="brush: perl; gutter: true">package MySc;
+ my %values;
+ use Tie::Scalar;
+ @ISA = qw(Tie::StdScalar);
+ sub STORE {
+ my ($me, $v) = @_;
+ if (defined($v)){
+ if (ref($v)) {$v="ref:$v";}else{
+ if (("$v")^$v) { $v="\&#039;$v\&#039;";}
+ $v ="\&#039;\&#039;" if $v eq &#039;&#039;;} }
+ else {
+ $v =&#039;undef&#039;;}
+ $values{$me}{$v}++;
+ }
+ sub getvalues { return (keys %{$values{$_[0]}});}
+ sub DESTROY{
+ delete $values{$_[0]};}
+ 1;<&#47;pre>
+<h2>Программа<&#47;h2>
+<pre class="brush: perl; gutter: true">#!&#47;usr&#47;bin&#47;perl -w
+ use MySc;
+ $,=" ";
+ $a_o= tie $a, &#039;MySc&#039;;
+ for (1, 4, 6, &#039;1&#039;,4, undef, &#039;&#039;, \$a_o){
+ $a=$_;}
+ print ($a_o->getvalues());<&#47;pre>

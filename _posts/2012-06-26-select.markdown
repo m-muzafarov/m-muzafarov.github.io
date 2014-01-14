@@ -1,0 +1,33 @@
+---
+layout: post
+status: publish
+published: true
+title: Запрос
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "2.6) запрос, показывающий всех студентов и их данные,\r\n\r\nа также вид
+  спорта и тренера, с суммами меньшими средней за октябрь\r\n\r\n"
+wordpress_id: 119
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=119
+date: 2012-06-26 23:54:22.000000000 +06:00
+categories:
+- SQL
+tags: []
+comments: []
+---
+2.6) запрос, показывающий всех студентов и их данные,
+
+а также вид спорта и тренера, с суммами меньшими средней за октябрь
+
+<a id="more"></a><a id="more-119"></a>
+<pre class="brush: sql; gutter: true"> SELECT students.IDStudent, students.Фамилия, students.ВУЗ, students.Курс, VidSporta.NameSport AS &#039;Вид спорта&#039;, treners.Фамилия AS &#039;Тренер&#039;, abon.[Количество оплаченных занятий]*VidSporta.Stoimost AS &#039;Сумма&#039;
+ FROM VidSporta,treners,abon,students
+ WHERE abon.IdTrener=treners.IDTrener AND treners.IDSporta=VidSporta.idsport
+ AND abon.IDstudent=students.IDStudent AND
+ abon.[Количество оплаченных занятий]*VidSporta.Stoimost <
+ (SELECT AVG(abon.[Количество оплаченных занятий]*VidSporta.Stoimost)
+ FROM VidSporta,treners,abon,students
+ WHERE abon.IdTrener=treners.IDTrener AND treners.IDSporta=VidSporta.idsport
+ AND MONTH(abon.DATA)=10 )<&#47;pre>

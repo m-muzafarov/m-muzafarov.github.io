@@ -1,0 +1,49 @@
+---
+layout: post
+status: publish
+published: true
+title: Perlburg-2
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "Perlburg-2 (2011)\r\n\r\nКонспект\r\n\r\n"
+wordpress_id: 84
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=84
+date: 2012-06-26 22:03:47.000000000 +06:00
+categories:
+- Perl
+tags: []
+comments: []
+---
+Perlburg-2 (2011)
+
+Конспект
+
+<a id="more"></a><a id="more-84"></a>
+
+Win32::OLE &mdash; работа с COM-объектами (проги)
+<h1>===Как избежать нечитаемости кода:===<&#47;h1>
+<ul>
+	<li>Стандарты кодирования: man perlstyle<&#47;li>
+	<li>Документация, POD<&#47;li>
+	<li>Система контроля версий<&#47;li>
+	<li>Система управления проектами+Багтрекер<&#47;li>
+<&#47;ul>
+<h1>===Тестирование в Перл===<&#47;h1>
+use Test::More tests => 8; - подключаем и объявляем количество тестов
+
+Распространенные функции: ok(,)
+
+pass(string), fail(string)
+
+cmp_ok(переменная, оператор сравнения, переменная, строка)
+
+like (str, регвыр, возвращаемая строка)
+
+is (переменная, значение, строка) &mdash; в отличие от ОК при проваливании теста извещает, что ожидалось, а что получили.
+<h1>===Обфускация кода===<&#47;h1>
+Цель:
+разобраться сложнее, чем написать заново
+<em><strong>perl -MAcme::Bleach h1.pl<&#47;strong><&#47;em>
+- превращает программу в набор пробелов, табуляций и т.&nbsp;п.

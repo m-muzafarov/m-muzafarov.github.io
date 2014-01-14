@@ -1,0 +1,45 @@
+---
+layout: post
+status: publish
+published: true
+title: Триггер
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "Триггер выполняет при вставке в таблицу Журнал следующие функции:\r\n1)
+  В таблице рабочих, соответствующему сотруднику добавляет +1 к опыту.\r\n2) Копирует
+  поля ИД, Измерение, Результат и Номер станции из Журнала и вставляет в таблицу Результатов
+  (авто-заполнение результатов)\r\n\r\n"
+wordpress_id: 109
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=109
+date: 2012-06-26 23:47:22.000000000 +06:00
+categories:
+- SQL
+tags: []
+comments: []
+---
+Триггер выполняет при вставке в таблицу Журнал следующие функции:
+1) В таблице рабочих, соответствующему сотруднику добавляет +1 к опыту.
+2) Копирует поля ИД, Измерение, Результат и Номер станции из Журнала и вставляет в таблицу Результатов (авто-заполнение результатов)
+
+<a id="more"></a><a id="more-109"></a>
+<pre class="brush: sql; gutter: true"> CREATE TRIGGER journaling
+ ON dbo.journal
+ FOR INSERT
+ AS
+ BEGIN
+ DECLARE @c INT
+ SELECT @c=i.worker
+ FROM inserted AS i
+ UPDATE workers
+ SET workers.Expo = workers.Expo +1
+ FROM workers WHERE workers.ID=@c
+ DECLARE @a INT
+ DECLARE @id INT
+ DECLARE @b INT
+ DECLARE @e DECIMAL (8,2)
+ SELECT @id=i.ID, @b=i.measure, @e=i.resultat FROM inserted AS i
+ SELECT @a= (SELECT workers.IDStation FROM workers WHERE workers.ID=@c)
+ INSERT INTO resultat VALUES (@id,@a,@b,@e)
+ END<&#47;pre>

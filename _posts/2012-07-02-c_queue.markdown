@@ -1,0 +1,69 @@
+---
+layout: post
+status: publish
+published: true
+title: Очередь
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "<h1>Листинг<&#47;h1>\r\n"
+wordpress_id: 167
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=167
+date: 2012-07-02 12:02:48.000000000 +06:00
+categories:
+- C++&#47;Structures
+tags: []
+comments: []
+---
+<h1>Листинг<&#47;h1>
+<a id="more"></a><a id="more-167"></a>
+<h1>queue.h<&#47;h1>
+<pre class="brush: cpp; gutter: true"> #ifndef QUEUE_H &#47;&#47;Esli imya otsutstvuet v preprocessore, to tekst budet rabotat`
+ #define QUEUE_H
+ struct knot {int x; knot* next;};
+ void _new_null (knot*&amp; st);
+ bool _check_empty (knot*&amp; st);
+ void _add_compon (knot*&amp; st, int x);
+ void _read_compon (knot*&amp; st, int&amp; x);
+ void _del_compon (knot*&amp; st);
+ void _destr (knot*&amp; st);
+ #endif<&#47;pre>
+<h1>queue.cpp<&#47;h1>
+<pre class="brush: cpp; gutter: true"> #include "queue.h"
+ #include "width.h"
+ &#47;&#47;struct knot {int x; knot* next};
+ void _new_null (knot*&amp; st)
+ {
+ st=0;
+ }
+ bool _check_empty (knot*&amp; st)
+ {
+ return st==0;
+ }
+ void _add_compon (knot*&amp; st, int x)
+ {
+ knot* us= new knot;
+ us->x=x;
+ us->next=0;
+ if (!st) st=us;
+ else { knot* r=st;
+ while (r->next) r=r->next;
+ r->next=us;
+ }
+ }
+ void _read_compon (knot*&amp; st, int&amp; x)
+ {
+ x=st->x;
+ }
+ void _del_compon (knot*&amp; st)
+ {
+ knot* us = st;
+ st=st->next;
+ delete us;
+ }
+ void _destr (knot*&amp; st)
+ {
+ while (!_check_empty (st)) _del_compon(st);
+ }<&#47;pre>
+&nbsp;

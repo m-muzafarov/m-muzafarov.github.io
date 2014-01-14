@@ -1,0 +1,218 @@
+---
+layout: post
+status: publish
+published: true
+title: JMS-чат
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "Задачка из курса Распределённых Объектных технологий.\r\n<h1>Простой чат
+  на протоколе STOMP (интерфейс для JMS)<&#47;h1>\r\n<h2>Требования:<&#47;h2>\r\n<ol>\r\n\t<li>Необходим
+  запущенный JMS с поддержкой STOMP.<&#47;li>\r\n\t<li>Необходим python2.7 (из-за
+  библиотеки stomper)<&#47;li>\r\n\t<li>Необходимы библиотеки stomper и twisted для
+  python\r\n<pre class=\"brush: bash; gutter: false\">pip install stomper twisted<&#47;pre>\r\n<&#47;li>\r\n<&#47;ol>\r\n"
+wordpress_id: 253
+wordpress_url: http://messiah.ks8.ru/?p=253
+date: 2013-09-13 16:15:15.000000000 +06:00
+categories:
+- Python
+tags: []
+comments: []
+---
+Задачка из курса Распределённых Объектных технологий.
+<h1>Простой чат на протоколе STOMP (интерфейс для JMS)<&#47;h1>
+<h2>Требования:<&#47;h2>
+<ol>
+	<li>Необходим запущенный JMS с поддержкой STOMP.<&#47;li>
+	<li>Необходим python2.7 (из-за библиотеки stomper)<&#47;li>
+	<li>Необходимы библиотеки stomper и twisted для python
+<pre class="brush: bash; gutter: false">pip install stomper twisted<&#47;pre>
+<&#47;li>
+<&#47;ol>
+<a id="more"></a><a id="more-253"></a>
+<h2>Запуск:<&#47;h2>
+<pre class="brush: bash; gutter: false">python2 chat.py <Nickname> [MEM]<&#47;pre>
+Где MEM - желаемое количество отображаемых строк.
+
+Соединяется на localhost:61613 (задаётся константами HOST, PORT).
+<h2>Доступные комманды:<&#47;h2>
+<ul>
+	<li>&#47;CONNECT - сообщение о появлении пользователя.<&#47;li>
+	<li>&#47;HISTORY - показ всей истории сессии.<&#47;li>
+	<li>&#47;ME <status> - сообщение вроде статуса.<&#47;li>
+	<li>&#47;QUIT - выход.<&#47;li>
+<&#47;ul>
+<strong>chat.py<&#47;strong>
+<pre class="brush: python; gutter: true">#!&#47;usr&#47;bin&#47;python
+# -*- coding: utf-8 -*-
+__author__ = &#039;Messiah&#039;
+# based on stomper example for stomping"
+import os
+import sys
+from time import strftime
+import uuid
+import logging
+from twisted.internet import reactor, stdio
+from twisted.internet.task import LoopingCall
+from twisted.internet.protocol import Protocol, ReconnectingClientFactory
+from twisted.protocols import basic
+
+import stomper
+
+stomper.utils.log_init(logging.CRITICAL)
+
+HOST = &#039;localhost&#039;
+PORT = 61613
+DESTINATION = "&#47;topic&#47;inbox"
+MEM = 20
+message = "&#47;CONNECT"
+
+class StompProtocol(Protocol, stomper.Engine):
+    def __init__(self, username=&#039;&#039;, password=&#039;&#039;, nickname=&#039;&#039;):
+        stomper.Engine.__init__(self)
+        self.username = username
+        self.password = password
+        self.log = logging.getLogger("sender")
+        self.nickname = nickname if nickname else str(uuid.uuid4())
+        self.buffer = []
+
+    def connected(self, msg):
+        stomper.Engine.connected(self, msg)
+
+        self.log.info("Nickname:{} Connected: session {}.".format(
+            self.nickname,
+            msg[&#039;headers&#039;][&#039;session&#039;])
+        )
+        print "\rWelcome to chat!"
+
+        def setup_looping_call():
+            lc = LoopingCall(self.send)
+            lc.start(0.3)
+
+        reactor.callLater(0, setup_looping_call)
+
+        f = stomper.Frame()
+        f.unpack(stomper.subscribe(DESTINATION))
+        f.headers[&#039;activemq.noLocal&#039;] = &#039;true&#039;
+        return f.pack()
+
+    def ack(self, msg):
+        self.log.debug("Received: %s " % (msg[&#039;body&#039;]))
+        self.buffer.append("{}\n".format(msg[&#039;body&#039;]))
+        data = "".join(self.buffer[-MEM:])
+        for i in range(len(self.buffer), MEM + 1):
+            data += "\n"
+        os.system("clear")
+        print "{}\n--------------------------".format(data)
+        return stomper.NO_REPONSE_NEEDED
+
+    def send(self):
+        global message
+        if not message:
+            return
+        self.log.debug("MSG:({}) {}: {}".format(strftime("%H:%M:%S"),
+                                                self.nickname,
+                                                message))
+
+        if message == "&#47;CONNECT":
+            f = stomper.Frame()
+            f.unpack(stomper.send(DESTINATION,
+                                  "{} just connected".format(self.nickname)))
+            self.transport.write(f.pack())
+        elif message[:3] == "&#47;ME":
+            f = stomper.Frame()
+            f.unpack(stomper.send(DESTINATION,
+                                  "{} {}".format(self.nickname, message[4:])))
+            self.transport.write(f.pack())
+        elif message == "&#47;HISTORY":
+            data = ">".join(self.buffer)
+            for i in range(len(self.buffer), MEM + 1):
+                data += "\n"
+            os.system("clear")
+            print "{}\n--------------------------".format(data)
+        elif message == "&#47;QUIT":
+            f = stomper.Frame()
+            f.unpack(stomper.send(DESTINATION,
+                                  "{} just exited".format(self.nickname)))
+            reactor.callLater(1, self.closeConnection)
+            self.transport.write(f.pack())
+        else:
+            f = stomper.Frame()
+            f.unpack(stomper.send(DESTINATION,
+                                  "({}) {}: {}".format(strftime("%H:%M:%S"),
+                                                       self.nickname,
+                                                       message)))
+            self.transport.write(f.pack())
+        message = ""
+
+    def connectionMade(self):
+        cmd = stomper.connect(self.username, self.password)
+        self.transport.write(cmd)
+
+    def dataReceived(self, data):
+        msg = stomper.unpack_frame(data)
+        returned = self.react(msg)
+        if returned:
+            self.transport.write(returned)
+
+    def closeConnection(self):
+        print "Goodbye!"
+        reactor.stop()
+
+class Echo(basic.LineReceiver):
+    delimiter = "\n"
+
+    def connectionMade(self):
+        self.transport.write(" ")
+
+    def lineReceived(self, line):
+        global message
+        message = line
+
+class StompClientFactory(ReconnectingClientFactory):
+    # Will be set up before the factory is created.
+    username, password, nickname = &#039;&#039;, &#039;&#039;, &#039;&#039;
+    stdio.StandardIO(Echo())
+
+    def buildProtocol(self, addr):
+        return StompProtocol(self.username, self.password, self.nickname)
+
+    def clientConnectionLost(self, connector, reason):
+        """Lost connection
+        """
+        #print &#039;Lost connection.  Reason:&#039;, reason
+
+    def clientConnectionFailed(self, connector, reason):
+        """Connection failed
+        """
+        print &#039;Connection failed. Reason:&#039;, reason
+        ReconnectingClientFactory.clientConnectionFailed(self,
+                                                         connector,
+                                                         reason)
+
+def start(host=HOST, port=PORT, username=&#039;&#039;, password=&#039;&#039;, nickname=""):
+    """Start twisted event loop and the fun should begin...
+    """
+    StompClientFactory.username = username
+    StompClientFactory.password = password
+    StompClientFactory.nickname = nickname
+    reactor.connectTCP(host, port, StompClientFactory())
+    reactor.run()
+
+if __name__ == &#039;__main__&#039;:
+    if len(sys.argv) < 2:
+        print "Usage: {} nickname [MEM]".format(sys.argv[0])
+        exit(1)
+    if len(sys.argv) > 2:
+        try:
+
+            MEM = int(sys.argv[2])
+        except:
+            print "MEM can be only integers"
+            exit(2)
+    start(nickname=sys.argv[1])<&#47;pre>
+Примитивный stomp-server:
+<pre>coilmq -b 0.0.0.0 -p 61613<&#47;pre>
+
+<a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;ROT&#47;tree&#47;master&#47;Task5"><img src="http:&#47;&#47;messiah.ks8.ru&#47;wp-content&#47;uploads&#47;github-button.png" alt="github-button" width="170" height="72" class="alignleft size-full wp-image-258" &#47;><&#47;a>

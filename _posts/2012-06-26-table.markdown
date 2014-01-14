@@ -1,0 +1,29 @@
+---
+layout: post
+status: publish
+published: true
+title: Таблица
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "Запрос создания\r\n\r\n"
+wordpress_id: 116
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=116
+date: 2012-06-26 23:52:56.000000000 +06:00
+categories:
+- SQL
+tags: []
+comments: []
+---
+Запрос создания
+
+<a id="more"></a><a id="more-116"></a>
+<pre class="brush: sql; gutter: true"> CREATE TABLE abon(
+ nomer [INT] NOT NULL,
+ [Количество оплаченных занятий] [tinyint] NOT NULL,
+ DATA [DATE] NOT NULL,
+ IDstudent [INT] NOT NULL REFERENCES students (IDStudent),
+ IdTrener [tinyint] NOT NULL REFERENCES treners (IDTrener),
+ CONSTRAINT [PK_abon] PRIMARY KEY (nomer)
+ )<&#47;pre>

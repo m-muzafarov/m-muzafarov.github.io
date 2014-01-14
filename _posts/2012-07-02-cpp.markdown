@@ -1,0 +1,34 @@
+---
+layout: page
+status: publish
+published: true
+title: C++
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+wordpress_id: 156
+wordpress_url: http://messiah.ks8.ru/wordpress/?page_id=156
+date: 2012-07-02 11:26:04.000000000 +06:00
+categories: []
+tags: []
+comments: []
+---
+<ul>
+	<li><a title="Решение квадратных уравнений" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;square_equations&#47;">Решение квадратных уравнений<&#47;a><&#47;li>
+	<li><a title="Числа-палиндромы" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;cpp&#47;palindroms&#47;">Числа-палиндромы<&#47;a><&#47;li>
+	<li><a title="Совершенные числа" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;cpp&#47;perfect_numbers&#47;">Совершенные числа<&#47;a><&#47;li>
+	<li><a title="Простейший пример класса: Дата" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;cpp&#47;classdata&#47;">Простейший пример класса: Дата<&#47;a><&#47;li>
+	<li><a title="Комплексные числа" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;cpp&#47;complex&#47;">Комплексные числа<&#47;a><&#47;li>
+	<li><a title="Граф, стек и очередь" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;cpp&#47;structures&#47;">Граф, стек и очередь<&#47;a><&#47;li>
+<&#47;ul>
+Или сразу все лекции:
+<script type="text&#47;javascript" src="&#47;&#47;yandex.st&#47;disk&#47;api&#47;0.1.1&#47;widgets.min.js"><&#47;script>
+<div class="dw dw-s dw-s_i_s"><img class="dw-f dw-f_s" alt="" src="&#47;&#47;yandex.st&#47;disk&#47;api&#47;0.1.1&#47;icons&#47;file_development-48.png" &#47;>
+<div class="dw-a">
+<div class="dw-h dw-h_s"><a class="dw-l" title="C++" href="http:&#47;&#47;yadi.sk&#47;d&#47;DARCxd2OANDF6" target="_blank">C++<&#47;a><&#47;div>
+<a class="dw-b dw-b_yellow dw-b_s" title="Сохранить на Яндекс.Диск" href="http:&#47;&#47;yadi.sk&#47;d&#47;DARCxd2OANDF6" data-disk-hash="KlVvp5lP8lg83sYdJggq8CDkEZ0KIP&#47;bsrMMeQfOu4g=" data-disk-widget="saveToDisk"><span class="dw-b__t dw-b__t_b"><i class="dw-i"><&#47;i>Сохранить на Яндекс.Диск<&#47;span><&#47;a>
+
+<&#47;div>
+<&#47;div>
+Если вы здесь, чтобы посмотреть некоторые алгоритмы дискретной оптимизации - смотрите код на <a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;diskrette_optimization" target="_blank">GitHub<&#47;a>

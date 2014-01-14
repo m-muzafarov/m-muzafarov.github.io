@@ -1,0 +1,32 @@
+---
+layout: post
+status: publish
+published: true
+title: IpParser.pl
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+wordpress_id: 95
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=95
+date: 2012-06-26 22:25:56.000000000 +06:00
+categories:
+- Perl&#47;Tasks
+tags: []
+comments: []
+---
+<pre class="brush: perl; gutter: true">
+ #!&#47;usr&#47;bin&#47;perl -w
+ $_=<<"EOD"
+ 192.168.137.1
+ 10.0.0.1
+ 10.0.0.2.
+ 423525.547547.7657.65765767567.567567.567567
+ lfdlhgdf.dhjgh.hg.g
+ 10.0.0.3111
+ 10.0.0.4.w
+ EOD
+ ;
+@ip= &#47;(?:\d{1,3}\.){3}\d{1,3}(?<!\d\.)(?!\.\d|\d|\.\w)&#47;g;
+ $,=$&#47;;
+ print @ip;<&#47;pre>

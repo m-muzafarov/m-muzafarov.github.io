@@ -1,0 +1,171 @@
+---
+layout: post
+status: publish
+published: true
+title: Регулярные выражения
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "<h1>perldoc perlre<&#47;h1>\r\n&nbsp;\r\n\r\n"
+wordpress_id: 90
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=90
+date: 2012-06-26 22:22:39.000000000 +06:00
+categories:
+- Perl
+tags: []
+comments: []
+---
+<h1>perldoc perlre<&#47;h1>
+&nbsp;
+
+<a id="more"></a><a id="more-90"></a>
+<h1>Основной синтаксис<&#47;h1>
+<ul>
+	<li><strong>[ ]<&#47;strong> - символ, либо слайс, который может встретиться в поиске<&#47;li>
+	<li><strong>{ <число> }<&#47;strong> - сколько раз встречается<&#47;li>
+	<li><strong>{<число>, <число>}<&#47;strong>&nbsp;- промежуток сколько раз встречается. Если второго числа нет - то до бесконечности<&#47;li>
+	<li><strong>* == {0, }<&#47;strong><&#47;li>
+	<li><strong>+ == {1, }<&#47;strong><&#47;li>
+	<li><strong>( )<&#47;strong>&nbsp;- подстрока<&#47;li>
+	<li><strong>.<&#47;strong> - почти все символы, кроме перевода строки<&#47;li>
+	<li><strong>\<&#47;strong>&nbsp;- экранирование следующего символа<&#47;li>
+	<li><strong>\d<&#47;strong>&nbsp;- десятичные цифры == [0-9]<&#47;li>
+	<li><strong>\D<&#47;strong>&nbsp;- всё кроме цифр<&#47;li>
+	<li><strong>\w<&#47;strong>&nbsp;<strong> == [A-z]<&#47;strong><&#47;li>
+	<li><strong>\W<&#47;strong>&nbsp;- всё кроме букв<&#47;li>
+	<li><strong>|<&#47;strong> - "ИЛИ"<&#47;li>
+<&#47;ul>
+''Клини выяснил, что стандартные (математические) регулярные выражения не решают проблему парности строк.''
+<ul>
+	<li><strong>(?{ })<&#47;strong>&nbsp;- расширенное регулярное выражение<&#47;li>
+	<li><strong>(? )<&#47;strong> - группировка с захватом - ставит в соответствие переменным $1,$2.. те подстроки, которые удовлетворяют шаблону, заключённому в скобках<&#47;li>
+	<li><strong>(?: )<&#47;strong>&nbsp;- группировка без захвата<&#47;li>
+<&#47;ul>
+<strong>Параметры:<&#47;strong>
+
+<strong>g<&#47;strong> - глобальность (используется чтобы итератор в цикле двигался по строке дальше)
+
+<strong>i<&#47;strong>&nbsp;- игнорирование регистра
+
+<strong>m&nbsp;<&#47;strong>- игнорирование конца строки
+<strong>Match<&#47;strong>
+<strong>~m&#47;A(B*)&#47;<&#47;strong>&nbsp;- ищет подстроку, где идет А, потом произвольное количество символов B
+<pre class="brush: perl; gutter: false">while ($r="CDABABB"=~m&#47;(?:A(B*))&#47;g) {print "$r $1 \n"; }<&#47;pre>
+<blockquote>Вывод:
+1 B
+1 BB<&#47;blockquote>
+<pre class="brush: perl; gutter: false">while ($r="CDABABB"=~m&#47;(A+|B+)&#47;g) {print "$r $1 \n"; }<&#47;pre>
+<blockquote>Вывод:
+1 A
+1 B
+1 A
+1 BB<&#47;blockquote>
+&nbsp;
+<pre class="brush: perl; gutter: false">while ($r="CDABABB"=~m&#47;(A*|B*)&#47;g) {print " $r $1 \n"; }<&#47;pre>
+<blockquote>Вывод:
+1
+1
+1 A
+1
+1 B
+1 A
+1
+1 BB
+1<&#47;blockquote>
+<span style="font-style: normal;">
+<&#47;span>
+<pre class="brush: perl; gutter: false">@r="CDABABB"=~m&#47;(A+|B+)&#47;g; print " @r \n";<&#47;pre>
+<blockquote>Вывод:
+A B A BB<&#47;blockquote>
+<strong>S<&#47;strong>
+
+<strong>s&#47; &#47; &#47;;&nbsp;<&#47;strong>Замена найденного тем, что справа.
+
+<strong>y<&#47;strong>
+
+<strong><&#47;strong>y&#47; &#47; &#47;;&nbsp;заменяет первое найденное на первое справа, второе - на второе. и.т.п.
+
+<strong>tr<&#47;strong>
+
+<strong><&#47;strong>tr&#47; &#47; &#47;;&nbsp;тоже замены
+
+<strong>Задачи<&#47;strong>
+<h2>Задача о простейших совпадениях<&#47;h2>
+Пусть есть файл Ф И О Ф И О
+
+(6 колонок)
+
+Нужно выдать всех многожёнцев.
+<pre class="brush: perl; gutter: true">#!&#47;usr&#47;bin&#47;perl -w
+ $SRC_FN = "fiofio.txt";
+ open RFD, "<$SRC_FN" or die "Невозможно открыть файл $SRC_FN: $!";
+ while (<RFD>) {@s = split &#039; &#039;,$_;
+ if (@s!=6)
+ { print STDERR "Invalid line $.\n";
+ next;}
+ $p1=join &#039; &#039;,@s[0..2];
+ $p2=join &#039; &#039;,@s[3..5];
+ $h{$p1}{$p2} = $h{$p2}{$p1}=1;
+ }
+ close RFD or die "Невозможно закрыть $SRC_FN:$!";
+ {local $\=$&#47;;
+ print grep { (keys %{$h{$_}})>1 } keys %h;}<&#47;pre>
+<h2>Поиск парных символов<&#47;h2>
+Есть текст $_;
+программа д.б. написана в &#47; &#47;x; (регвыр)
+Должна выдавать если ровно два одинаковых символа, то выдавать количество всех пар.
+Если пар нет - выдать 0
+Проблема в том, что во-первых, символ произвольный,
+во-вторых, строка ааа - работает, а это плохо.
+Выражение &#47;(a|b)$1&#47; то подставится то значение, которое было до него.
+А чтобы получить то, что хотим, надо подставить \1 вместо $1 <a title="Doubles.pl" href="http:&#47;&#47;messiah.ks8.ru&#47;wordpress&#47;usu&#47;perl&#47;tasks&#47;doubles">Doubles.pl<&#47;a>
+<h2>Нахождение нужного положения в строке<&#47;h2>
+Константы можно писать с подчёркиванием.
+
+&nbsp;
+<pre class="brush: perl; gutter: false">$a= 1_000_000;
+ print "$a\n"; &nbsp;# всё таки выведет 1000000<&#47;pre>
+Поэтому хочется написать процедуру, которая будет вставлять подчёркивание&nbsp;<a title="InsUndrln.pl" href="http:&#47;&#47;messiah.ks8.ru&#47;wordpress&#47;usu&#47;perl&#47;tasks&#47;insundrln">InsUndrln.pl<&#47;a>
+<h2>Поиск конкретных последовательностей символов<&#47;h2>
+Для ознакомления с возможностями регулярных выражений, таких как:
+<ul>
+	<li>Не равно<&#47;li>
+	<li>Равно<&#47;li>
+	<li>Заглядывание вправо или влево от найденного,<&#47;li>
+<&#47;ul>
+Напишем программу для выделения IP адресов <a title="Ip_parser.pl" href="http:&#47;&#47;messiah.ks8.ru&#47;wordpress&#47;usu&#47;perl&#47;tasks&#47;ip_parser">ip_parser.pl<&#47;a>
+<h2>Вложенные регулярки<&#47;h2>
+<strong>(??{ })<&#47;strong> Блок кода рассматривается как регулярное выражение.
+То есть мы можем написать здесь reverse $1 и работать с этим легко.
+<h2>Вложенные скобки<&#47;h2>
+&nbsp;
+<pre class="brush: perl; gutter: true">#!&#47;usr&#47;bin&#47;perl -w
+ $_="(())";
+ $ptrn=qr&#47;
+ \(
+ (?:
+ (?>[^()]+)
+ |
+ (??{$ptrn})
+ )*
+ \)
+ &#47;x;
+ $_=~&#47;^(?>[^()]*)$ptrn(?>[^()]*)$&#47; or print "Error\n";<&#47;pre>
+<h2>Произвольная функция<&#47;h2>
+Есть текст на С. У какой то функции перед последней скобкой вставить какой-то параметр,
+например: some_func(x,y,z) -> some_func(x,y,z ,NULL)
+<pre class="brush: perl; gutter: true"> #!&#47;usr&#47;bin&#47;perl -w
+ $_="some_func(x(y),z)";
+ $ptrn=qr&#47;
+ \(
+ (?:
+ (?>[^()]+)
+ |
+ (??{$ptrn})
+ )*
+ \)
+ &#47;x;
+$_=~s&#47;(some_func\s*$ptrn)&#47;$t=$1; substr($t,-1)=", NULL)"; $t&#47;gxmse;
+ print;<&#47;pre>
+&nbsp;

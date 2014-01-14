@@ -1,0 +1,89 @@
+---
+layout: post
+status: publish
+published: true
+title: Наработки для сети
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "К сожалению, разрабатывать мониторилку оказалось бессмысленно ввиду жёсткой
+  конкуренции со стороны Zabbix и Nagios, их продвинутости, и (с выходом Zabbix 2.2)
+  модульности.\r\nОднако остались намётки работы с сетью, с помощью некоторых библиотек
+  Python 2, которые, возможно, могут пригодиться для быстрого написания какого-нибудь
+  скрипта без трат время на документацию.\r\nСначала хотел на Гитхаб всё оформить,
+  но потом постеснялся всего того что есть - так как не вижу смысла писать тулзу,
+  которая делает только одну задачу, а если же просматривать множество возможных путей
+  - непонятно, зачем прослойка, если используются те же библиотечные функции.\r\n\r\nВ
+  общем, тут будет краткий экскурс))\r\n\r\n"
+wordpress_id: 266
+wordpress_url: http://messiah.ks8.ru/?p=266
+date: 2013-11-14 15:53:58.000000000 +06:00
+categories:
+- Python
+tags: []
+comments: []
+---
+К сожалению, разрабатывать мониторилку оказалось бессмысленно ввиду жёсткой конкуренции со стороны Zabbix и Nagios, их продвинутости, и (с выходом Zabbix 2.2) модульности.
+Однако остались намётки работы с сетью, с помощью некоторых библиотек Python 2, которые, возможно, могут пригодиться для быстрого написания какого-нибудь скрипта без трат время на документацию.
+Сначала хотел на Гитхаб всё оформить, но потом постеснялся всего того что есть - так как не вижу смысла писать тулзу, которая делает только одну задачу, а если же просматривать множество возможных путей - непонятно, зачем прослойка, если используются те же библиотечные функции.
+
+В общем, тут будет краткий экскурс))
+
+<a id="more"></a><a id="more-266"></a>
+
+<h1>1. HTTP<&#47;h1>
+Первое - самое популярное, поэтому начну с него. Для работы буду использовать отличную библиотеку <a href="&#47;wrn.php?www.python-requests.org&#47;en&#47;latest&#47;">requests<&#47;a>. Она есть как в pip, так и в easy_install и вообще на гитхабе лежит, если что.
+<pre class="brush: python; gutter: true">r = requests.get("http:&#47;&#47;example.com&#47;stat",
+                 auth=(&#039;user&#039;, &#039;pass&#039;))
+print r.status_code, r.text<&#47;pre>
+Или если нужны параметры:
+<pre class="brush: python; gutter: true">payload = {&#039;key1&#039;: &#039;value1&#039;, &#039;key2&#039;: &#039;value2&#039;}
+cookies = {&#039;sessionid&#039;: &#039;45647567568&#039;}
+r = requests.get("http:&#47;&#47;httpbin.org&#47;get",
+                 params=payload, cookies=cookies)<&#47;pre>
+То же с POST, просто нужно вызывать requests.post(...)
+<h1>2. SSH<&#47;h1>
+Для SSH будет использоваться библиотека <a href="https:&#47;&#47;github.com&#47;paramiko&#47;paramiko&#47;">paramiko<&#47;a> (мне она просто понравилась лаконичностью запросов)
+<pre class="brush: python; gutter: true">import paramiko
+
+client = paramiko.SSHClient()
+client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+client.connect(hostname=address, port=port, timeout=3,
+                       username=&#039;user&#039;, password=&#039;password&#039;)
+stdin, stdout, stderr = client.exec_command(&#039;ls&#039;)
+for line in stdout:
+    print &#039;... &#039; + line.strip(&#039;\n&#039;)
+client.close()<&#47;pre>
+<h1>3. SFTP<&#47;h1>
+Тут же, пока умеем работать с SSH:
+<pre class="brush: actionscript3; gutter: true">transport = paramiko.Transport((address, port))
+transport.connect(username=&#039;user&#039;, password=&#039;password&#039;)
+sftp = paramiko.SFTPClient.from_transport(transport)
+dirlist = sftp.listdir(&#039;.&#039;)
+sftp.mkdir("Input")
+sftp.open(&#039;Input&#47;status&#039;, &#039;w&#039;).write(&#039;OK\n&#039;)
+status = sftp.file("Input&#47;status").read()
+
+sftp.get("Input&#47;status", "new_status.txt")
+sftp.put("new_status.txt", "STATUS")<&#47;pre>
+<h1>4. SMTP<&#47;h1>
+Воспользуемся библиотекой smtplib
+<pre class="brush: python; gutter: true">try:
+    smtp = smtplib.SMTP(host="example.com", port=25,
+                        timeout=3)
+
+    smtp.login(&#039;user&#039;, &#039;password&#039;)
+
+    smtp.sendmail(&#039;fromMe&#039;, &#039;toYou&#039;, &#039;Hello, World!&#039;)
+
+    smtp.close()
+except socket.timeout:
+        pass
+except smtplib.SMTPRecipientsRefused as e:
+    result = "Cannot send message: " + str(e)
+except smtplib.SMTPException as e:
+    result = "Cannot login: " + str(e)
+except Exception as e:
+    result = str(e)<&#47;pre>

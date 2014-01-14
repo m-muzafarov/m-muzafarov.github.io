@@ -1,0 +1,73 @@
+---
+layout: post
+status: publish
+published: true
+title: Представление графа
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "<h1>Листинг<&#47;h1>\r\n"
+wordpress_id: 168
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=168
+date: 2012-07-02 12:04:54.000000000 +06:00
+categories:
+- C++&#47;Structures
+tags: []
+comments: []
+---
+<h1>Листинг<&#47;h1>
+<a id="more"></a><a id="more-168"></a>
+<h1>graph.h<&#47;h1>
+<pre class="brush: cpp; gutter: true"> #ifndef GRAPH_H
+ #define GRAPH_H
+ #include <fstream>
+ using namespace std;
+ struct apex {int n; apex* next;};
+ &#47;&#47;apex graf[maxn];
+ void readgraf (ifstream &amp; fi, apex* graf, int&amp; m);
+ void writegraf (ofstream&amp; fo, apex* graf, int m);
+ #endif<&#47;pre>
+<h1>graph.cpp<&#47;h1>
+<h1><&#47;h1>
+<pre class="brush: cpp; gutter: true"> #include "stack.h"
+ #include "queue.h"
+ #include "graph.h"
+ &#47;&#47;struct apex {int n; apex* next;};
+ void readgraf (ifstream &amp; fi, apex* graf, int&amp; m)
+ {
+ int r;
+ apex *last, *temp;
+ fi>>m;
+ for (int i=0; i<m; i++)
+ { graf[i].n=i; graf[i].next=0;}
+ for (int i=0; i<m; i++)
+ {
+ fi>>r;
+ last=&amp;graf[r-1];
+ do
+ { fi>>r;
+ if(r) {temp=new apex;
+ temp->n=r-1;
+ temp->next=0;
+ last->next=temp;
+ last=temp;}
+ } while (r);
+ }
+ }
+ void writegraf (ofstream&amp; fo, apex* graf, int m)
+ {
+ apex *temp;
+ bool fl=false;
+ fo<<m<<endl;
+ for (int i=0; i<m; i++)
+ {
+ temp=graf[i].next;
+ while (temp)
+ {
+ if (temp->n >i) fo<<"{"<<i+1<<","<<(temp->n+1)<<"}; ";
+ temp=temp->next;
+ }
+ }
+ fo<<"\n end list \n";
+ }<&#47;pre>

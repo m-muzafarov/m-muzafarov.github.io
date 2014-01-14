@@ -1,0 +1,49 @@
+---
+layout: post
+status: publish
+published: true
+title: Пакеты
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "<pre class=\"brush: perl; gutter: true\"> package MyPack;\r\n$a = 1;\r\n#найти
+  хэш с таким именем в пакете main можно так\r\n %main::\r\n #(и так можно до бесконечности
+  :) )\r\n #например %main::main::main:: ...\r\n %MyPack::\r\n#$MyPack::a=1; так можно
+  записать первые 2 строчки\r\n%main::MyPack::\r\n *$main::MyPack{&#039;a&#039;}{SCALAR};
+  &#47;&#47; получение указателя на скаляр<&#47;pre>\r\n<h1>"
+wordpress_id: 98
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=98
+date: 2012-06-26 22:30:39.000000000 +06:00
+categories:
+- Perl
+tags: []
+comments: []
+---
+<pre class="brush: perl; gutter: true"> package MyPack;
+$a = 1;
+#найти хэш с таким именем в пакете main можно так
+ %main::
+ #(и так можно до бесконечности :) )
+ #например %main::main::main:: ...
+ %MyPack::
+#$MyPack::a=1; так можно записать первые 2 строчки
+%main::MyPack::
+ *$main::MyPack{&#039;a&#039;}{SCALAR}; &#47;&#47; получение указателя на скаляр<&#47;pre>
+<h1><a id="more"></a><a id="more-98"></a><&#47;h1>
+<h1><&#47;h1>
+<h1>Подключение модуля<&#47;h1>
+<pre class="brush: perl; gutter: false">use MyPack;<&#47;pre>
+Чтобы выдавать в итоге выполнения модуля 1, необходимо в конце перлмодулей (то есть файлов *.pm) принято писать 1; Иначе может возникать ошибка типа модуль не загружен и.т.п.
+<h2>Видимость<&#47;h2>
+Имена переменных лексической области видимости ограничиваются блоком.
+
+Если переменная на уровне файла, то видима до конца файла
+<pre class="brush: perl; gutter: false"> $a=3;
+ $a_mm=&#039;a&#039;;
+ my ($a,@b) = (1,2,3);
+ print "$a\n";
+ print $main::a;<&#47;pre>
+Выведет:
+1
+3

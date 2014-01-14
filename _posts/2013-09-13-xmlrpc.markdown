@@ -1,0 +1,107 @@
+---
+layout: post
+status: publish
+published: true
+title: XMLRPC
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "Задачка из курса Распределённых Объектных технологий.\r\n\r\nКлиент принимает
+  a,b,c коэффициенты квадратного уравнения ax&sup2;+bx+c=0 и вызывает функции сервера,
+  для нахождения корней x1 и x2.\r\n\r\nСервер предоставляет XMLRPC метод решения.\r\n\r\n"
+wordpress_id: 242
+wordpress_url: http://messiah.ks8.ru/?p=242
+date: 2013-09-13 13:56:50.000000000 +06:00
+categories:
+- Python
+tags: []
+comments: []
+---
+Задачка из курса Распределённых Объектных технологий.
+
+Клиент принимает a,b,c коэффициенты квадратного уравнения ax&sup2;+bx+c=0 и вызывает функции сервера, для нахождения корней x1 и x2.
+
+Сервер предоставляет XMLRPC метод решения.
+
+<a id="more"></a><a id="more-242"></a>
+<strong>Сервер:<&#47;strong>
+<pre class="brush: python; gutter: true">#!&#47;usr&#47;bin&#47;python3
+# -*- coding: utf-8 -*-
+import math
+from xmlrpc.server import SimpleXMLRPCServer
+
+__author__ = &#039;Messiah&#039;
+HOST = "localhost"
+PORT = 8080
+
+class Solver(object):
+    def __init__(self):
+        pass
+
+    def solve(self, a=0, b=0, c=0):
+        try:
+            a, b, c = (float(a),
+                       float(b),
+                       float(c))
+        except ValueError:
+            return "Incorrect input", 0
+        if a == 0:
+            return "It&#039;s not a quadratic equation", 0
+        # вычисляем дискриминант
+        D = b ** 2 - 4 * a * c
+        if D < 0:
+            return "Not real roots", 0
+        x1 = (-b + math.sqrt(D)) &#47; 2 &#47; a
+        if D == 0:
+            # если дискриминант равен 0 - корни равны.
+            x2 = x1
+        else:
+            x2 = (-b - math.sqrt(D)) &#47; 2 &#47; a
+        return x1, x2
+
+if __name__ == "__main__":
+    server = SimpleXMLRPCServer((HOST, PORT))
+    print("Listening on", PORT)
+    S = Solver()
+    # регистрируем функцию решателя в XMLRPC сервере
+    server.register_function(S.solve, "solve")
+    server.serve_forever()<&#47;pre>
+<strong>Клиент:<&#47;strong>
+<pre class="brush: python; gutter: true">#!&#47;usr&#47;bin&#47;python3
+# -*- coding: utf-8 -*-
+
+__author__ = &#039;Messiah&#039;
+HOST = "localhost"
+PORT = 8080
+
+from xmlrpc.client import ServerProxy
+
+# подключаемся к серверу
+proxy = ServerProxy("http:&#47;&#47;{}:{}".format(HOST, PORT))
+while True:
+    print("===================\nQuadratic solver")
+    try:
+        a, b, c = (float(input("Enter A: ")),
+                   float(input("Enter B: ")),
+                   float(input("Enter C: ")))
+        if a == b == c == 0:
+            break
+        print("Roots for {}x^2 + ({})x + ({})".format(a, b, c))
+    except ValueError:
+        print("Incorrect input")
+        continue
+
+    try:
+        # вызываем метод сервера.
+        x1, x2 = proxy.solve(a, b, c)
+        x1, x2 = float(x1), float(x2)
+    except ValueError:
+        print(x1)
+        continue
+    except Exception as e:
+        print("Something wrong with server: ", e)
+    else:
+        print("are x1 = {}, x2 = {}".format(x1, x2))<&#47;pre>
+
+<a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;ROT&#47;tree&#47;master&#47;Task2"><img src="http:&#47;&#47;messiah.ks8.ru&#47;wp-content&#47;uploads&#47;github-button.png" alt="github-button" width="170" height="72" class="alignleft size-full wp-image-258" &#47;><&#47;a>

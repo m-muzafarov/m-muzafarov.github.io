@@ -1,0 +1,30 @@
+---
+layout: page
+status: publish
+published: true
+title: Perl
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+wordpress_id: 80
+wordpress_url: http://messiah.ks8.ru/wordpress/?page_id=80
+date: 2012-06-26 21:59:28.000000000 +06:00
+categories: []
+tags: []
+comments: []
+---
+Вывод каждого print по порядку:
+<pre class="brush: perl; gutter: false">$| = 1;<&#47;pre>
+<h1>Теория<&#47;h1>
+<ol>
+	<li><a title="Perlburg-2" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;perl&#47;perlburg-2">Perlburg-2<&#47;a><&#47;li>
+	<li><a title="Счётчик" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;perl&#47;counter">Счётчик<&#47;a><&#47;li>
+	<li><a title="Hashes" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;perl&#47;hashes">Хэш-массивы<&#47;a><&#47;li>
+	<li><a title="Regexp" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;perl&#47;regexp">Регулярные выражения<&#47;a><&#47;li>
+	<li><a title="Пакеты" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;perl&#47;packages">Пакеты<&#47;a><&#47;li>
+	<li><a title="ООП" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;perl&#47;oop">ООП<&#47;a><&#47;li>
+	<li><a title="Фишки" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;perl&#47;features">Интересности<&#47;a><&#47;li>
+<&#47;ol>
+<h1>Практика<&#47;h1>
+<a title="Зачёт" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;perl&#47;perltasks&#47;exam">Зачётные задачки<&#47;a>

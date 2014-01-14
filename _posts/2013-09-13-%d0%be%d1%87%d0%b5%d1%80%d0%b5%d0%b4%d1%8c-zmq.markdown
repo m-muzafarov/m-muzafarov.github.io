@@ -1,0 +1,133 @@
+---
+layout: post
+status: publish
+published: true
+title: Очередь ZMQ
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "Задачка из курса Распределённых Объектных технологий.\r\n<ul>\r\n\t<li>master
+  генерирует пары чисел<&#47;li>\r\n\t<li>worker складывает числа<&#47;li>\r\n\t<li>master
+  ---async (pub&#47;sub)--> worker<&#47;li>\r\n\t<li>worker ---async (pub&#47;sub)
+  --> master<&#47;li>\r\n<&#47;ul>\r\n"
+wordpress_id: 254
+wordpress_url: http://messiah.ks8.ru/?p=254
+date: 2013-09-13 16:20:58.000000000 +06:00
+categories:
+- Python
+tags: []
+comments: []
+---
+Задачка из курса Распределённых Объектных технологий.
+<ul>
+	<li>master генерирует пары чисел<&#47;li>
+	<li>worker складывает числа<&#47;li>
+	<li>master ---async (pub&#47;sub)--> worker<&#47;li>
+	<li>worker ---async (pub&#47;sub) --> master<&#47;li>
+<&#47;ul>
+<a id="more"></a><a id="more-254"></a>
+<h2><a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;ROT&#47;tree&#47;master&#47;Task6#%D0%97%D0%B0%D0%BF%D1%83%D1%81%D0%BA" name="%D0%97%D0%B0%D0%BF%D1%83%D1%81%D0%BA"><&#47;a>Запуск<&#47;h2>
+<ul>
+	<li>python master.py<&#47;li>
+	<li>python worker.py<&#47;li>
+<&#47;ul>
+<h2><a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;ROT&#47;tree&#47;master&#47;Task6#%D0%9F%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5" name="%D0%9F%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5"><&#47;a>Поведение<&#47;h2>
+Мастер генерирует пар чисел (REPEATS = 100), выводит на консоль, отправляет их worker'у и слушает ответы.
+
+Worker считает и отправляет ответ по другому каналу.
+
+Master выводит на консоль ответ (выражение = ответ).
+
+В Master.run() есть закомментированная строка возведения в степень, которая более наглядно показывает асинхронность происходящего.
+
+<strong>master.py<&#47;strong>
+<pre class="brush: python; gutter: true">#!&#47;usr&#47;bin&#47;python3
+# -*- coding: utf-8 -*-
+from IN import INT64_MAX, INT64_MIN
+
+__author__ = &#039;Messiah&#039;
+
+import zmq
+import random
+REPEATS = 100
+
+class Master():
+    def __init__(self, port1, port2):
+        self.context = zmq.Context()
+        self.output = self.context.socket(zmq.PUB)
+        self.output.bind("tcp:&#47;&#47;127.0.0.1:{}".format(port1))
+        self.input = self.context.socket(zmq.SUB)
+        self.input.connect("tcp:&#47;&#47;127.0.0.1:{}".format(port2))
+        self.input.setsockopt(zmq.SUBSCRIBE, b"")
+
+    def run(self):
+        self.output.send(b"hello")
+        for i in range(REPEATS):
+            #msg = "{}**{}".format(random.randint(0, INT64_MAX),
+            #                     random.randint(10000, 20000))
+            msg = "{}+{}".format(random.randint(INT64_MIN, INT64_MAX),
+                                 random.randint(INT64_MIN, INT64_MAX))
+            self.output.send(msg.encode())
+            print(msg)
+            for i in range(100000):
+                try:
+                    msg = self.input.recv(zmq.NOBLOCK).decode()
+                except zmq.core.error.ZMQError:
+                    pass
+                else:
+                    print(msg)
+
+        self.output.send(b"exit")
+        print("exit")
+        while True:
+            try:
+                msg = self.input.recv(zmq.NOBLOCK).decode()
+            except zmq.core.error.ZMQError:
+                pass
+            else:
+                if msg == "exit":
+                    return
+                print(msg)
+
+if __name__ == "__main__":
+    M = Master(5000, 6000)
+    M.run()<&#47;pre>
+<strong>worker.py<&#47;strong>
+<pre class="brush: python; gutter: true">#!&#47;usr&#47;bin&#47;python3
+# -*- coding: utf-8 -*-
+
+__author__ = &#039;Messiah&#039;
+
+import zmq
+
+class Worker():
+    def __init__(self, port1, port2):
+        self.context = zmq.Context()
+        self.input = self.context.socket(zmq.SUB)
+        self.input.connect("tcp:&#47;&#47;127.0.0.1:{}".format(port1))
+        self.input.setsockopt(zmq.SUBSCRIBE, b"")
+        self.output = self.context.socket(zmq.PUB)
+        self.output.bind("tcp:&#47;&#47;127.0.0.1:{}".format(port2))
+        self.queue = []
+
+    def run(self):
+        while True:
+            try:
+                self.queue.append(self.input.recv(zmq.NOBLOCK).decode())
+            except zmq.core.error.ZMQError:
+                pass
+            if self.queue:
+                for msg in self.queue:
+                    if msg == "exit":
+                        self.output.send(b"exit")
+                    else:
+                        self.output.send("{} = {}".format(msg,
+                                                          eval(msg)).encode())
+                    self.queue.remove(msg)
+
+if __name__ == "__main__":
+    W = Worker(5000, 6000)
+    W.run()<&#47;pre>
+
+<a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;ROT&#47;tree&#47;master&#47;Task6"><img src="http:&#47;&#47;messiah.ks8.ru&#47;wp-content&#47;uploads&#47;github-button.png" alt="github-button" width="170" height="72" class="alignleft size-full wp-image-258" &#47;><&#47;a>

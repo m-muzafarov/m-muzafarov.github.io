@@ -1,0 +1,27 @@
+---
+layout: post
+status: publish
+published: true
+title: Хэш-массивы
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+wordpress_id: 88
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=88
+date: 2012-06-26 22:08:11.000000000 +06:00
+categories:
+- Perl
+tags: []
+comments: []
+---
+<pre class="brush: perl; gutter: false">%h = (k1 => 1, k2=>2, k3=> 3);<&#47;pre>
+<strong>Функции:<&#47;strong>
+<pre class="brush: perl; gutter: false">@k=keys %h; #массив ключей
+@v=values %h; #массив значений<&#47;pre>
+Как следствие,
+<pre class="brush: perl; gutter: false">for ($i=0;$i<@k; $i++) { print "Error\n" unless $h{$k[$i]} eq $v[$i];}<&#47;pre>
+будет работать.
+<pre class="brush: perl; gutter: false">each %h; #В массивном контексте выводит каждую пару (итератор), а в скалярном - только каждое значение.<&#47;pre>
+<pre class="brush: perl; gutter: false">while (($k,$v)= each %h) {print "$k\t=>$v\n";} # выводит весь хэш-массив.<&#47;pre>
+Для множественного оператора присваивания в скалярном контексте соглашение, что будет возвращать количество присвоенных справа значений.

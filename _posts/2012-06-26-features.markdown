@@ -1,0 +1,92 @@
+---
+layout: post
+status: publish
+published: true
+title: Интересности
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "<h1>Сеть и математика<&#47;h1>\r\n"
+wordpress_id: 102
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=102
+date: 2012-06-26 22:40:52.000000000 +06:00
+categories:
+- Perl
+tags: []
+comments: []
+---
+<h1>Сеть и математика<&#47;h1>
+<a id="more"></a><a id="more-102"></a>
+
+Существует модуль Socket, который позволяет получить низкоуровненвый доступ к сетевым протоколам.
+Чтобы так не углубляться придумали модуль LWP::Simple
+<h2>LWP::Simple<&#47;h2>
+<pre class="brush: perl; gutter: true">use LWP::Simple;
+ $pg=get $ARGV[0];
+ $fnm=&#039;index.html&#039;;
+ open FD, ">$fnm" or die "Can`t open $fnm:$&#039; ";
+ print FD $pg;
+ close FD or die "Can`t close";<&#47;pre>
+Отлично, теперь есть сохранятель страниц.
+
+А как сделать зеркало?
+
+Попробуем...
+<pre class="brush: perl; gutter: true"> #!&#47;usr&#47;bin&#47;perl -w
+ use LWP::Simple;
+ $_=get $ARGV[0];
+ $dirnm=$ARGV[0];
+ $dirnm=~s&#47;http:\&#47;\&#47;&#47;&#47;;
+ $fnm=&#039;index.html&#039;;
+ mkdir $dirnm;
+ open FD, ">$dirnm&#47;$fnm" or die "Can`t open $fnm:$&#039; ";
+ $_=~s&#47;<a href="($ARGV[0])"&#47;<a href="$dirnm"&#47;g;
+ print FD;
+ close FD or die "Can`t close";<&#47;pre>
+но самих файлов по этим внутренним ссылкам нет.
+
+Тут было некоторое регулярное выражение, а потом вызов для каждой ссылки.
+Причем можно сделать как цикл вызовов функции по ссылке,
+Так и рекурсивный вызов самого скрипта, меняя аргумент.
+
+Самый короткий способ(но читерский и только для UNIX)
+<pre class="brush: perl; gutter: false">#!&#47;usr&#47;bin&#47;perl -w
+ system "wget -r $ARGV[0]";<&#47;pre>
+<h2>HTML::Parse<&#47;h2>
+<pre class="brush: perl; gutter: true">#!&#47;usr&#47;bin&#47;perl -w
+use LWP::Simple;
+ use HTML::Parse;
+print parse_html(get ($ARGV[0]))->format;<&#47;pre>
+Выводит на экран отформатиррованный сайт.
+<h2>URI::URL<&#47;h2>
+<pre class="brush: perl; gutter: true"> #!&#47;usr&#47;bin&#47;perl -w
+ use LWP::Simple;
+ use HTML::Parse;
+ use HTML::Element;
+ use URI::URL;
+$html = get $ARGV[0];
+ $parsed_html = HTML::Parse::parse_html($html);
+for (@{ $parsed_html->extract_links( ) }) {
+ $link=$_->[0];
+ $url = new URI::URL $link;
+ $full_url = $url->abs($ARGV[0]);
+ print "$full_url\n";
+ }<&#47;pre>
+<h1>Математика<&#47;h1>
+<h2>Задача на полиномы<&#47;h2>
+Пусть есть скриптик, который преобразовывает полином из неправильной записи (например: 2x2y2) в стандартную: 2*x^2*y^2
+
+Как будем хранить полином?
+<pre class="brush: perl; gutter: true"> package Polynom;
+ sub canon{
+ my ($cl,$plnm)=@_;
+ $plnm=~s&#47;\*&#47;&#47;g;
+ my %me=();
+ $plnm=~s&#47;^(\d+)&#47;&#47;;
+ $k=$1 || 1;
+ $plnm=~s&#47;(\w)(\d+)?&#47;($1)x(defined ($2)?$2:1)&#47;ge;
+ $me{$plnm}=$k;
+ return %me;}
+ 1;<&#47;pre>
+&nbsp;

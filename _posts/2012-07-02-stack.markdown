@@ -1,0 +1,64 @@
+---
+layout: post
+status: publish
+published: true
+title: Стек
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+excerpt: "<h1>Листинг<&#47;h1>\r\n"
+wordpress_id: 165
+wordpress_url: http://messiah.ks8.ru/wordpress/?p=165
+date: 2012-07-02 12:00:14.000000000 +06:00
+categories:
+- C++&#47;Structures
+tags: []
+comments: []
+---
+<h1>Листинг<&#47;h1>
+<a id="more"></a><a id="more-165"></a>
+<h1>stack.h<&#47;h1>
+<pre class="brush: cpp; gutter: true"> #ifndef STACK_H &#47;&#47;Esli imya otsutstvuet v preprocessore, to tekst budet rabotat`
+ #define STACK_H
+ #include "graph.h"
+ struct tknot {apex task; tknot* next;};
+ void new_null (tknot*&amp; st);
+ bool check_empty (tknot*&amp; st);
+ void add_compon (tknot*&amp; st, apex task);
+ void read_compon (tknot*&amp; st, apex &amp;task);
+ void del_compon (tknot*&amp; st);
+ void destr (tknot*&amp; st);
+ #endif<&#47;pre>
+<h1>stack.cpp<&#47;h1>
+<pre class="brush: cpp; gutter: true"> #include "stack.h"
+ &#47;&#47;struct tknot {int x; tknot* next};
+ void new_null (tknot*&amp; st)
+ {
+ st=0;
+ }
+ bool check_empty (tknot*&amp; st)
+ {
+ return st==0;
+ }
+ void add_compon (tknot*&amp; st, apex task)
+ {
+ tknot* us = new tknot;
+ us->task=task;
+ us->next=st;
+ st=us;
+}
+ void read_compon (tknot*&amp; st, apex &amp;task)
+ {
+ task=st->task;
+ }
+ void del_compon (tknot*&amp; st)
+ {
+ tknot* us = st;
+ st=st->next;
+ delete us;
+ }
+ void destr (tknot*&amp; st)
+ {
+ while (!check_empty (st)) del_compon(st);
+ }<&#47;pre>

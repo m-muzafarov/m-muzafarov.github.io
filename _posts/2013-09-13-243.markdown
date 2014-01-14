@@ -1,0 +1,16 @@
+---
+layout: nav_menu_item
+status: publish
+published: true
+author: ––=Messiλh=––
+author_login: Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://m.muzafarov.vk.com
+wordpress_id: 243
+wordpress_url: http://messiah.ks8.ru/?p=243
+date: 2013-09-13 14:02:03.000000000 +06:00
+categories: []
+tags: []
+comments: []
+---
+ 
