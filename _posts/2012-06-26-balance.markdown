@@ -3,13 +3,11 @@ layout: post
 status: publish
 published: true
 title: Баланс скобок
-author: ––=Messiλh=––
-author_login: Messiah
+author: M_Messiah
+author_login: M_Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
 excerpt: "Листинг\r\n"
-wordpress_id: 53
-wordpress_url: http://messiah.ks8.ru/wordpress/?p=53
 date: 2012-06-26 21:40:24.000000000 +06:00
 categories:
 - Java&#47;Tasks
@@ -17,8 +15,8 @@ tags: []
 comments: []
 ---
 Листинг
-<a id="more"></a><a id="more-53"></a>
-<pre class="brush: java; gutter: true">&nbsp;import java.io.IOException;
+
+<pre class="brush: java; gutter: true">import java.io.IOException;
  import java.io.InputStreamReader;
  import java.io.BufferedReader;
  import java.util.*;
@@ -72,7 +70,8 @@ public static void main(String[] args){
  isValid(str);
  System.out.println(getErrorMessage());
  }
- }<&#47;pre>
+ }
+ </pre>
 &nbsp;
 
-Исходники доступны на <a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;java_course&#47;blob&#47;master&#47;StringValidator.java" target="_blank">GitHub<&#47;a>
+Исходники доступны на [GitHub](https://github.com/m-muzafarov/java_course/blob/master/StringValidator.java)

@@ -1,3 +1,4 @@
-name: Your New Jekyll Site
+name: M_Messiah
 markdown: redcarpet
 pygments: true
+baseurl: m_messiah
