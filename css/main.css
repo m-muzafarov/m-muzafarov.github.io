@@ -52,6 +52,8 @@
   border-top: 4px solid #eee;
   margin-top: 2em;
   overflow: hidden;
+  margin-left: 1em;
+  margin-right: 2em;
 }
 
 .footer .contact {
