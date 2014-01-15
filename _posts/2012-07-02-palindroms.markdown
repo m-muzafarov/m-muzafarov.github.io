@@ -6,12 +6,12 @@ title: Числа-палиндромы
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-wordpress_id: 160
-wordpress_url: http://messiah.ks8.ru/wordpress/?p=160
+author_url: http://brainstorage.me/M_Messiah
+excerpt: "<h1>Задача №14</h1>
+	По заданному числу М строится последовательность, в которой первый элемент равен М, а каждый следующий - полусумма элемента и его перевертыша.<br>
+	По каждой из некоторого количества пар чисел М, К указать встретился ли палиндром среди не более чем К первых элементов последовательности, порождаемой числом М."
 date: 2012-07-02 11:49:45.000000000 +06:00
-categories:
-- C++
+categories: C++
 tags: []
 comments: []
 ---

@@ -6,19 +6,13 @@ title: Регулярные выражения
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "# perldoc perlre #\r\n&nbsp;\r\n\r\n"
-wordpress_id: 90
-wordpress_url: http://messiah.ks8.ru/wordpress/?p=90
+author_url: http://brainstorage.me/M_Messiah
 date: 2012-06-26 22:22:39.000000000 +06:00
-categories:
-- Perl
+categories: Perl
 tags: []
 comments: []
 ---
-# perldoc perlre #
-&nbsp;
-
+# Регулярные выражения Perl #
 
 # Основной синтаксис #
 <ul>
@@ -42,6 +36,9 @@ comments: []
 	<li>**(? )** - группировка с захватом - ставит в соответствие переменным $1,$2.. те подстроки, которые удовлетворяют шаблону, заключённому в скобках</li>
 	<li>**(?: )**&nbsp;- группировка без захвата</li>
 </ul>
+
+<!--more-->
+
 **Параметры:**
 
 **g** - глобальность (используется чтобы итератор в цикле двигался по строке дальше)

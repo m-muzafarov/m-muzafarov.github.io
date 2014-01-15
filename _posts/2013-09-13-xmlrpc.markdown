@@ -6,15 +6,9 @@ title: XMLRPC
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "Задачка из курса Распределённых Объектных технологий.\r\n\r\nКлиент принимает
-  a,b,c коэффициенты квадратного уравнения ax&sup2;+bx+c=0 и вызывает функции сервера,
-  для нахождения корней x1 и x2.\r\n\r\nСервер предоставляет XMLRPC метод решения.\r\n\r\n"
-wordpress_id: 242
-wordpress_url: http://messiah.ks8.ru/?p=242
+author_url: http://brainstorage.me/M_Messiah
 date: 2013-09-13 13:56:50.000000000 +06:00
-categories:
-- Python
+categories: ROT
 tags: []
 comments: []
 ---
@@ -24,6 +18,7 @@ comments: []
 
 Сервер предоставляет XMLRPC метод решения.
 
+<!--more-->
 
 **Сервер:**
 {% highlight python %}#!/usr/bin/python3
@@ -104,4 +99,4 @@ while True:
     else:
         print("are x1 = {}, x2 = {}".format(x1, x2)){% endhighlight %}
 
-<a href="https://github.com/m-muzafarov/ROT/tree/master/Task2"><img src="http://messiah.ks8.ru/wp-content/uploads/github-button.png" alt="github-button" width="170" height="72" class="alignleft size-full wp-image-258" /></a>
+[GitHub](https://github.com/m-muzafarov/ROT/tree/master/Task2)

@@ -6,32 +6,27 @@ title: Очередь ZMQ
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "Задачка из курса Распределённых Объектных технологий.\r\n<ul>\r\n\t<li>master
-  генерирует пары чисел</li>\r\n\t<li>worker складывает числа</li>\r\n\t<li>master
-  ---async (pub/sub)--> worker</li>\r\n\t<li>worker ---async (pub/sub)
-  --> master</li>\r\n</ul>\r\n"
-wordpress_id: 254
-wordpress_url: http://messiah.ks8.ru/?p=254
+author_url: http://brainstorage.me/M_Messiah
 date: 2013-09-13 16:20:58.000000000 +06:00
-categories:
-- Python
+categories: ROT
 tags: []
 comments: []
 ---
-Задачка из курса Распределённых Объектных технологий.
-<ul>
-	<li>master генерирует пары чисел</li>
-	<li>worker складывает числа</li>
-	<li>master ---async (pub/sub)--> worker</li>
-	<li>worker ---async (pub/sub) --> master</li>
-</ul>
 
-## <a href="https://github.com/m-muzafarov/ROT/tree/master/Task6#%D0%97%D0%B0%D0%BF%D1%83%D1%81%D0%BA" name="%D0%97%D0%B0%D0%BF%D1%83%D1%81%D0%BA"></a>Запуск ##
-<ul>
-	<li>python master.py</li>
-	<li>python worker.py</li>
-</ul>
+Задачка из курса Распределённых Объектных технологий.
+
++ master генерирует пары чисел
++ worker складывает числа
++ master ---async (pub/sub)--> worker
++ worker ---async (pub/sub) --> master
+
+<!--more-->
+
+## [Запуск](https://github.com/m-muzafarov/ROT/tree/master/Task6#%D0%97%D0%B0%D0%BF%D1%83%D1%81%D0%BA) ##
+
++ python master.py
++ python worker.py
+
 ## <a href="https://github.com/m-muzafarov/ROT/tree/master/Task6#%D0%9F%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5" name="%D0%9F%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5"></a>Поведение ##
 Мастер генерирует пар чисел (REPEATS = 100), выводит на консоль, отправляет их worker'у и слушает ответы.
 
@@ -130,4 +125,4 @@ if __name__ == "__main__":
     W = Worker(5000, 6000)
     W.run(){% endhighlight %}
 
-<a href="https://github.com/m-muzafarov/ROT/tree/master/Task6"><img src="http://messiah.ks8.ru/wp-content/uploads/github-button.png" alt="github-button" width="170" height="72" class="alignleft size-full wp-image-258" /></a>
+[GitHub](https://github.com/m-muzafarov/ROT/tree/master/Task6)

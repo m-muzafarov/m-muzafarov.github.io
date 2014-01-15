@@ -6,16 +6,9 @@ title: Триггер
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "Триггер выполняет при вставке в таблицу Журнал следующие функции:\r\n1)
-  В таблице рабочих, соответствующему сотруднику добавляет +1 к опыту.\r\n2) Копирует
-  поля ИД, Измерение, Результат и Номер станции из Журнала и вставляет в таблицу Результатов
-  (авто-заполнение результатов)\r\n\r\n"
-wordpress_id: 109
-wordpress_url: http://messiah.ks8.ru/wordpress/?p=109
+author_url: http://brainstorage.me/M_Messiah
 date: 2012-06-26 23:47:22.000000000 +06:00
-categories:
-- SQL
+categories: SQL
 tags: []
 comments: []
 ---
@@ -24,7 +17,7 @@ comments: []
 2) Копирует поля ИД, Измерение, Результат и Номер станции из Журнала и вставляет в таблицу Результатов (авто-заполнение результатов)
 
 
-{% highlight sql %} CREATE TRIGGER journaling
+{% highlight sql %}CREATE TRIGGER journaling
 ON dbo.journal
 FOR INSERT
 AS

@@ -6,14 +6,9 @@ title: Клиент-сервер калькулятор
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "Задачка из курса Распределённых Объектных технологий.\r\n\r\nНаписано на
-  чистых сокетах, интерактивно.\r\n\r\n"
-wordpress_id: 239
-wordpress_url: http://messiah.ks8.ru/?p=239
+author_url: http://brainstorage.me/M_Messiah
 date: 2013-09-13 13:18:27.000000000 +06:00
-categories:
-- Python
+categories: ROT
 tags: []
 comments: []
 ---
@@ -21,12 +16,12 @@ comments: []
 
 Написано на чистых сокетах, интерактивно.
 
-
+<!--more-->
 
 Клиент считывает ввод и отправляет серверу, сервер считает, возвращает ответ.
 
 **Код сервера:**
-{% highlight python %}#!/usr/bin/python3
+{% highlight python3 %}#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 import socket
 
@@ -100,4 +95,4 @@ if __name__ == "__main__":
 Запуск клиента:
 {% highlight bash %}python client.py host port &nbsp; # в сервере порт 27001{% endhighlight %}
 
-<a href="https://github.com/m-muzafarov/ROT/tree/master/Task1"><img src="http://messiah.ks8.ru/wp-content/uploads/github-button.png" alt="github-button" width="170" height="72" class="alignleft size-full wp-image-258" /></a>
+[GitHub](https://github.com/m-muzafarov/ROT/tree/master/Task1)

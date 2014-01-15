@@ -6,21 +6,16 @@ title: AMQP калькулятор
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "Python 2\r\nТребует работающего AMQP (например RabbitMQ) и библиотеки для
-  работы с AMQP (pika)\r\n\r\n"
-wordpress_id: 255
-wordpress_url: http://messiah.ks8.ru/?p=255
+author_url: http://brainstorage.me/M_Messiah
 date: 2013-09-13 16:24:42.000000000 +06:00
-categories:
-- Python
+categories: ROT
 tags: []
 comments: []
 ---
 Python 2
 Требует работающего AMQP (например RabbitMQ) и библиотеки для работы с AMQP (pika)
 
-
+<!--more-->
 
 ## master.py ##
 Отправляет в RabbitMQ (порт 5672) выражение - сумму двух чисел.
@@ -103,4 +98,5 @@ def main():
 
 if __name__ == '__main__':
     main(){% endhighlight %}
-<a href="https://github.com/m-muzafarov/ROT/tree/master/Task7"></a><a href="https://github.com/m-muzafarov/ROT/tree/master/Task7"><img class="alignleft size-full wp-image-258" alt="github-button" src="http://messiah.ks8.ru/wp-content/uploads/github-button.png" width="170" height="72" /></a>
+
+[GitHub](https://github.com/m-muzafarov/ROT/tree/master/Task7)

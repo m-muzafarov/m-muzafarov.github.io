@@ -6,19 +6,15 @@ title: Частотная область
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "# Частотная область. #\r\n&nbsp;\r\n\r\n"
-wordpress_id: 224
-wordpress_url: http://messiah.ks8.ru/?p=224
+author_url: http://brainstorage.me/M_Messiah
+excerpt: "Частотная область. Конспект лекции"
 date: 2012-12-10 12:38:21.000000000 +06:00
-categories:
-- Обработка изображений
+categories: Обработка изображений
 tags: []
 comments: []
 ---
-# Частотная область. #
-&nbsp;
 
+# Частотная область. #
 
 
 Преобразования Фурье в одномерном случае - одномерный интеграл.
@@ -64,7 +60,7 @@ m(0)=0
 
 [/latex]
 
-&nbsp;
+
 ## Обработка изображений в частотной области ##
 В некоторых случаях в частотной области решить проще, а иногда есть случаи, когда в пространственной области не решается, а в частотной всё нормально.
 

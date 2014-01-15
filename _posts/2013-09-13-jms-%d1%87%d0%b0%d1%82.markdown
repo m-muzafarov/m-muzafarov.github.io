@@ -6,10 +6,9 @@ title: JMS-чат
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
+author_url: http://brainstorage.me/M_Messiah
 date: 2013-09-13 16:15:15.000000000 +06:00
-categories:
-- Python
+categories: ROT
 tags: []
 comments: []
 ---
@@ -24,6 +23,7 @@ comments: []
 </li>
 </ol>
 
+<!--more-->
 ## Запуск: ##
 {% highlight bash %}python2 chat.py <Nickname> [MEM]{% endhighlight %}
 Где MEM - желаемое количество отображаемых строк.
@@ -209,6 +209,6 @@ if __name__ == '__main__':
 
 Примитивный stomp-server:
 
-    coilmq -b 0.0.0.0 -p 61613
+{% highlight bash %}coilmq -b 0.0.0.0 -p 61613{% endhighlight %}
 
-<a href="https://github.com/m-muzafarov/ROT/tree/master/Task5"><img src="http://messiah.ks8.ru/wp-content/uploads/github-button.png" alt="github-button" width="170" height="72" class="alignleft size-full wp-image-258" /></a>
+[GitHub](https://github.com/m-muzafarov/ROT/tree/master/Task5)

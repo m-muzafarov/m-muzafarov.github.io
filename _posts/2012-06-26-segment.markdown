@@ -6,13 +6,10 @@ title: Segment
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "Листинг\r\n\r\n"
-wordpress_id: 60
-wordpress_url: http://messiah.ks8.ru/wordpress/?p=60
+author_url: http://brainstorage.me/M_Messiah
+excerpt: "Класс Отрезок на Java"
 date: 2012-06-26 21:44:01.000000000 +06:00
-categories:
-- Java/Tasks
+categories: Java
 tags: []
 comments: []
 ---
@@ -74,4 +71,4 @@ System.out.println(seg.distanceTo(point));
 }{% endhighlight %}
 &nbsp;
 
-Исходники доступны на <a href="https://github.com/m-muzafarov/java_course/blob/master/Vectors/Segment.java" target="_blank">GitHub</a>
+Исходники доступны на [GitHub](https://github.com/m-muzafarov/java_course/blob/master/Vectors/Segment.java)

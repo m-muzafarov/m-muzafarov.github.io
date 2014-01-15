@@ -6,21 +6,15 @@ title: Комбинации
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "Перестановки в Python:\r\n<pre class=\"brush: python; gutter: false\">import
-  itertools{% endhighlight %}\r\n&nbsp;\r\n\r\n"
-wordpress_id: 229
-wordpress_url: http://messiah.ks8.ru/?p=229
+author_url: http://brainstorage.me/M_Messiah
 date: 2012-12-26 16:01:02.000000000 +06:00
-categories:
-- Python
+categories: Python
 tags: []
 comments: []
 ---
+
 Перестановки в Python:
 {% highlight python %}import itertools{% endhighlight %}
-&nbsp;
-
 
 
 Простые перестановки (порядок важен):

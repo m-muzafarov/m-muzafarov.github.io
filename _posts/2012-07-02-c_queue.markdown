@@ -6,20 +6,17 @@ title: Очередь
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "# Листинг #\r\n"
-wordpress_id: 167
-wordpress_url: http://messiah.ks8.ru/wordpress/?p=167
+author_url: http://brainstorage.me/M_Messiah
+excerpt: "Class Очередь на C++"
 date: 2012-07-02 12:02:48.000000000 +06:00
-categories:
-- C++/Structures
+categories: C++
 tags: []
 comments: []
 ---
-# Листинг #
 
 # queue.h #
-{% highlight cpp %} #ifndef QUEUE_H //Esli imya otsutstvuet v preprocessore, to tekst budet rabotat`
+{% highlight cpp %}
+#ifndef QUEUE_H //Esli imya otsutstvuet v preprocessore, to tekst budet rabotat`
 #define QUEUE_H
 struct knot {int x; knot* next;};
 void _new_null (knot*& st);
@@ -28,42 +25,33 @@ void _add_compon (knot*& st, int x);
 void _read_compon (knot*& st, int& x);
 void _del_compon (knot*& st);
 void _destr (knot*& st);
-#endif{% endhighlight %}
+#endif
+{% endhighlight %}
 # queue.cpp #
-{% highlight cpp %} #include "queue.h"
+{% highlight cpp %}
+#include "queue.h"
 #include "width.h"
- //struct knot {int x; knot* next};
-void _new_null (knot*& st)
-{
-st=0;
+//struct knot {int x; knot* next};
+void _new_null (knot*& st) {st=0;}
+bool _check_empty (knot*& st) {return st==0;}
+void _add_compon (knot*& st, int x) {
+	knot* us= new knot;
+	us->x=x;
+	us->next=0;
+	if (!st) st=us;
+	else { 
+		knot* r=st;
+		while (r->next) r=r->next;
+		r->next=us;
+	}
 }
-bool _check_empty (knot*& st)
-{
-return st==0;
+void _read_compon (knot*& st, int& x) {x=st->x;}
+void _del_compon (knot*& st) {
+	knot* us = st;
+	st=st->next;
+	delete us;
 }
-void _add_compon (knot*& st, int x)
-{
-knot* us= new knot;
-us->x=x;
-us->next=0;
-if (!st) st=us;
-else { knot* r=st;
-while (r->next) r=r->next;
-r->next=us;
+void _destr (knot*& st) {
+	while (!_check_empty (st)) _del_compon(st);
 }
-}
-void _read_compon (knot*& st, int& x)
-{
-x=st->x;
-}
-void _del_compon (knot*& st)
-{
-knot* us = st;
-st=st->next;
-delete us;
-}
-void _destr (knot*& st)
-{
-while (!_check_empty (st)) _del_compon(st);
-}{% endhighlight %}
-&nbsp;
+{% endhighlight %}

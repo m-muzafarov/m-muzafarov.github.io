@@ -6,68 +6,64 @@ title: Представление графа
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "# Листинг #\r\n"
-wordpress_id: 168
-wordpress_url: http://messiah.ks8.ru/wordpress/?p=168
+author_url: http://brainstorage.me/M_Messiah
+excerpt: "Класс Граф на C++"
 date: 2012-07-02 12:04:54.000000000 +06:00
-categories:
-- C++/Structures
+categories: C++
 tags: []
 comments: []
 ---
-# Листинг #
 
 # graph.h #
-{% highlight cpp %} #ifndef GRAPH_H
+{% highlight cpp %}
+#ifndef GRAPH_H
 #define GRAPH_H
 #include <fstream>
 using namespace std;
 struct apex {int n; apex* next;};
- //apex graf[maxn];
+//apex graf[maxn];
 void readgraf (ifstream & fi, apex* graf, int& m);
 void writegraf (ofstream& fo, apex* graf, int m);
 #endif{% endhighlight %}
 # graph.cpp #
-#  #
-{% highlight cpp %} #include "stack.h"
+
+{% highlight cpp %}
+#include "stack.h"
 #include "queue.h"
 #include "graph.h"
- //struct apex {int n; apex* next;};
-void readgraf (ifstream & fi, apex* graf, int& m)
-{
-int r;
-apex *last, *temp;
-fi>>m;
-for (int i=0; i<m; i++)
-{ graf[i].n=i; graf[i].next=0;}
-for (int i=0; i<m; i++)
-{
-fi>>r;
-last=&graf[r-1];
-do
-{ fi>>r;
-if(r) {temp=new apex;
-temp->n=r-1;
-temp->next=0;
-last->next=temp;
-last=temp;}
-} while (r);
+//struct apex {int n; apex* next;};
+void readgraf (ifstream & fi, apex* graf, int& m) {
+	int r;
+	apex *last, *temp;
+	fi>>m;
+	for (int i=0; i<m; i++) { graf[i].n=i; graf[i].next=0;}
+	for (int i=0; i<m; i++)
+	{
+		fi>>r;
+		last=&graf[r-1];
+		do {
+			fi>>r;
+			if(r) {
+				temp=new apex;
+				temp->n=r-1;
+				temp->next=0;
+				last->next=temp;
+				last=temp;
+			}
+		} while (r);
+	}
 }
-}
-void writegraf (ofstream& fo, apex* graf, int m)
-{
-apex *temp;
-bool fl=false;
-fo<<m<<endl;
-for (int i=0; i<m; i++)
-{
-temp=graf[i].next;
-while (temp)
-{
-if (temp->n >i) fo<<"{"<<i+1<<","<<(temp->n+1)<<"}; ";
-temp=temp->next;
-}
-}
-fo<<"\n end list \n";
+void writegraf (ofstream& fo, apex* graf, int m) {
+	apex *temp;
+	bool fl=false;
+	fo<<m<<endl;
+	for (int i=0; i<m; i++) {
+		temp=graf[i].next;
+		while (temp) {
+			if (temp->n >i)
+				fo<<"{"<<i+1<<","<<(temp->n+1)<<"}; ";
+			temp=temp->next;
+		}
+	}
+	fo<<"\n end list \n";
 }{% endhighlight %}

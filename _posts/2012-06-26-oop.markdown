@@ -6,19 +6,17 @@ title: ООП
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "# ООП в Perl #\r\n"
-wordpress_id: 100
-wordpress_url: http://messiah.ks8.ru/wordpress/?p=100
+author_url: http://brainstorage.me/M_Messiah
+excerpt: "ООП в Perl"
 date: 2012-06-26 22:37:12.000000000 +06:00
-categories:
-- Perl
+categories: Perl
 tags: []
 comments: []
 ---
+
 # ООП в Perl #
 
-#  #
+
 # Сделаем класс треугольник. #
 ## 1. Triangle.pm ##
 {% highlight perl %}package Triangle;
@@ -77,21 +75,22 @@ print $tr_o->equal($tr_l);
 print $tr_o==$tr_l;
 print $tr_o->tostr();{% endhighlight %}
 # Results #
-ARRAY(0x8d4ec80)
 
-<3, 4, 5>
-3 4 5
+	ARRAY(0x8d4ec80)
+	<3, 4, 5>
+	3 4 5
+	p= 12 S= 6
+	ARRAY(0x8d594f0)
+	1
+	1
+	<3, 4, 5>
 
-p= 12 S= 6
-
-ARRAY(0x8d594f0)
-
-1
-1
-<3, 4, 5>
 # Связывание #
+
 Класс Скаляр
+
 Переопределение интересных встроенных методов.
+
 ## Простейший пример ##
 ### MyScalar.pm ###
 {% highlight perl %}package MyScalar;

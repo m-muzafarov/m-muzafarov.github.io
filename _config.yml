@@ -1,3 +1,4 @@
 name: M_Messiah
 markdown: redcarpet
 pygments: true
+excerpt_separator: <!--more-->

@@ -6,27 +6,22 @@ title: Hadoop MapReduce
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "Задачка из курса Распределённых Объектных технологий.\r\n\r\nСкрипты mapper{Uno,Double,Triple}.py
-  соответственно выделяют из текста слова, пары и триплеты. И подсчитывают число вхождений
-  каждого из них.\r\n\r\nДля универсальности, игнорируют знаки препинания (кроме конца
-  предложения) и регистр.\r\n\r\nТребуют работающего <a href=\"http://hadoop.apache.org/\">Hadoop</a>&nbsp;с
-  включенным <a href=\"http://hadoop.apache.org/docs/stable/streaming.html\">HadoopStreaming</a>\r\n\r\n"
-wordpress_id: 250
-wordpress_url: http://messiah.ks8.ru/?p=250
+author_url: http://brainstorage.me/M_Messiah
 date: 2013-09-13 15:52:03.000000000 +06:00
-categories:
-- Python
+categories: ROT
 tags: []
 comments: []
 ---
+
 Задачка из курса Распределённых Объектных технологий.
 
 Скрипты mapper{Uno,Double,Triple}.py соответственно выделяют из текста слова, пары и триплеты. И подсчитывают число вхождений каждого из них.
 
 Для универсальности, игнорируют знаки препинания (кроме конца предложения) и регистр.
 
-Требуют работающего <a href="http://hadoop.apache.org/">Hadoop</a>&nbsp;с включенным <a href="http://hadoop.apache.org/docs/stable/streaming.html">HadoopStreaming</a>
+Требуют работающего [Hadoop](http://hadoop.apache.org/) с включенным [HadoopStreaming](http://hadoop.apache.org/docs/stable/streaming.html)
+
+<!--more-->
 
 **Подготовка Запуск**
 <ul>
@@ -165,4 +160,4 @@ def main(separator='\t'):
 if __name__ == "__main__":
     main(){% endhighlight %}
 
-<a href="https://github.com/m-muzafarov/ROT/tree/master/Task3"><img src="http://messiah.ks8.ru/wp-content/uploads/github-button.png" alt="github-button" width="170" height="72" class="alignleft size-full wp-image-258" /></a>
+[GitHub](https://github.com/m-muzafarov/ROT/tree/master/Task3)

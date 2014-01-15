@@ -6,20 +6,17 @@ title: Стек
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "# Листинг #\r\n"
-wordpress_id: 165
-wordpress_url: http://messiah.ks8.ru/wordpress/?p=165
+author_url: http://brainstorage.me/M_Messiah
+excerpt: "Class Stack C++"
 date: 2012-07-02 12:00:14.000000000 +06:00
-categories:
-- C++/Structures
+categories: C++
 tags: []
 comments: []
 ---
-# Листинг #
 
 # stack.h #
-{% highlight cpp %} #ifndef STACK_H //Esli imya otsutstvuet v preprocessore, to tekst budet rabotat`
+{% highlight cpp %}
+#ifndef STACK_H //Esli imya otsutstvuet v preprocessore, to tekst budet rabotat`
 #define STACK_H
 #include "graph.h"
 struct tknot {apex task; tknot* next;};
@@ -31,34 +28,23 @@ void del_compon (tknot*& st);
 void destr (tknot*& st);
 #endif{% endhighlight %}
 # stack.cpp #
-{% highlight cpp %} #include "stack.h"
- //struct tknot {int x; tknot* next};
-void new_null (tknot*& st)
-{
-st=0;
+{% highlight cpp %}
+#include "stack.h"
+//struct tknot {int x; tknot* next};
+void new_null (tknot*& st) {st=0;}
+bool check_empty (tknot*& st) {return st==0;}
+void add_compon (tknot*& st, apex task) {
+	tknot* us = new tknot;
+	us->task=task;
+	us->next=st;
+	st=us;
 }
-bool check_empty (tknot*& st)
-{
-return st==0;
+void read_compon (tknot*& st, apex &task) {task=st->task;}
+void del_compon (tknot*& st) {
+	tknot* us = st;
+	st=st->next;
+	delete us;
 }
-void add_compon (tknot*& st, apex task)
-{
-tknot* us = new tknot;
-us->task=task;
-us->next=st;
-st=us;
-}
-void read_compon (tknot*& st, apex &task)
-{
-task=st->task;
-}
-void del_compon (tknot*& st)
-{
-tknot* us = st;
-st=st->next;
-delete us;
-}
-void destr (tknot*& st)
-{
-while (!check_empty (st)) del_compon(st);
+void destr (tknot*& st) {
+	while (!check_empty (st)) del_compon(st);
 }{% endhighlight %}

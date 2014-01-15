@@ -6,15 +6,14 @@ title: Конвертер кодировок
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-wordpress_id: 77
-wordpress_url: http://messiah.ks8.ru/wordpress/?p=77
+author_url: http://brainstorage.me/M_Messiah
+excerpt: "Решение задачи о конвертировании кодировки файла на Java"
 date: 2012-06-26 21:49:59.000000000 +06:00
-categories:
-- Java/Tasks
+categories: Java
 tags: []
 comments: []
 ---
+
 Листинг
 
 
@@ -64,4 +63,4 @@ ex.printStackTrace();
 }
 }
 }{% endhighlight %}
-Исходники доступны на <a href="https://github.com/m-muzafarov/java_course/blob/master/FileCoder.java" target="_blank">GitHub</a>
+Исходники доступны на [GitHub](https://github.com/m-muzafarov/java_course/blob/master/FileCoder.java)

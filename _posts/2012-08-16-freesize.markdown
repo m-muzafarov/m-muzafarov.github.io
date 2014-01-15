@@ -6,21 +6,14 @@ title: Свободное место на диске
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "## du, dh, ls ##\r\n&nbsp;\r\n\r\n"
-wordpress_id: 209
-wordpress_url: http://messiah.ks8.ru/?p=209
+author_url: http://brainstorage.me/M_Messiah
+excerpt: "Отображение свободного места на диске Linux/Unix"
 date: 2012-08-16 13:25:01.000000000 +06:00
-categories:
-- Linux
+categories: Linux
 tags: []
 comments: []
 ---
-## du, dh, ls ##
-&nbsp;
 
-
-##  ##
 ## 1. Просмотр размеров файлов: ##
 Тут нас спасает старый-добрый ls но с ключом -s (size):
 {% highlight bash %}ls -s

@@ -6,19 +6,15 @@ title: Конспект АБД
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "# Весь конспект. #\r\n"
-wordpress_id: 107
-wordpress_url: http://messiah.ks8.ru/wordpress/?p=107
+author_url: http://brainstorage.me/M_Messiah
+excerpt: "Весь конспект лекций по АБД"
 date: 2012-06-26 23:45:30.000000000 +06:00
-categories:
-- SQL
+categories: SQL
 tags: []
 comments: []
 ---
 # Весь конспект. #
 
-#  #
 # Отношение #
 Отношение &ndash; подмножество декартова произведения. При этом множества называются доменами.
 
@@ -157,7 +153,7 @@ E.g. DELETE authors &ndash; очищает все строки
 {% highlight sql %}SELECT * FROM authors ORDER BY au_lname ASC, au_fname ASC{% endhighlight %}
 (сортировка по имени и фамилии по возрастанию)
 
-SELECT 1 &lsquo;qq&rsquo; &ndash; вывод на экран
+{% highlight sql %}SELECT 1 &lsquo;qq&rsquo; &ndash; {% endhighlight %} вывод на экран
 ### Соединения: ###
 INNER JOIN - выбор и объединение строк из 2-х таблиц основываясь на условии совпадения значений некоторых полей строк
 
@@ -178,11 +174,11 @@ GETDATE() &ndash; текущая дата
 DATEADD(datepart, number, date) &ndash; добавляет дату
 
 DATEDIFF(datepart,startdate,enddate) &ndash; разница в единицах datepart
-### Сценарии &ndash; скрипты: ###
-### Создание временных таблиц: ###
-#nametable &ndash; локальная таблица временная. Исчезает с прекращением сеанса
 
-##nametable &ndash; глобальная временная таблица.
+### Создание временных таблиц: ###
+{% highlight sql %}#nametable {% endhighlight %}&ndash; локальная таблица временная. Исчезает с прекращением сеанса
+
+{% highlight sql %}##nametable {% endhighlight %}&ndash; глобальная временная таблица.
 
 @ - переменные.
 {% highlight sql %}Declare @sql_stmnt varchar(50)
@@ -337,32 +333,32 @@ Subscriber- сервер или БД, которая получает данны
 	<li>Distribution db &ndash; это системная БД, которая хранится на дистрибуторе и не содержит никаких пользовательских таблиц.</li>
 </ul>
 ### ТОПОЛОГИЯ РЕПЛИКАЦИИ ###
+
 - Центральный publisher &ndash; один сервер исполняет роли publisher и distributor
-
 - центральный Subscriber &ndash; обычная топология. Несколько серверов или БД копируют свои данные в центральный сервер в одну или несколько БД.
+- Центральный publisher с отдаленным distributor
 
-- Центральный publisher с отдаленным distributor -
 ### Репликации: ###
+
 Snapshot - полный снимок базы.
-<ul>
-	<li>Транзакционные &ndash; сохраняет снимок базы как сценарий insert,update,delete&nbsp;(используются когда часто изменяются, или нет смысла поддерживать всё-всё)</li>
-	<li>Merge &ndash; синхронизация баз</li>
-</ul>
+
++ Транзакционные &ndash; сохраняет снимок базы как сценарий insert,update,delete&nbsp;(используются когда часто изменяются, или нет смысла поддерживать всё-всё)
++ Merge &ndash; синхронизация баз
+
 ### Утилиты: ###
+
 1. Snapshot Agent
-
 2. LOG READER AGENT &ndash; логи.
-
 3. Distribution agent
-
 4. Merge Agent
+
 ### GUI ###
 Пишется с помощью API на JavaScript, с помощью ASP.
+
 ### Виды соединений: ###
-<ul>
-	<li>ODBC &ndash; Open DB Connectivity</li>
-	<li>OLE DB &ndash; буфер обмена например</li>
-	<li>ActiveX Data Objects (ADO)</li>
-	<li>Borland DB Engine (BDE)</li>
-	<li>ADO.NET</li>
-</ul>
+
++ ODBC &ndash; Open DB Connectivity
++ OLE DB &ndash; буфер обмена например
++ ActiveX Data Objects (ADO)
++ Borland DB Engine (BDE)
++ ADO.NET

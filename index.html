@@ -4,11 +4,11 @@ title: Home
 ---
 
 <div id="home">
-  <div class="posts">
-    {% for post in site.posts limit: 5 %}
+  <div class="post">
+    {% for post in site.posts limit: 7 %}
     <div class="panel panel-default">
 	    <div class="panel panel-heading">
-	      <span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a>
+	      <span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a><span class="meta pull-right">{{ post.categories }}</span>
 	    </div>
     	<div class="panel-body">{{ post.excerpt }}
     	<a href="{{ post.url }}" class="meta pull-right">Read more...</a><br>

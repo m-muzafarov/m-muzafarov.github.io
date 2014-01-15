@@ -6,80 +6,73 @@ title: Vector
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "Длинный листинг\r\n\r\n"
-wordpress_id: 70
-wordpress_url: http://messiah.ks8.ru/wordpress/?p=70
+author_url: http://brainstorage.me/M_Messiah
+excerpt: "Класс Vector Java"
 date: 2012-06-26 21:46:48.000000000 +06:00
-categories:
-- Java/Tasks
+categories: Java
 tags: []
 comments: []
 ---
-Длинный листинг
 
-
-{% highlight java %} public final class Vector implements iVector {
-private double[] m_v;
-public Vector(int n) {
-m_v = new double[n];
-for (int i = 0; i < n; m_v[i++] = 0)
- ;
-}
-public Vector(double[] c) {
-m_v = new double[c.length];
-m_v = c;
-}
-public int dimension() {
-return m_v.length;
-}
-public double getComponent(int i) {
-try {
-if (i < 0 || i >= m_v.length)
-throw new Exception(
- "Индекс не принадлежит диапазону данной размерности\n");
-return m_v[i];
-} catch (Exception e) {
-e.printStackTrace(System.err);
-return 0;
-}
-}
-public double scalar(iVector v) {
-double res = 0;
-int a = m_v.length;
-int b = v.dimension();
-try {
-if (a != b)
-throw new Exception("Несовпадение размерностей\n");
-} catch (Exception e) {
-e.printStackTrace(System.err);
-}
-for (int i = 0; i < a; i++)
-res += m_v[i] * v.getComponent(i);
-return res;
-}
-public double len() {
-return Math.sqrt(scalar(this));
-}
-public Vector multiply(double factor) {
-double [] a=new double [m_v.length];
-for (int i = 0; i < m_v.length; i++)
-a[i]=m_v[i] * factor;
-return new Vector(a);
-}
-public Vector add(iVector v) {
-double [] a=new double [m_v.length];
-for (int i = 0; i < m_v.length; i++)
-a[i]=m_v[i] + v.getComponent(i);
-return new Vector(a);
-}
-public Vector sub(iVector v) {
-double [] a=new double [m_v.length];
-for (int i = 0; i < m_v.length; i++)
-a[i]=m_v[i] - v.getComponent(i);
-return new Vector(a);
-}
+{% highlight java %}
+public final class Vector implements iVector {
+    private double[] m_v;
+    public Vector(int n) {
+        m_v = new double[n];
+        for (int i = 0; i < n; m_v[i++] = 0);
+    }
+        public Vector(double[] c) {
+                m_v = new double[c.length];
+                m_v = c;
+        }
+        public int dimension() {
+                return m_v.length;
+        }
+        public double getComponent(int i) {
+                try {
+                                if (i < 0 || i >= m_v.length)
+                                throw new Exception("Индекс не принадлежит диапазону данной размерности\n");
+                                return m_v[i];
+                        } catch (Exception e) {
+                                e.printStackTrace(System.err);
+                                return 0;
+                        }
+        }
+        public double scalar(iVector v) {
+                double res = 0;
+                int a = m_v.length;
+                int b = v.dimension();
+                try {
+                        if (a != b) throw new Exception("Несовпадение размерностей\n");
+                } catch (Exception e) {
+                        e.printStackTrace(System.err);
+                }
+                for (int i = 0; i < a; i++) 
+                        res += m_v[i] * v.getComponent(i);
+                return res;
+        }
+        public double len() {
+                return Math.sqrt(scalar(this));
+        }
+        public Vector multiply(double factor) {
+                double [] a=new double [m_v.length];
+                for (int i = 0; i < m_v.length; i++)
+                        a[i]=m_v[i] * factor;
+                return new Vector(a);
+        }
+        public Vector add(iVector v) {
+                double [] a=new double [m_v.length];
+                for (int i = 0; i < m_v.length; i++)
+                        a[i]=m_v[i] + v.getComponent(i);
+                return new Vector(a);
+        }
+        public Vector sub(iVector v) {
+                double [] a=new double [m_v.length];
+                for (int i = 0; i < m_v.length; i++)
+                        a[i]=m_v[i] - v.getComponent(i);
+                return new Vector(a);
+        }
 }{% endhighlight %}
-&nbsp;
 
-Исходники доступны на <a href="https://github.com/m-muzafarov/java_course/blob/master/Vectors/Vector.java" target="_blank">GitHub</a>
+
+Исходники доступны на [GitHub](https://github.com/m-muzafarov/java_course/blob/master/Vectors/Vector.java)

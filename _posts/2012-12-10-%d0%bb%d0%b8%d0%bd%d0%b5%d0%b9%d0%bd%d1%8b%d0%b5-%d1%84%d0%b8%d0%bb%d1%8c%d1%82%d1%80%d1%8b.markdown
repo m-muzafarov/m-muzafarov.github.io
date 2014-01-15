@@ -6,25 +6,20 @@ title: Линейные фильтры
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "# Линейные фильтры #\r\n<em>Что если надо конкретно сосчитать результат
-  фильтрации?</em>\r\n<em><strong>Для этого надо корректно считать суммы(интегралы)
-  по области.</strong></em>\r\n\r\n"
-wordpress_id: 221
-wordpress_url: http://messiah.ks8.ru/?p=221
+author_url: http://brainstorage.me/M_Messiah
+excerpt: "Конспект пары про Линейные фильтры"
 date: 2012-12-10 10:50:34.000000000 +06:00
-categories:
-- Обработка изображений
+categories: Обработка изображений
 tags: []
 comments: []
 ---
+
 # Линейные фильтры #
 * Что если надо конкретно сосчитать результат фильтрации? *
 * **Для этого надо корректно считать суммы(интегралы) по области.** *
 
 
 
-&nbsp;
 {% highlight text %}  ______    ______
  |  |  |   |  |  |
  |--0--| f |--0--|h

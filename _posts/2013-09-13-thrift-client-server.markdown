@@ -6,18 +6,14 @@ title: Thrift client-server
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://m.muzafarov.vk.com
-excerpt: "Client написан на C++, server - на Python. Thrift позволяет вызывать одному
-  субъекты вызывать методы другого.\r\n\r\n"
+author_url: http://brainstorage.me/M_Messiah
 date: 2013-09-13 16:30:50.000000000 +06:00
-categories:
-- ROT
+categories: ROT
 tags: []
 comments: []
 ---
 Client написан на C++, server - на Python. Thrift позволяет вызывать одному субъекты вызывать методы другого.
-
-
+<!--more-->
 ## thrift ##
 Описывает две функции: ping и подсчёт количества тэгов.
 {% highlight cpp %}#!/usr/local/bin/thrift
@@ -150,4 +146,4 @@ clean:
 {% endhighlight %}
 На выходе будет доступно два исполняемых файла: server.py и client.elf
 
-<a href="https://github.com/m-muzafarov/ROT/tree/master/Task8"><img class="alignleft size-full wp-image-258" alt="github-button" src="http://messiah.ks8.ru/wp-content/uploads/github-button.png" width="170" height="72" /></a>
+[GitHub](https://github.com/m-muzafarov/ROT/tree/master/Task8)
