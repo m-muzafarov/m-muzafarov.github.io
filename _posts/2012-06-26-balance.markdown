@@ -8,12 +8,13 @@ author_login: M_Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
 date: 2012-06-26 21:40:24.000000000 +06:00
+excerpt: Решение задачи о балансе скобок на JAVA
 categories:
-- Java/Tasks
+- Java
 tags: []
 comments: []
 ---
-Листинг
+
 
 {% highlight java %}
 
