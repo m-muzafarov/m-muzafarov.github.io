@@ -33,7 +33,7 @@ comments: []
 
 
 # 1. HTTP #
-Первое - самое популярное, поэтому начну с него. Для работы буду использовать отличную библиотеку <a href="/wrn.php?www.python-requests.org/en/latest/">requests</a>. Она есть как в pip, так и в easy_install и вообще на гитхабе лежит, если что.
+Первое - самое популярное, поэтому начну с него. Для работы буду использовать отличную библиотеку [requests](www.python-requests.org/en/latest/). Она есть как в pip, так и в easy_install и вообще на гитхабе лежит, если что.
 {% highlight python %}r = requests.get("http://example.com/stat",
                  auth=('user', 'pass'))
 print r.status_code, r.text{% endhighlight %}
@@ -44,7 +44,7 @@ r = requests.get("http://httpbin.org/get",
                  params=payload, cookies=cookies){% endhighlight %}
 То же с POST, просто нужно вызывать requests.post(...)
 # 2. SSH #
-Для SSH будет использоваться библиотека <a href="https://github.com/paramiko/paramiko/">paramiko</a> (мне она просто понравилась лаконичностью запросов)
+Для SSH будет использоваться библиотека [paramiko](https://github.com/paramiko/paramiko/) (мне она просто понравилась лаконичностью запросов)
 {% highlight python %}import paramiko
 
 client = paramiko.SSHClient()
@@ -58,7 +58,7 @@ for line in stdout:
 client.close(){% endhighlight %}
 # 3. SFTP #
 Тут же, пока умеем работать с SSH:
-{% highlight actionscript3 %}transport = paramiko.Transport((address, port))
+{% highlight python %}transport = paramiko.Transport((address, port))
 transport.connect(username='user', password='password')
 sftp = paramiko.SFTPClient.from_transport(transport)
 dirlist = sftp.listdir('.')
