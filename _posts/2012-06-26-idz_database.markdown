@@ -7,7 +7,7 @@ author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
-excerpt: "Создание и заполнение базы\r\n\r\n"
+excerpt: "Создание и заполнение базы"
 wordpress_id: 121
 wordpress_url: http://messiah.ks8.ru/wordpress/?p=121
 date: 2012-06-26 23:55:38.000000000 +06:00

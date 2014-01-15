@@ -7,7 +7,6 @@ author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
-excerpt: "Листинг\r\n\r\n"
 wordpress_id: 77
 wordpress_url: http://messiah.ks8.ru/wordpress/?p=77
 date: 2012-06-26 21:49:59.000000000 +06:00

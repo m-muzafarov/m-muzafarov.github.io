@@ -7,7 +7,7 @@ author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
-excerpt: "# Сеть и математика #\r\n"
+excerpt: "Сеть и математика"
 wordpress_id: 102
 wordpress_url: http://messiah.ks8.ru/wordpress/?p=102
 date: 2012-06-26 22:40:52.000000000 +06:00

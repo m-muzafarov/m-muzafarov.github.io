@@ -14,8 +14,7 @@ categories: []
 tags: []
 comments: []
 ---
-<ol>
-	<li><a title="Материалы курса" href="http://courses.busin.usu.ru/oop/java_oop_3" target="_blank">Материалы курса</a></li>
-	<li><a title="Модульное тестирование" href="http://messiah.ks8.ru/usu/java/junit/">Модульное тестирование</a></li>
-	<li><a title="Задачи" href="http://messiah.ks8.ru/usu/java/tasks/">Задачи</a></li>
-</ol>
+
+1. [Материалы курса](http://courses.busin.usu.ru/oop/java_oop_3 "Материалы курса")
+2. [Модульное тестирование](http://messiah.ks8.ru/usu/java/junit/ "Модульное тестирование")
+3. [Задачи](http://messiah.ks8.ru/usu/java/tasks/ "Задачи")
