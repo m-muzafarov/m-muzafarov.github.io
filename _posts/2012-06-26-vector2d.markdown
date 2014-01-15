@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: Vector2D
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -12,53 +12,53 @@ wordpress_id: 67
 wordpress_url: http://messiah.ks8.ru/wordpress/?p=67
 date: 2012-06-26 21:45:53.000000000 +06:00
 categories:
-- Java&#47;Tasks
+- Java/Tasks
 tags: []
 comments: []
 ---
 Листинг
 
-<a id="more"></a><a id="more-67"></a>
-<pre class="brush: java; gutter: true"> public final class Vector2D implements iVector {
- private Double m_x, m_y;
+
+{% highlight java %} public final class Vector2D implements iVector {
+private Double m_x, m_y;
 public Vector2D() {
- m_x = 0.0;
- m_y = 0.0;
- }
+m_x = 0.0;
+m_y = 0.0;
+}
 public Vector2D(double x, double y) {
- m_x = x;
- m_y = y;
- }
-public int dimension() &#47;&#47; размерность
- {
- return 2;
- }
-public double getComponent(int i) &#47;&#47; возвращает компоненту вектора
- {
- return i == 0 ? m_x : m_y;
- }
+m_x = x;
+m_y = y;
+}
+public int dimension() // размерность
+{
+return 2;
+}
+public double getComponent(int i) // возвращает компоненту вектора
+{
+return i == 0 ? m_x : m_y;
+}
 public double scalar(iVector v) {
- return m_x * v.getComponent(0) + m_y * v.getComponent(1);
- }
+return m_x * v.getComponent(0) + m_y * v.getComponent(1);
+}
 public double len() {
- return Math.sqrt(m_x * m_x + m_y * m_y);
- }
+return Math.sqrt(m_x * m_x + m_y * m_y);
+}
 public Vector2D multiply(double factor) {
- m_x = m_x * factor;
- m_y = m_y * factor;
- return new Vector2D(m_x, m_y);
- }
+m_x = m_x * factor;
+m_y = m_y * factor;
+return new Vector2D(m_x, m_y);
+}
 public Vector2D add(iVector v) {
- m_x = m_x + v.getComponent(0);
- m_y = m_y + v.getComponent(1);
- return new Vector2D(m_x, m_y);
- }
+m_x = m_x + v.getComponent(0);
+m_y = m_y + v.getComponent(1);
+return new Vector2D(m_x, m_y);
+}
 public Vector2D sub(iVector v) {
- m_x = m_x - v.getComponent(0);
- m_y = m_y - v.getComponent(1);
- return new Vector2D(m_x, m_y);
- }
- }<&#47;pre>
+m_x = m_x - v.getComponent(0);
+m_y = m_y - v.getComponent(1);
+return new Vector2D(m_x, m_y);
+}
+}{% endhighlight %}
 &nbsp;
 
-Исходники доступны на <a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;java_course&#47;blob&#47;master&#47;Vectors&#47;Vector2D.java" target="_blank">GitHub<&#47;a>
+Исходники доступны на <a href="https://github.com/m-muzafarov/java_course/blob/master/Vectors/Vector2D.java" target="_blank">GitHub</a>

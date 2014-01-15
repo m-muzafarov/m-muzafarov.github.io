@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: Bash-hint
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -16,4 +16,4 @@ tags: []
 comments: []
 ---
 Вывести результат выполнения программы или что-то своё, если программа cвалилась:
-<pre class="brush: bash; gutter: true">command 2> &#47;dev&#47;null || echo "fictive result"<&#47;pre>
+{% highlight bash %}command 2> /dev/null || echo "fictive result"{% endhighlight %}

@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: hulk.py
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -19,4 +19,4 @@ comments: []
 
 DoS средствами одного компьютера:
 
-https:&#47;&#47;raw.github.com&#47;m-muzafarov&#47;hulk&#47;master&#47;hulk.py
+https://raw.github.com/m-muzafarov/hulk/master/hulk.py

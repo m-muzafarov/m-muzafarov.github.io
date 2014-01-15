@@ -7,71 +7,80 @@ author: M_Messiah
 author_login: M_Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
-excerpt: "Листинг\r\n"
 date: 2012-06-26 21:40:24.000000000 +06:00
 categories:
-- Java&#47;Tasks
+- Java/Tasks
 tags: []
 comments: []
 ---
 Листинг
 
-<pre class="brush: java; gutter: true">import java.io.IOException;
- import java.io.InputStreamReader;
- import java.io.BufferedReader;
- import java.util.*;
- public class StringValidator
- {
- private static int Error=0;
- &#47;&#47;Чтение
- public static String ReadLine() {
- try {
- return new BufferedReader(new InputStreamReader (System.in)).readLine();
- } catch (IOException e) {
- return new String();
- }
- }
- &#47;&#47; Проверяет строку на корректность
- public static boolean isValid(String s)
- {
- String open = "([{<";
- String close = ")]}>";
- Stack stack = new Stack ();
- for (int i=0;i<s.length();i++)
- {
- for (int j=0;j<open.length();j++)
- { if (s.charAt(i) == open.charAt(j)) { stack.push(open.charAt(j)); }}
- for (int j=0;j<close.length();j++)
- { if (s.charAt(i) == close.charAt(j))
- { if (!stack.isEmpty()) {
- if ((stack.peek() != (Object)&#039;(&#039;) &amp;&amp; (stack.peek() == (Object)(char)((int) close.charAt(j)-2)))
- {stack.pop(); }
- else if (stack.peek()== (Object)&#039;(&#039; &amp;&amp; close.charAt(j)==&#039;)&#039;)
- {stack.pop();} else { Error = i+1; return false;}}
- else { Error = i+1; return false;}
- }
- }}
- if (stack.isEmpty()) return true;
- else {Error = s.length(); return false;}
- }
- &#47;&#47; Если последний вызов isValid обнаружил ошибку, возвращает
- &#47;&#47; позицию, в которой обнаружена ошибка
- public static int getErrorPos()
- { return Error;}
-&#47;&#47; Если последний вызов isValid обнаружил ошибку, возвращает
- &#47;&#47; сообщение об ошибке
- public static String getErrorMessage()
- { if (Error>0) return "Error in "+getErrorPos()+" position";
- else return "Accepted";}
-public static void main(String[] args){
- String str = ReadLine();
- System.out.println(isValid("[ {([])} ]a - (b - (c - []a) &#47; (b<> + c) - 2)"));
- System.out.println(getErrorMessage());
- isValid(str);
- System.out.println(getErrorMessage());
- }
- }
- </pre>
-&nbsp;
+{% highlight java %}
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.util.*;
+public class StringValidator {
+	private static int Error=0;
+	//Чтение
+	public static String ReadLine() {
+		try {
+			return new BufferedReader(new InputStreamReader (System.in)).readLine();
+		} catch (IOException e) {
+			return new String();
+		}
+	}
+	//Проверяет строку на корректность
+    public static boolean isValid(String s) {
+            String open = "([{<";
+            String close = ")]}>";
+            Stack stack = new Stack ();
+            for (int i=0;i<s.length();i++)
+            {
+                    for (int j=0;j<open.length();j++)
+                            if (s.charAt(i) == open.charAt(j))
+                                    stack.push(open.charAt(j)); 
+                    for (int j=0;j<close.length();j++)
+                            if (s.charAt(i) == close.charAt(j)) {
+                                    if (stack.isEmpty()) {
+                                        Error = i+1;
+                                        return false;
+                                    }
+                                    if ((stack.peek() != (Object)'(') &&
+                                    	(stack.peek() == (Object)(char)((int) close.charAt(j)-2)))
+                                            stack.pop();
+                                    else if (stack.peek()== (Object)'(' &&
+                                    		 close.charAt(j)==')')
+                                            stack.pop();
+                                    else {
+                                            Error = i+1;
+                                            return false;
+                                    }
+                            }
+            }
+            if (stack.isEmpty()) return true;
+            else {
+                    Error = s.length();
+                    return false;
+            }
+    }
+    // Если последний вызов isValid обнаружил ошибку, возвращает
+    // позицию, в которой обнаружена ошибка
+    public static int getErrorPos() { return Error;}
+    // Если последний вызов isValid обнаружил ошибку, возвращает
+    //          // сообщение об ошибке
+    //  public static String getErrorMessage()
+    //  { if (Error>0) return "Error in "+getErrorPos()+" position";
+    //  else return "Accepted";}
+    // public static void main(String[] args){
+    //  String str = ReadLine();
+    //  System.out.println(isValid("[ {([])} ]a - (b - (c - []a) / (b<> + c) - 2)"));
+    //  System.out.println(getErrorMessage());
+    //  isValid(str);
+    //  System.out.println(getErrorMessage());
+    //  }
+}
+{% endhighlight %}
 
 Исходники доступны на [GitHub](https://github.com/m-muzafarov/java_course/blob/master/StringValidator.java)

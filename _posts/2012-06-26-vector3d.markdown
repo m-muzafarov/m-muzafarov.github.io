@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: Vector3D
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -12,77 +12,77 @@ wordpress_id: 57
 wordpress_url: http://messiah.ks8.ru/wordpress/?p=57
 date: 2012-06-26 21:42:01.000000000 +06:00
 categories:
-- Java&#47;Tasks
+- Java/Tasks
 tags: []
 comments: []
 ---
 Листинг
 
-<a id="more"></a><a id="more-57"></a>
-<pre class="brush: java; gutter: true">&nbsp;
+
+{% highlight java %}&nbsp;
 public final class Vector3D implements iVector {
- private Double m_x, m_y, m_z;
+private Double m_x, m_y, m_z;
 public Vector3D() {
- m_x = 0.0;
- m_y = 0.0;
- m_z = 0.0;
- }
+m_x = 0.0;
+m_y = 0.0;
+m_z = 0.0;
+}
 public Vector3D(double x, double y, double z) {
- m_x = x;
- m_y = y;
- m_z = z;
- }
-&#47;&#47; Получение координат
- public double getComponent(int i) {
- switch (i) {
- case 0:
- return m_x;
- case 1:
- return m_y;
- case 2:
- return m_z;
- default:
- return 0;
- }
- }
-&#47;&#47; Операции
- public int dimension() {
- return 3;
- }
-public double scalar(iVector v) &#47;&#47; скалярное произведение векторов
- {
- return v.getComponent(0) * m_x + v.getComponent(1) * m_y
+m_x = x;
+m_y = y;
+m_z = z;
+}
+// Получение координат
+public double getComponent(int i) {
+switch (i) {
+case 0:
+return m_x;
+case 1:
+return m_y;
+case 2:
+return m_z;
+default:
+return 0;
+}
+}
+// Операции
+public int dimension() {
+return 3;
+}
+public double scalar(iVector v) // скалярное произведение векторов
+{
+return v.getComponent(0) * m_x + v.getComponent(1) * m_y
  + v.getComponent(2) * m_z;
- }
-public double len() &#47;&#47; длина вектора
- {
- return Math.sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
- }
-public Vector3D multiply(double factor) &#47;&#47; умножение на число
- {
- return new Vector3D(m_x * factor, m_y * factor, m_z * factor);
- }
-public Vector3D add(iVector v) &#47;&#47; сложение векторов
- {
- return new Vector3D(m_x + v.getComponent(0), m_y + v.getComponent(1),
- m_z + v.getComponent(2));
- }
-public Vector3D sub(iVector v) &#47;&#47; вычитание векторов
- {
- return new Vector3D(m_x - v.getComponent(0), m_y - v.getComponent(1),
- m_z - v.getComponent(2));
- }
-public void printV() &#47;&#47; Выдача на экран
- {
- System.out.println("(" + m_x + ", " + m_y + ", " + m_z + ")");
- }
-&#47;&#47; public static void main (String args[]) {
- &#47;&#47; Vector3D a= new Vector3D(1,1,1);
- &#47;&#47; Vector3D b = new Vector3D(1,0,0);
- &#47;&#47; Vector3D temp;
- &#47;&#47; temp=a.sub(b);
- &#47;&#47; temp.printV(); }
- }<&#47;pre>
+}
+public double len() // длина вектора
+{
+return Math.sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
+}
+public Vector3D multiply(double factor) // умножение на число
+{
+return new Vector3D(m_x * factor, m_y * factor, m_z * factor);
+}
+public Vector3D add(iVector v) // сложение векторов
+{
+return new Vector3D(m_x + v.getComponent(0), m_y + v.getComponent(1),
+m_z + v.getComponent(2));
+}
+public Vector3D sub(iVector v) // вычитание векторов
+{
+return new Vector3D(m_x - v.getComponent(0), m_y - v.getComponent(1),
+m_z - v.getComponent(2));
+}
+public void printV() // Выдача на экран
+{
+System.out.println("(" + m_x + ", " + m_y + ", " + m_z + ")");
+}
+// public static void main (String args[]) {
+ // Vector3D a= new Vector3D(1,1,1);
+ // Vector3D b = new Vector3D(1,0,0);
+ // Vector3D temp;
+ // temp=a.sub(b);
+ // temp.printV(); }
+}{% endhighlight %}
 &nbsp;
 
-Исходники доступны на <a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;java_course&#47;blob&#47;master&#47;Vectors&#47;Vector3D.java" target="_blank">GitHub<&#47;a>
+Исходники доступны на <a href="https://github.com/m-muzafarov/java_course/blob/master/Vectors/Vector3D.java" target="_blank">GitHub</a>

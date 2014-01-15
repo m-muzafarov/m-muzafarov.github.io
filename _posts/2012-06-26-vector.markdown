@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: Vector
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -12,74 +12,74 @@ wordpress_id: 70
 wordpress_url: http://messiah.ks8.ru/wordpress/?p=70
 date: 2012-06-26 21:46:48.000000000 +06:00
 categories:
-- Java&#47;Tasks
+- Java/Tasks
 tags: []
 comments: []
 ---
 Длинный листинг
 
-<a id="more"></a><a id="more-70"></a>
-<pre class="brush: java; gutter: true"> public final class Vector implements iVector {
- private double[] m_v;
+
+{% highlight java %} public final class Vector implements iVector {
+private double[] m_v;
 public Vector(int n) {
- m_v = new double[n];
- for (int i = 0; i < n; m_v[i++] = 0)
+m_v = new double[n];
+for (int i = 0; i < n; m_v[i++] = 0)
  ;
- }
+}
 public Vector(double[] c) {
- m_v = new double[c.length];
- m_v = c;
- }
+m_v = new double[c.length];
+m_v = c;
+}
 public int dimension() {
- return m_v.length;
- }
+return m_v.length;
+}
 public double getComponent(int i) {
- try {
- if (i < 0 || i >= m_v.length)
- throw new Exception(
+try {
+if (i < 0 || i >= m_v.length)
+throw new Exception(
  "Индекс не принадлежит диапазону данной размерности\n");
- return m_v[i];
- } catch (Exception e) {
- e.printStackTrace(System.err);
- return 0;
- }
+return m_v[i];
+} catch (Exception e) {
+e.printStackTrace(System.err);
+return 0;
+}
 }
 public double scalar(iVector v) {
- double res = 0;
- int a = m_v.length;
- int b = v.dimension();
- try {
- if (a != b)
- throw new Exception("Несовпадение размерностей\n");
- } catch (Exception e) {
- e.printStackTrace(System.err);
- }
- for (int i = 0; i < a; i++)
- res += m_v[i] * v.getComponent(i);
- return res;
- }
+double res = 0;
+int a = m_v.length;
+int b = v.dimension();
+try {
+if (a != b)
+throw new Exception("Несовпадение размерностей\n");
+} catch (Exception e) {
+e.printStackTrace(System.err);
+}
+for (int i = 0; i < a; i++)
+res += m_v[i] * v.getComponent(i);
+return res;
+}
 public double len() {
- return Math.sqrt(scalar(this));
- }
+return Math.sqrt(scalar(this));
+}
 public Vector multiply(double factor) {
- double [] a=new double [m_v.length];
- for (int i = 0; i < m_v.length; i++)
- a[i]=m_v[i] * factor;
- return new Vector(a);
- }
+double [] a=new double [m_v.length];
+for (int i = 0; i < m_v.length; i++)
+a[i]=m_v[i] * factor;
+return new Vector(a);
+}
 public Vector add(iVector v) {
- double [] a=new double [m_v.length];
- for (int i = 0; i < m_v.length; i++)
- a[i]=m_v[i] + v.getComponent(i);
- return new Vector(a);
- }
+double [] a=new double [m_v.length];
+for (int i = 0; i < m_v.length; i++)
+a[i]=m_v[i] + v.getComponent(i);
+return new Vector(a);
+}
 public Vector sub(iVector v) {
- double [] a=new double [m_v.length];
- for (int i = 0; i < m_v.length; i++)
- a[i]=m_v[i] - v.getComponent(i);
- return new Vector(a);
- }
-}<&#47;pre>
+double [] a=new double [m_v.length];
+for (int i = 0; i < m_v.length; i++)
+a[i]=m_v[i] - v.getComponent(i);
+return new Vector(a);
+}
+}{% endhighlight %}
 &nbsp;
 
-Исходники доступны на <a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;java_course&#47;blob&#47;master&#47;Vectors&#47;Vector.java" target="_blank">GitHub<&#47;a>
+Исходники доступны на <a href="https://github.com/m-muzafarov/java_course/blob/master/Vectors/Vector.java" target="_blank">GitHub</a>

@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: AMQP калькулятор
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -20,19 +20,19 @@ comments: []
 Python 2
 Требует работающего AMQP (например RabbitMQ) и библиотеки для работы с AMQP (pika)
 
-<a id="more"></a><a id="more-255"></a>
 
-<h2>master.py<&#47;h2>
+
+## master.py ##
 Отправляет в RabbitMQ (порт 5672) выражение - сумму двух чисел.
 
 Запуск:
-<pre class="brush: bash; gutter: false">python2 master.py [a [b]]<&#47;pre>
+{% highlight bash %}python2 master.py [a [b]]{% endhighlight %}
 Если какие-то аргументы не указаны - генерируется случайное число от MinINT64 до MaxINT64.
-<pre class="brush: python; gutter: true">#!&#47;usr&#47;bin&#47;python
+{% highlight python %}#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys
 
-__author__ = &#039;Messiah&#039;
+__author__ = 'Messiah'
 
 from pika import BlockingConnection, ConnectionParameters, BasicProperties
 import random
@@ -42,15 +42,15 @@ import logging
 logging.basicConfig()
 
 def main(a, b):
-    connection = BlockingConnection(ConnectionParameters(host=&#039;localhost&#039;))
+    connection = BlockingConnection(ConnectionParameters(host='localhost'))
     channel = connection.channel()
 
-    channel.queue_declare(queue=&#039;calc&#039;, durable=True)
+    channel.queue_declare(queue='calc', durable=True)
 
     message = "{}+{}".format(a, b)
 
-    channel.basic_publish(exchange=&#039;&#039;,
-                          routing_key=&#039;calc&#039;,
+    channel.basic_publish(exchange='',
+                          routing_key='calc',
                           body=message,
                           properties=BasicProperties(
                               delivery_mode=2,  # make message persistent
@@ -58,29 +58,29 @@ def main(a, b):
 
     print " [x] Sent {}".format(message)
 
-if __name__ == &#039;__main__&#039;:
+if __name__ == '__main__':
     if len(sys.argv) > 2:
         main(sys.argv[1], sys.argv[2])
     else:
         main(random.randint(INT64_MIN, INT64_MAX),
-             random.randint(INT64_MIN, INT64_MAX))<&#47;pre>
-<h2><a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;ROT&#47;tree&#47;master&#47;Task7#slavepy" name="slavepy"><&#47;a>slave.py<&#47;h2>
+             random.randint(INT64_MIN, INT64_MAX)){% endhighlight %}
+## <a href="https://github.com/m-muzafarov/ROT/tree/master/Task7#slavepy" name="slavepy"></a>slave.py ##
 Слушает RabbitMQ очередь.
 
 Если получает сообщение с темой 'calc' - пытается его посчитать.
 
 Если получилось - выводит результат.
-<pre class="brush: python; gutter: true">#!&#47;usr&#47;bin&#47;python
+{% highlight python %}#!/usr/bin/python
 # -*- coding: utf-8 -*-
-__author__ = &#039;Messiah&#039;
+__author__ = 'Messiah'
 from pika import BlockingConnection, ConnectionParameters
 
 def main():
-    connection = BlockingConnection(ConnectionParameters(host=&#039;localhost&#039;))
+    connection = BlockingConnection(ConnectionParameters(host='localhost'))
     channel = connection.channel()
 
-    channel.queue_declare(queue=&#039;calc&#039;, durable=True)
-    print &#039; [*] Waiting for messages. To exit press CTRL+C&#039;
+    channel.queue_declare(queue='calc', durable=True)
+    print ' [*] Waiting for messages. To exit press CTRL+C'
 
     def callback(ch, method, properties, body):
         print " [x] Persistence {}".format(properties.delivery_mode == 2)
@@ -94,13 +94,13 @@ def main():
 
     channel.basic_qos(prefetch_count=1)
     channel.basic_consume(callback,
-                          queue=&#039;calc&#039;)
+                          queue='calc')
     try:
         channel.start_consuming()
     except KeyboardInterrupt:
         print "[*] Exit"
         return
 
-if __name__ == &#039;__main__&#039;:
-    main()<&#47;pre>
-<a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;ROT&#47;tree&#47;master&#47;Task7"><&#47;a><a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;ROT&#47;tree&#47;master&#47;Task7"><img class="alignleft size-full wp-image-258" alt="github-button" src="http:&#47;&#47;messiah.ks8.ru&#47;wp-content&#47;uploads&#47;github-button.png" width="170" height="72" &#47;><&#47;a>
+if __name__ == '__main__':
+    main(){% endhighlight %}
+<a href="https://github.com/m-muzafarov/ROT/tree/master/Task7"></a><a href="https://github.com/m-muzafarov/ROT/tree/master/Task7"><img class="alignleft size-full wp-image-258" alt="github-button" src="http://messiah.ks8.ru/wp-content/uploads/github-button.png" width="170" height="72" /></a>

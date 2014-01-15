@@ -3,7 +3,7 @@ layout: page
 status: publish
 published: true
 title: Стек, очередь, граф
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -15,12 +15,12 @@ tags: []
 comments: []
 ---
 <ul>
-	<li><a title="Стек" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;cpp&#47;structures&#47;stack&#47;">Стек<&#47;a><&#47;li>
-	<li><a title="Очередь" href=" http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;cpp&#47;structures&#47;c_queue&#47;">Очередь<&#47;a><&#47;li>
-<&#47;ul>
-<div><&#47;div>
+	<li><a title="Стек" href="http://messiah.ks8.ru/usu/cpp/structures/stack/">Стек</a></li>
+	<li><a title="Очередь" href=" http://messiah.ks8.ru/usu/cpp/structures/c_queue/">Очередь</a></li>
+</ul>
+<div></div>
 <ul>
-	<li><a title="Граф" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;cpp&#47;structures&#47;graph&#47;">Представление графа<&#47;a><&#47;li>
-	<li><a title="Поиск в глубину" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;cpp&#47;structures&#47;dfs&#47;">Поиск в глубину<&#47;a><&#47;li>
-	<li><a title="Поиск в ширину" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;cpp&#47;structures&#47;wfs&#47;">Поиск в ширину<&#47;a><&#47;li>
-<&#47;ul>
+	<li><a title="Граф" href="http://messiah.ks8.ru/usu/cpp/structures/graph/">Представление графа</a></li>
+	<li><a title="Поиск в глубину" href="http://messiah.ks8.ru/usu/cpp/structures/dfs/">Поиск в глубину</a></li>
+	<li><a title="Поиск в ширину" href="http://messiah.ks8.ru/usu/cpp/structures/wfs/">Поиск в ширину</a></li>
+</ul>

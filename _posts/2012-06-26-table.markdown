@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: Таблица
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -18,12 +18,12 @@ comments: []
 ---
 Запрос создания
 
-<a id="more"></a><a id="more-116"></a>
-<pre class="brush: sql; gutter: true"> CREATE TABLE abon(
- nomer [INT] NOT NULL,
+
+{% highlight sql %} CREATE TABLE abon(
+nomer [INT] NOT NULL,
  [Количество оплаченных занятий] [tinyint] NOT NULL,
- DATA [DATE] NOT NULL,
- IDstudent [INT] NOT NULL REFERENCES students (IDStudent),
- IdTrener [tinyint] NOT NULL REFERENCES treners (IDTrener),
- CONSTRAINT [PK_abon] PRIMARY KEY (nomer)
- )<&#47;pre>
+DATA [DATE] NOT NULL,
+IDstudent [INT] NOT NULL REFERENCES students (IDStudent),
+IdTrener [tinyint] NOT NULL REFERENCES treners (IDTrener),
+CONSTRAINT [PK_abon] PRIMARY KEY (nomer)
+ ){% endhighlight %}

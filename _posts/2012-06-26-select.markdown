@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: Запрос
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -21,13 +21,13 @@ comments: []
 
 а также вид спорта и тренера, с суммами меньшими средней за октябрь
 
-<a id="more"></a><a id="more-119"></a>
-<pre class="brush: sql; gutter: true"> SELECT students.IDStudent, students.Фамилия, students.ВУЗ, students.Курс, VidSporta.NameSport AS &#039;Вид спорта&#039;, treners.Фамилия AS &#039;Тренер&#039;, abon.[Количество оплаченных занятий]*VidSporta.Stoimost AS &#039;Сумма&#039;
- FROM VidSporta,treners,abon,students
- WHERE abon.IdTrener=treners.IDTrener AND treners.IDSporta=VidSporta.idsport
- AND abon.IDstudent=students.IDStudent AND
- abon.[Количество оплаченных занятий]*VidSporta.Stoimost <
+
+{% highlight sql %} SELECT students.IDStudent, students.Фамилия, students.ВУЗ, students.Курс, VidSporta.NameSport AS 'Вид спорта', treners.Фамилия AS 'Тренер', abon.[Количество оплаченных занятий]*VidSporta.Stoimost AS 'Сумма'
+FROM VidSporta,treners,abon,students
+WHERE abon.IdTrener=treners.IDTrener AND treners.IDSporta=VidSporta.idsport
+AND abon.IDstudent=students.IDStudent AND
+abon.[Количество оплаченных занятий]*VidSporta.Stoimost <
  (SELECT AVG(abon.[Количество оплаченных занятий]*VidSporta.Stoimost)
- FROM VidSporta,treners,abon,students
- WHERE abon.IdTrener=treners.IDTrener AND treners.IDSporta=VidSporta.idsport
- AND MONTH(abon.DATA)=10 )<&#47;pre>
+FROM VidSporta,treners,abon,students
+WHERE abon.IdTrener=treners.IDTrener AND treners.IDSporta=VidSporta.idsport
+AND MONTH(abon.DATA)=10 ){% endhighlight %}

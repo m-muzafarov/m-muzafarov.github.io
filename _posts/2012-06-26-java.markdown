@@ -3,7 +3,7 @@ layout: page
 status: publish
 published: true
 title: Java
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -15,7 +15,7 @@ tags: []
 comments: []
 ---
 <ol>
-	<li><a title="Материалы курса" href="http:&#47;&#47;courses.busin.usu.ru&#47;oop&#47;java_oop_3" target="_blank">Материалы курса<&#47;a><&#47;li>
-	<li><a title="Модульное тестирование" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;java&#47;junit&#47;">Модульное тестирование<&#47;a><&#47;li>
-	<li><a title="Задачи" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;java&#47;tasks&#47;">Задачи<&#47;a><&#47;li>
-<&#47;ol>
+	<li><a title="Материалы курса" href="http://courses.busin.usu.ru/oop/java_oop_3" target="_blank">Материалы курса</a></li>
+	<li><a title="Модульное тестирование" href="http://messiah.ks8.ru/usu/java/junit/">Модульное тестирование</a></li>
+	<li><a title="Задачи" href="http://messiah.ks8.ru/usu/java/tasks/">Задачи</a></li>
+</ol>

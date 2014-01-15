@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: Segment
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -12,66 +12,66 @@ wordpress_id: 60
 wordpress_url: http://messiah.ks8.ru/wordpress/?p=60
 date: 2012-06-26 21:44:01.000000000 +06:00
 categories:
-- Java&#47;Tasks
+- Java/Tasks
 tags: []
 comments: []
 ---
 Листинг
 
-<a id="more"></a><a id="more-60"></a>
-<pre class="brush: java; gutter: true"> public class Segment {
- private iVector m_start, m_end;
+
+{% highlight java %} public class Segment {
+private iVector m_start, m_end;
 public Segment(iVector start, iVector end) {
- m_start = start;
- m_end = end;
- }
+m_start = start;
+m_end = end;
+}
 iVector getStart() {
- return m_start;
- }
+return m_start;
+}
 iVector getEnd() {
- return m_end;
- }
+return m_end;
+}
 double len() {
- return (m_end.sub(m_start)).len();
- }
+return (m_end.sub(m_start)).len();
+}
 double distanceTo(iVector point) {
- &#47;* iVector a;
- if (len() == 0) {
- return m_start.sub(point).len();
- }
- a = m_end.sub(m_start).multiply(1 &#47; len());
- iVector b=point;
- b.sub(m_start);
- double s = a.scalar(b);
- a = m_start.add(a.multiply(s));
- s = a.sub(point).len();
- if (m_start.sub(point).len() < m_end.sub(point).len()) {
- if (m_start.sub(point).len() < s) {
- s = m_start.sub(point).len();
- }
- } else {
- if (m_end.sub(point).len() < s)
- s = m_end.sub(point).len();
- }
- return s;*&#47;
- double s;
- double P=((point.sub(m_start)).scalar(m_end.sub(m_start));&#47;&#47;скалярное произведение двух векторов
- double L=(m_end.sub(m_start)).scalar(m_end.sub(m_start));
- if (0>=P) s=point.sub(m_start).len();&#47;&#47;длина вектора
- if (P>=L) s=point.sub(m_end).len();
- if (0<P &amp;&amp; P<L) s=point.sub(m_start.add((m_end.sub(m_start)).multiply(P&#47;L))); }
+ /* iVector a;
+if (len() == 0) {
+return m_start.sub(point).len();
+}
+a = m_end.sub(m_start).multiply(1 / len());
+iVector b=point;
+b.sub(m_start);
+double s = a.scalar(b);
+a = m_start.add(a.multiply(s));
+s = a.sub(point).len();
+if (m_start.sub(point).len() < m_end.sub(point).len()) {
+if (m_start.sub(point).len() < s) {
+s = m_start.sub(point).len();
+}
+} else {
+if (m_end.sub(point).len() < s)
+s = m_end.sub(point).len();
+}
+return s;*/
+double s;
+double P=((point.sub(m_start)).scalar(m_end.sub(m_start));//скалярное произведение двух векторов
+double L=(m_end.sub(m_start)).scalar(m_end.sub(m_start));
+if (0>=P) s=point.sub(m_start).len();//длина вектора
+if (P>=L) s=point.sub(m_end).len();
+if (0<P && P<L) s=point.sub(m_start.add((m_end.sub(m_start)).multiply(P/L))); }
 public static void main(String args[]) {
- &#47;&#47; Vector2D start=new Vector2D();
- &#47;&#47; Vector2D end= new Vector2D(1,0);
- &#47;&#47; Vector2D point=new Vector2D(0.5,0.5);
- Vector start = new Vector(4);
- Vector end = new Vector(new double[] { 1, 0, 0, 0 });
- Vector point = new Vector(new double[] { -1, 0, 0, 0 });
- Segment seg = new Segment(start, end);
- System.out.println(seg.distanceTo(point));
- }
- }
-}<&#47;pre>
+ // Vector2D start=new Vector2D();
+ // Vector2D end= new Vector2D(1,0);
+ // Vector2D point=new Vector2D(0.5,0.5);
+Vector start = new Vector(4);
+Vector end = new Vector(new double[] { 1, 0, 0, 0 });
+Vector point = new Vector(new double[] { -1, 0, 0, 0 });
+Segment seg = new Segment(start, end);
+System.out.println(seg.distanceTo(point));
+}
+}
+}{% endhighlight %}
 &nbsp;
 
-Исходники доступны на <a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;java_course&#47;blob&#47;master&#47;Vectors&#47;Segment.java" target="_blank">GitHub<&#47;a>
+Исходники доступны на <a href="https://github.com/m-muzafarov/java_course/blob/master/Vectors/Segment.java" target="_blank">GitHub</a>

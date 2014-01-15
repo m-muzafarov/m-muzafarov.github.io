@@ -3,7 +3,7 @@ layout: page
 status: publish
 published: true
 title: SQL
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -15,9 +15,9 @@ tags: []
 comments: []
 ---
 <ul>
-	<li><a title="Конспект АБД" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;sql&#47;lections&#47;">Конспект АБД<&#47;a><&#47;li>
-	<li><a title="Триггер" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;sql&#47;trigger&#47;">Пример Триггера<&#47;a><&#47;li>
-	<li><a title="Таблица" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;sql&#47;table&#47;">Создание таблицы<&#47;a><&#47;li>
-	<li><a title="Запрос" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;sql&#47;select&#47;">Пример запроса<&#47;a><&#47;li>
-	<li><a title="База подарков" href="http:&#47;&#47;messiah.ks8.ru&#47;usu&#47;sql&#47;idz_database&#47;">База подарков (ИДЗ)<&#47;a><&#47;li>
-<&#47;ul>
+	<li><a title="Конспект АБД" href="http://messiah.ks8.ru/usu/sql/lections/">Конспект АБД</a></li>
+	<li><a title="Триггер" href="http://messiah.ks8.ru/usu/sql/trigger/">Пример Триггера</a></li>
+	<li><a title="Таблица" href="http://messiah.ks8.ru/usu/sql/table/">Создание таблицы</a></li>
+	<li><a title="Запрос" href="http://messiah.ks8.ru/usu/sql/select/">Пример запроса</a></li>
+	<li><a title="База подарков" href="http://messiah.ks8.ru/usu/sql/idz_database/">База подарков (ИДЗ)</a></li>
+</ul>

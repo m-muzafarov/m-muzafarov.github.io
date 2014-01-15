@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: iVector
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -11,19 +11,19 @@ wordpress_id: 63
 wordpress_url: http://messiah.ks8.ru/wordpress/?p=63
 date: 2012-06-26 21:45:02.000000000 +06:00
 categories:
-- Java&#47;Tasks
+- Java/Tasks
 tags: []
 comments: []
 ---
-<pre class="brush: java; gutter: true">
- public interface iVector {
- public int dimension(); &#47;&#47; размерность
-double getComponent(int i); &#47;&#47; возвращает компоненту вектора
+{% highlight java %}
+public interface iVector {
+public int dimension(); // размерность
+double getComponent(int i); // возвращает компоненту вектора
 double scalar(iVector v);
 double len();
 iVector multiply(double factor);
 iVector add(iVector v);
 iVector sub(iVector v);
 }
-}<&#47;pre>
+}{% endhighlight %}
 &nbsp;

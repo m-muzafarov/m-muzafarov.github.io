@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: Наработки для сети
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -30,53 +30,53 @@ comments: []
 
 В общем, тут будет краткий экскурс))
 
-<a id="more"></a><a id="more-266"></a>
 
-<h1>1. HTTP<&#47;h1>
-Первое - самое популярное, поэтому начну с него. Для работы буду использовать отличную библиотеку <a href="&#47;wrn.php?www.python-requests.org&#47;en&#47;latest&#47;">requests<&#47;a>. Она есть как в pip, так и в easy_install и вообще на гитхабе лежит, если что.
-<pre class="brush: python; gutter: true">r = requests.get("http:&#47;&#47;example.com&#47;stat",
-                 auth=(&#039;user&#039;, &#039;pass&#039;))
-print r.status_code, r.text<&#47;pre>
+
+# 1. HTTP #
+Первое - самое популярное, поэтому начну с него. Для работы буду использовать отличную библиотеку <a href="/wrn.php?www.python-requests.org/en/latest/">requests</a>. Она есть как в pip, так и в easy_install и вообще на гитхабе лежит, если что.
+{% highlight python %}r = requests.get("http://example.com/stat",
+                 auth=('user', 'pass'))
+print r.status_code, r.text{% endhighlight %}
 Или если нужны параметры:
-<pre class="brush: python; gutter: true">payload = {&#039;key1&#039;: &#039;value1&#039;, &#039;key2&#039;: &#039;value2&#039;}
-cookies = {&#039;sessionid&#039;: &#039;45647567568&#039;}
-r = requests.get("http:&#47;&#47;httpbin.org&#47;get",
-                 params=payload, cookies=cookies)<&#47;pre>
+{% highlight python %}payload = {'key1': 'value1', 'key2': 'value2'}
+cookies = {'sessionid': '45647567568'}
+r = requests.get("http://httpbin.org/get",
+                 params=payload, cookies=cookies){% endhighlight %}
 То же с POST, просто нужно вызывать requests.post(...)
-<h1>2. SSH<&#47;h1>
-Для SSH будет использоваться библиотека <a href="https:&#47;&#47;github.com&#47;paramiko&#47;paramiko&#47;">paramiko<&#47;a> (мне она просто понравилась лаконичностью запросов)
-<pre class="brush: python; gutter: true">import paramiko
+# 2. SSH #
+Для SSH будет использоваться библиотека <a href="https://github.com/paramiko/paramiko/">paramiko</a> (мне она просто понравилась лаконичностью запросов)
+{% highlight python %}import paramiko
 
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
 client.connect(hostname=address, port=port, timeout=3,
-                       username=&#039;user&#039;, password=&#039;password&#039;)
-stdin, stdout, stderr = client.exec_command(&#039;ls&#039;)
+                       username='user', password='password')
+stdin, stdout, stderr = client.exec_command('ls')
 for line in stdout:
-    print &#039;... &#039; + line.strip(&#039;\n&#039;)
-client.close()<&#47;pre>
-<h1>3. SFTP<&#47;h1>
+    print '... ' + line.strip('\n')
+client.close(){% endhighlight %}
+# 3. SFTP #
 Тут же, пока умеем работать с SSH:
-<pre class="brush: actionscript3; gutter: true">transport = paramiko.Transport((address, port))
-transport.connect(username=&#039;user&#039;, password=&#039;password&#039;)
+{% highlight actionscript3 %}transport = paramiko.Transport((address, port))
+transport.connect(username='user', password='password')
 sftp = paramiko.SFTPClient.from_transport(transport)
-dirlist = sftp.listdir(&#039;.&#039;)
+dirlist = sftp.listdir('.')
 sftp.mkdir("Input")
-sftp.open(&#039;Input&#47;status&#039;, &#039;w&#039;).write(&#039;OK\n&#039;)
-status = sftp.file("Input&#47;status").read()
+sftp.open('Input/status', 'w').write('OK\n')
+status = sftp.file("Input/status").read()
 
-sftp.get("Input&#47;status", "new_status.txt")
-sftp.put("new_status.txt", "STATUS")<&#47;pre>
-<h1>4. SMTP<&#47;h1>
+sftp.get("Input/status", "new_status.txt")
+sftp.put("new_status.txt", "STATUS"){% endhighlight %}
+# 4. SMTP #
 Воспользуемся библиотекой smtplib
-<pre class="brush: python; gutter: true">try:
+{% highlight python %}try:
     smtp = smtplib.SMTP(host="example.com", port=25,
                         timeout=3)
 
-    smtp.login(&#039;user&#039;, &#039;password&#039;)
+    smtp.login('user', 'password')
 
-    smtp.sendmail(&#039;fromMe&#039;, &#039;toYou&#039;, &#039;Hello, World!&#039;)
+    smtp.sendmail('fromMe', 'toYou', 'Hello, World!')
 
     smtp.close()
 except socket.timeout:
@@ -86,4 +86,4 @@ except smtplib.SMTPRecipientsRefused as e:
 except smtplib.SMTPException as e:
     result = "Cannot login: " + str(e)
 except Exception as e:
-    result = str(e)<&#47;pre>
+    result = str(e){% endhighlight %}

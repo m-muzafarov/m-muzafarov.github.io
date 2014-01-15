@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: Триггер
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -23,23 +23,23 @@ comments: []
 1) В таблице рабочих, соответствующему сотруднику добавляет +1 к опыту.
 2) Копирует поля ИД, Измерение, Результат и Номер станции из Журнала и вставляет в таблицу Результатов (авто-заполнение результатов)
 
-<a id="more"></a><a id="more-109"></a>
-<pre class="brush: sql; gutter: true"> CREATE TRIGGER journaling
- ON dbo.journal
- FOR INSERT
- AS
- BEGIN
- DECLARE @c INT
- SELECT @c=i.worker
- FROM inserted AS i
- UPDATE workers
- SET workers.Expo = workers.Expo +1
- FROM workers WHERE workers.ID=@c
- DECLARE @a INT
- DECLARE @id INT
- DECLARE @b INT
- DECLARE @e DECIMAL (8,2)
- SELECT @id=i.ID, @b=i.measure, @e=i.resultat FROM inserted AS i
- SELECT @a= (SELECT workers.IDStation FROM workers WHERE workers.ID=@c)
- INSERT INTO resultat VALUES (@id,@a,@b,@e)
- END<&#47;pre>
+
+{% highlight sql %} CREATE TRIGGER journaling
+ON dbo.journal
+FOR INSERT
+AS
+BEGIN
+DECLARE @c INT
+SELECT @c=i.worker
+FROM inserted AS i
+UPDATE workers
+SET workers.Expo = workers.Expo +1
+FROM workers WHERE workers.ID=@c
+DECLARE @a INT
+DECLARE @id INT
+DECLARE @b INT
+DECLARE @e DECIMAL (8,2)
+SELECT @id=i.ID, @b=i.measure, @e=i.resultat FROM inserted AS i
+SELECT @a= (SELECT workers.IDStation FROM workers WHERE workers.ID=@c)
+INSERT INTO resultat VALUES (@id,@a,@b,@e)
+END{% endhighlight %}

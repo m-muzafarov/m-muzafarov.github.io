@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: Клиент-сервер калькулятор
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -21,27 +21,27 @@ comments: []
 
 Написано на чистых сокетах, интерактивно.
 
-<a id="more"></a><a id="more-239"></a>
+
 
 Клиент считывает ввод и отправляет серверу, сервер считает, возвращает ответ.
 
-<strong>Код сервера:<&#47;strong>
-<pre class="brush: python; gutter: true">#!&#47;usr&#47;bin&#47;python3
+**Код сервера:**
+{% highlight python %}#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 import socket
 
-HOST = &#039;&#039;
+HOST = ''
 PORT = 27001
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind((HOST, PORT))
 s.listen(5)
 while True:
     conn, addr = s.accept()
-    print(&#039;Connected by&#039;, addr)
+    print('Connected by', addr)
     while True:
         data = ""
-        c = &#039;&#039;
-        while c != &#039;\n&#039;:
+        c = ''
+        while c != '\n':
             c = conn.recv(1).decode()
             if c:
                 data += c
@@ -55,9 +55,9 @@ while True:
             conn.sendall(message.encode())
         else:
             break
-    conn.close()<&#47;pre>
-<strong>Код клиента:<&#47;strong>
-<pre class="brush: python; gutter: true">#!&#47;usr&#47;bin&#47;python3
+    conn.close(){% endhighlight %}
+**Код клиента:**
+{% highlight python %}#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 import sys
 import socket
@@ -96,8 +96,8 @@ def main():
         print("Server> {0}".format(client.get_reply().strip()))
 
 if __name__ == "__main__":
-    main()<&#47;pre>
+    main(){% endhighlight %}
 Запуск клиента:
-<pre class="brush: bash; gutter: false">python client.py host port &nbsp; # в сервере порт 27001<&#47;pre>
+{% highlight bash %}python client.py host port &nbsp; # в сервере порт 27001{% endhighlight %}
 
-<a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;ROT&#47;tree&#47;master&#47;Task1"><img src="http:&#47;&#47;messiah.ks8.ru&#47;wp-content&#47;uploads&#47;github-button.png" alt="github-button" width="170" height="72" class="alignleft size-full wp-image-258" &#47;><&#47;a>
+<a href="https://github.com/m-muzafarov/ROT/tree/master/Task1"><img src="http://messiah.ks8.ru/wp-content/uploads/github-button.png" alt="github-button" width="170" height="72" class="alignleft size-full wp-image-258" /></a>

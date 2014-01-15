@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: XMLRPC
-author: ––=Messiλh=––
+author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://m.muzafarov.vk.com
@@ -24,14 +24,14 @@ comments: []
 
 Сервер предоставляет XMLRPC метод решения.
 
-<a id="more"></a><a id="more-242"></a>
-<strong>Сервер:<&#47;strong>
-<pre class="brush: python; gutter: true">#!&#47;usr&#47;bin&#47;python3
+
+**Сервер:**
+{% highlight python %}#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 import math
 from xmlrpc.server import SimpleXMLRPCServer
 
-__author__ = &#039;Messiah&#039;
+__author__ = 'Messiah'
 HOST = "localhost"
 PORT = 8080
 
@@ -47,17 +47,17 @@ class Solver(object):
         except ValueError:
             return "Incorrect input", 0
         if a == 0:
-            return "It&#039;s not a quadratic equation", 0
+            return "It's not a quadratic equation", 0
         # вычисляем дискриминант
         D = b ** 2 - 4 * a * c
         if D < 0:
             return "Not real roots", 0
-        x1 = (-b + math.sqrt(D)) &#47; 2 &#47; a
+        x1 = (-b + math.sqrt(D)) / 2 / a
         if D == 0:
             # если дискриминант равен 0 - корни равны.
             x2 = x1
         else:
-            x2 = (-b - math.sqrt(D)) &#47; 2 &#47; a
+            x2 = (-b - math.sqrt(D)) / 2 / a
         return x1, x2
 
 if __name__ == "__main__":
@@ -66,19 +66,19 @@ if __name__ == "__main__":
     S = Solver()
     # регистрируем функцию решателя в XMLRPC сервере
     server.register_function(S.solve, "solve")
-    server.serve_forever()<&#47;pre>
-<strong>Клиент:<&#47;strong>
-<pre class="brush: python; gutter: true">#!&#47;usr&#47;bin&#47;python3
+    server.serve_forever(){% endhighlight %}
+**Клиент:**
+{% highlight python %}#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-__author__ = &#039;Messiah&#039;
+__author__ = 'Messiah'
 HOST = "localhost"
 PORT = 8080
 
 from xmlrpc.client import ServerProxy
 
 # подключаемся к серверу
-proxy = ServerProxy("http:&#47;&#47;{}:{}".format(HOST, PORT))
+proxy = ServerProxy("http://{}:{}".format(HOST, PORT))
 while True:
     print("===================\nQuadratic solver")
     try:
@@ -102,6 +102,6 @@ while True:
     except Exception as e:
         print("Something wrong with server: ", e)
     else:
-        print("are x1 = {}, x2 = {}".format(x1, x2))<&#47;pre>
+        print("are x1 = {}, x2 = {}".format(x1, x2)){% endhighlight %}
 
-<a href="https:&#47;&#47;github.com&#47;m-muzafarov&#47;ROT&#47;tree&#47;master&#47;Task2"><img src="http:&#47;&#47;messiah.ks8.ru&#47;wp-content&#47;uploads&#47;github-button.png" alt="github-button" width="170" height="72" class="alignleft size-full wp-image-258" &#47;><&#47;a>
+<a href="https://github.com/m-muzafarov/ROT/tree/master/Task2"><img src="http://messiah.ks8.ru/wp-content/uploads/github-button.png" alt="github-button" width="170" height="72" class="alignleft size-full wp-image-258" /></a>
