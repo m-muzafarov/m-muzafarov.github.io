@@ -4,10 +4,15 @@ title: M_Messiah
 ---
 
 <div id="home">
-  <h1> Blog Posts </h1>
-  <ul class="posts">
+  <h1>Blog Posts</h1>
+  <div class="posts">
     {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}" title='{{ post.excerpt }}'>{{ post.title }}</a></li>
+    <div class="panel panel-default">
+	    <div class="panel panel-heading">
+	      <span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}" title='{{ post.excerpt }}'>{{ post.title }}</a>
+	    </div>
+    	<div class="panel-body">{{ post.excerpt }}</div>
+    </div>
     {% endfor %}
-  </ul>
+  </div>
 </div>
