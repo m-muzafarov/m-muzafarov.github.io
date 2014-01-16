@@ -1,8 +1,8 @@
 ---
-layout: default
+layout: nil
 sitemap:
-    priority: 0.7
-    changefreq: monthly
+    priority: 1
+    changefreq: daily
     lastmod: 2014-01-16T16:35:30+06:00
 ---
 
