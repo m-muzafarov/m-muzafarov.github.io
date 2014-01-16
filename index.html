@@ -5,16 +5,52 @@ title: Home
 
 <div id="home">
   <div class="post">
-    {% for post in site.posts limit: 7 %}
+    {% for post in paginator.posts %}
     <div class="panel panel-default">
 	    <div class="panel panel-heading">
-	      <span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a><span class="meta pull-right">{{ post.categories }}</span>
+	      <span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a><span class="meta pull-right">{{ post.categories | array_to_sentence_string }}</span>
 	    </div>
     	<div class="panel-body">{{ post.excerpt }}
     	<a href="{{ post.url }}" class="meta pull-right">Read more...</a><br>
     	</div>
     </div>
     {% endfor %}
-  <a href="/archive.html" class="btn btn-default pull-right">All posts</a><br>
+    <!-- Pagination links -->
+    {% if paginator.total_pages > 1 %}
+    <ul class="pull-right pagination">
+      {% if paginator.previous_page %}
+        <li><a href="{{ paginator.previous_page_path | replace: 'index.html', '' }}"><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+      {% else %}
+        <li class="disabled"><span><i class="glyphicon glyphicon-chevron-left"></i></span></li>
+      {% endif %}
+        {% if paginator.page > 3 %}
+          {% assign left = paginator.page | minus: 3 %}
+        {% else %}
+          {% assign left = 1 %}
+        {% endif %}
+        {% if paginator.total_pages  > (paginator.page | plus: 3) %}
+          {% assign right = paginator.page | plus: 3 %}
+        {% else %}
+          {% assign right = paginator.total_pages %}
+        {% endif %}
+      {% for page in (left..right) %}
+        {% if page == paginator.page %}
+          <li class="active"><span>{{ page }} <span class="sr-only">(current)</span></span>
+        {% elsif page == 1 %}
+          <li><a href="/">{{ page }}</a>
+        {% else %}
+          <li><a href="{{ site.paginate_path  | replace: ':num', page }}">{{ page }}</a>
+        {% endif %}
+        </li>
+      {% endfor %}
+
+      {% if paginator.next_page %}
+        <li><a href="{{ paginator.next_page_path }}"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+      {% else %}
+        <li class="disabled"><span><i class="glyphicon glyphicon-chevron-right"></i></span></li>
+      {% endif %}
+      <li><a href="/categories/"><i class="glyphicon glyphicon-book"></i></a></li>
+    </ul>
+    {% endif %}
   </div>
 </div>
