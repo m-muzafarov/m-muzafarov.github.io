@@ -4,6 +4,12 @@
 /*
 /*****************************************************************************/
 
+.page-header {
+  margin-top: 0px;
+  padding-bottom: 27px;
+  margin-bottom: 5px;
+}
+
 .post {
   margin-left: 2em;
   margin-right: 3em;
