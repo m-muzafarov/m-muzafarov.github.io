@@ -20,13 +20,21 @@
     font-weight: normal;
     font-style: normal;
 }
+
+.date {
+  font-weight: 100;
+}
+
+.pagination {
+  font-weight: 100;
+}
+
 .title {
   margin-top: 0px;
 }
 .title a {
   color: #aaa;
   font-family: 'Beer money';
-  font-weight: 200;
   line-height: 1em;
   text-shadow: none;
   font-size: 1.4em;
@@ -42,6 +50,7 @@
   color: #000;
 }
 .meta {
+  font-weight: 200;
   color: #aaa;
 }
 .footer {
