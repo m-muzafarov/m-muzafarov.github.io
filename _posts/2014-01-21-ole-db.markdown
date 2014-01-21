@@ -7,12 +7,13 @@ author: M_Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://brainstorage.me/M_Messiah
 date: 2014-01-21 16:00:00 +06:00
-excerpt: Презентация про OLE DB: что это, с чем это едят и как с этим работать.
+excerpt: "Презентация про OLE DB: что это, с чем это едят и как с этим работать."
 categories: Java
 tags: []
 comments: []
 ---
 
-Весь сопроводительный текст к презентации находится в аннотациях к слайдам. (Найстроки - Включить заметки рассказчика)
+Весь сопроводительный текст к презентации находится в аннотациях к слайдам. (Настройки - Включить заметки рассказчика)
 
-<iframe src="https://docs.google.com/presentation/d/1vfU8VSA54FIQZ9lR4QNxbb5BXVIWtItw1anWXt0GuPg/embed?start=false&loop=false&delayms=15000" frameborder="0" width="960" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+<!--more-->
+<div><iframe src="https://docs.google.com/presentation/d/1vfU8VSA54FIQZ9lR4QNxbb5BXVIWtItw1anWXt0GuPg/embed?start=false&loop=false&delayms=15000" frameborder="0" width="960" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div>
