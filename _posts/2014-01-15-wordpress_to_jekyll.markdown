@@ -9,7 +9,7 @@ author_url: http://brainstorage.me/M_Messiah
 date: 2014-01-15 15:43:00.000000000 +06:00
 categories: Web
 tags: []
-comments: []
+comments: true
 ---
 
 В связи с частыми проблемами хостера и какой-то глючной темой с блокированием многих функций Wordpress'а, сначала появилась идея найти другого хостера.
