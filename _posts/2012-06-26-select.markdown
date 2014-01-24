@@ -10,7 +10,7 @@ author_url: http://brainstorage.me/M_Messiah
 date: 2012-06-26 23:54:22.000000000 +06:00
 categories: SQL
 tags: []
-comments: []
+comments: true
 ---
 2.6) запрос, показывающий всех студентов и их данные,
 

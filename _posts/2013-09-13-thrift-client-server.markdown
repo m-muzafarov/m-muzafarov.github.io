@@ -10,7 +10,7 @@ author_url: http://brainstorage.me/M_Messiah
 date: 2013-09-13 16:30:50.000000000 +06:00
 categories: ROT
 tags: []
-comments: []
+comments: true
 ---
 Client написан на C++, server - на Python. Thrift позволяет вызывать одному субъекты вызывать методы другого.
 <!--more-->

@@ -10,7 +10,7 @@ author_url: http://brainstorage.me/M_Messiah
 date: 2013-09-13 16:24:42.000000000 +06:00
 categories: ROT
 tags: []
-comments: []
+comments: true
 ---
 Python 2
 Требует работающего AMQP (например RabbitMQ) и библиотеки для работы с AMQP (pika)

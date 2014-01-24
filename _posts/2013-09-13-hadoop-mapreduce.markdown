@@ -10,7 +10,7 @@ author_url: http://brainstorage.me/M_Messiah
 date: 2013-09-13 15:52:03.000000000 +06:00
 categories: ROT
 tags: []
-comments: []
+comments: true
 ---
 
 Задачка из курса Распределённых Объектных технологий.

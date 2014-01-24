@@ -11,7 +11,7 @@ excerpt: "Решение квадратных уравнений на C++"
 date: 2012-07-02 11:36:01.000000000 +06:00
 categories: cpp
 tags: []
-comments: []
+comments: true
 ---
 
 {% highlight cpp %}

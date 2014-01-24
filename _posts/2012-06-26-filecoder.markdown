@@ -11,7 +11,7 @@ excerpt: "Решение задачи о конвертировании коди
 date: 2012-06-26 21:49:59.000000000 +06:00
 categories: Java
 tags: []
-comments: []
+comments: true
 ---
 
 Листинг

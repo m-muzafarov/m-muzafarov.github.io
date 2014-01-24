@@ -11,7 +11,7 @@ excerpt: "Class Stack C++"
 date: 2012-07-02 12:00:14.000000000 +06:00
 categories: cpp
 tags: []
-comments: []
+comments: true
 ---
 
 # stack.h #

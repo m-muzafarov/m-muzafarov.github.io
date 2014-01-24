@@ -10,7 +10,7 @@ author_url: http://brainstorage.me/M_Messiah
 date: 2012-06-26 22:25:56.000000000 +06:00
 categories: Perl
 tags: []
-comments: []
+comments: true
 ---
 {% highlight perl %}
 #!/usr/bin/perl -w

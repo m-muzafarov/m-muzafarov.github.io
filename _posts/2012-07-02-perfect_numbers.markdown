@@ -11,7 +11,7 @@ excerpt: "Совершенные числа на C++"
 date: 2012-07-02 11:51:33.000000000 +06:00
 categories: cpp
 tags: []
-comments: []
+comments: true
 ---
 
 

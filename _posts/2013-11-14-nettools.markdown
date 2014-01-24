@@ -10,7 +10,7 @@ author_url: http://brainstorage.me/M_Messiah
 date: 2013-11-14 15:53:58.000000000 +06:00
 categories: Python
 tags: []
-comments: []
+comments: true
 ---
 
 К сожалению, разрабатывать мониторилку оказалось бессмысленно ввиду жёсткой конкуренции со стороны Zabbix и Nagios, их продвинутости, и (с выходом Zabbix 2.2) модульности.

@@ -10,7 +10,7 @@ author_url: http://brainstorage.me/M_Messiah
 date: 2012-06-26 21:33:26.000000000 +06:00
 categories: Java
 tags: []
-comments: []
+comments: true
 ---
 # Задачи для практических занятий по учебному курсу "ООП" (3 курс) #
 ## Это важно знать: ##

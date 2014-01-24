@@ -10,7 +10,7 @@ author_url: http://brainstorage.me/M_Messiah
 date: 2012-06-26 21:47:33.000000000 +06:00
 categories: Java
 tags: []
-comments: []
+comments: true
 ---
 {% highlight java %}import junit.framework.TestCase;
 public class TestVector extends TestCase {

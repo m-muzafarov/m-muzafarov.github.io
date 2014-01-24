@@ -11,7 +11,7 @@ excerpt: "Class Data C++"
 date: 2012-07-02 11:52:57.000000000 +06:00
 categories: cpp
 tags: []
-comments: []
+comments: true
 ---
 
 {% highlight cpp %}
