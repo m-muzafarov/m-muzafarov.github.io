@@ -3,8 +3,7 @@ layout: default
 title: Home
 ---
 
-<div id="home">
-  <div class="post">
+<div class="home" id="home">
     {% for post in paginator.posts %}
     <div class="panel panel-default">
 	    <div class="panel panel-heading">
@@ -52,5 +51,4 @@ title: Home
       <li><a href="/categories/"><i class="glyphicon glyphicon-book"></i></a></li>
     </ul>
     {% endif %}
-  </div>
 </div>
