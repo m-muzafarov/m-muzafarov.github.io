@@ -8,7 +8,7 @@ title: Home
     {% for post in paginator.posts %}
     <div class="panel panel-default">
 	    <div class="panel panel-heading">
-	      <span class="date">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}#disqus_thread">{{ post.title }}</a><span class="meta pull-right">{{ post.categories | array_to_sentence_string }}</span>
+	      <span class="date">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a><span class="meta pull-right">{{ post.categories | array_to_sentence_string }}</span>
 	    </div>
     	<div class="panel-body">{{ post.excerpt }}
     	<a href="{{ post.url }}" class="meta pull-right">Read more...</a><br>
