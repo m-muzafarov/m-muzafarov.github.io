@@ -1,0 +1,240 @@
+---
+layout: post
+status: publish
+published: false
+title: TeamCity deploy
+author: M_Messiah
+author_login: M_Messiah
+author_email: m.muzafarov@gmail.com
+author_url: http://brainstorage.me/M_Messiah
+date: 2014-01-27 15:00:00 +06:00
+categories: MSBuild
+tags: [msbuild,csharp,teamcity]
+comments: true
+---
+
+# TeamCity deploy #
+
+Потратив много времени на поиски, разобрался наконец как осуществить деплой с помощью TeamCity, которая забирает исходники из TFS.
+
+Входные данные:
+
++   TFS 2010 с доступом для чтения
++   Пакеты в NuGet
++   TeamCity server (Windows Server 2008 R2)
++   TeamCity agent (Windows Server 2012)
++   Web server (Windows Server 2012)
+
+
+Ниже подробная инструкция о том, как сделать, чтобы это всё работало и собиралось без использования MSDeploy (настройки проекта менять нельзя).
+
+<!--more-->
+
+Для начала предположим, что ТимСити агент и сервер уже связаны и работоспособны и опустим эту настройку (есть в документации ТимСити).
+А также ТимСити агент поддерживает TFS (решается установкой TFS на агента и подключения (если его нет) плагина TFS)
+
+Тогда наша настройка начнется с создания проекта в TeamCity и добавления Build Configuration.
+
+P.S. Если параметр не оговорен в инструкции - его значение на ваш выбор.
+
+General Settings - 
+
+Version Control Settings - указываем TFS и заполняем согласно настройкам вашего TFS и пользовательских данных.
+Checkout directory  - CustomPath  <VCSDir>
+
+## Build steps ##
+
+### 1. Get NuGet ###
+Runner type         - NuGet installer
+NuGet.exe           - default(2.7.0)
+Packages Sources
+
+    https://<your nuget source>
+    https://www.nuget.org/api/v2/
+
+Здесь надо не забыть указать стандартный путь nuget, а то можно не найти некоторых необходимых стандартных пакетов.
+Path to solution    - <путь к солюшену, в котором описаны необходимые пакеты>
+Restore Mode        - Install
+
+Добавляем Additional Build Features:
+type    = NuGet Feed Credentials
+Feed URI    = <your nuget source>
+И указываем User/Pass
+
+### 2. Build ###
+Здесь настраиваем параметры билда - у всех свои.
+
+
+Так вышло, что у меня солюшн содержит несколько различных проектов, поэтому сначала собирается он, а потом отдельно проект:
+### 3.(opt) Build Site ###
+Runner type     = MSBuild
+Build file path = <path-to-csproj>
+MSBuild Version = Microsoft .NET Framework 4.5
+MSBuild ToolsVersion = 4.0
+Targets         = _WPPCopyWebApplication
+Command line parameters:
+
+    /p:WebProjectOutputDir=%system.teamcity.build.tempDir%\%<build_name>.Project.Name%\package\site\
+    /p:OutDir=%system.teamcity.build.tempDir%\%<build_name>.Project.Name%\temp\site\
+    /p:Configuration=%WebSites.BuildConfig%
+
+### 4. Deploy ###
+Runner type     = MSBuild
+Build file path = <custom_path>/Deploy/Deploy.xml, где <custom_path> - директория на сервере, где находится папка Deploy. В моем случае, <custom_path>==<VCSDir>/ProjectName/ (Нужен единоразовый доступ к TFS) (Для тестирования можно просто положить в по данному пути на TeamCity agent)
+Working directory = %system.teamcity.build.tempDir%\%<build_name>.Project.Name%\package\site\
+MSBuild     = Microsoft .NET Framework 4.0
+MSBuild ToolsVersion    = 4.0
+Run platform    =   x64
+
+Здесь стоит описать содержимое директории Deploy:
+
++   MSBuildExtensionPack - директория dll-ек. ExtensionPack последней версии. [Взять можно здесь](http://msbuildextensionpack.codeplex.com/releases)
++   Deploy.xml
+
+
+<?xml version="1.0" encoding="utf-8" ?>
+<Project DefaultTargets="Default" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ExtensionTasksPath>$(MSBuildThisFileDirectory)\MSBuildExtensionPack\</ExtensionTasksPath>
+    </PropertyGroup>
+    <ItemGroup>
+       <Servers Include="YOUR_WEB_SERVER_NAME" />
+       <!-- Здесь указать один или больше Web-серверов, на которые собираемся деплоить -->
+    </ItemGroup>
+    <ItemGroup>
+        <!-- Тут описываем общие параметры деплоя: адрес сервера, адрес пула, порт и пути -->
+        <WebProject Include="/">
+            <HttpPort>9880</HttpPort>
+            <AppName>www.example.com</AppName>
+            <AppPool>www.example.com</AppPool>
+            <PhysicalPath>C:\www\example.com\site</PhysicalPath>
+            <AppRootDirectory>C:\www\example.com\site</AppRootDirectory>
+            <UserName>DOMAIN\user</UserName>
+            <UserPassword>Passw0rd</UserPassword>
+        </WebProject>
+        <!-- В моём случае между сайтами есть сетевая шара со статическими файлами, подключим их как Virtual Directory -->
+        <VirtualDirectory Include="/Files">
+            <ApplicationPath>/</ApplicationPath>
+            <PhysicalPath>\\web\Files\example.com\Files</PhysicalPath>
+        </VirtualDirectory>
+        <VirtualDirectory Include="/FilesSys">
+            <ApplicationPath>/</ApplicationPath>
+            <PhysicalPath>\\web\Files\example.com\FilesSys</PhysicalPath>
+        </VirtualDirectory>
+        <HttpResponseHeaders Include="X-Server"> 
+            <Value>%(Servers.Identity)</Value> 
+        </HttpResponseHeaders> 
+    </ItemGroup>
+
+    <Import Project="$(ExtensionTasksPath)MSBuild.ExtensionPack.tasks"/>
+    <Target Name="Default">
+        <MSBuild Projects="$(MSBuildProjectFile)"
+            Properties="Server=%(Servers.Identity)"
+            Targets="Single" />
+    </Target>
+
+    <Target Name="Single">
+    <Iis7AppPool TaskAction="Create" 
+        Name="%(WebProject.AppPool)"
+        ManagedRuntimeVersion="v4.0"
+        IdentityType="SpecificUser"
+        PipelineMode="Integrated"
+        PoolIdentity="%(WebProject.UserName)"
+        IdentityPassword="%(WebProject.UserPassword)"
+        Enable32BitAppOnWin64="True" <!-- Если приложение 32-х битное -->
+        Force="True" 
+        MachineName="$(Server)"  />
+    
+    <Iis7Website TaskAction="Create"
+        Name="%(WebProject.AppName)"
+        Path="%(WebProject.PhysicalPath)"
+        Port="%(WebProject.HttpPort)"
+        Force="true"
+        Applications="@(WebProject)"
+        VirtualDirectories="@(VirtualDirectory)"
+        LogExtFileFlags="3526607" <!-- Стандартное логирование IIS + Host + Referrer -->
+        MachineName="$(Server)" />
+
+    <Iis7Website TaskAction="AddResponseHeaders"
+        Name="%(WebProject.AppName)" HttpResponseHeaders="@(HttpResponseHeaders)"/> 
+
+    <!-- Добавляем биндинги для сайта -->
+    <Iis7Binding TaskAction="Add"
+        Name="%(WebProject.AppName)"
+        BindingInformation="*:80:www.example.com"
+        ContinueOnError="false"
+        MachineName="$(Server)" />
+    <Iis7Binding TaskAction="Add"
+        Name="%(WebProject.AppName)"
+        BindingInformation="*:80:example2.com"
+        ContinueOnError="false"
+        MachineName="$(Server)" />
+    <Iis7Binding TaskAction="Add"
+        Name="%(WebProject.AppName)"
+        BindingInformation="*:88:$(Server)"
+        ContinueOnError="false"
+        MachineName="$(Server)" />
+        
+    <!-- Останавливаем пул и сайт, копируем файлы и запускаем сайт -->
+    <Iis7AppPool TaskAction="Stop" Name="%(WebProject.AppPool)" Force="True" MachineName="$(Server)"/>
+    <Iis7Website TaskAction="Stop" Name="%(WebProject.AppName)" Force="True" MachineName="$(Server)"/>
+
+    <PropertyGroup>
+        <p>C:\\BuildAgent\temp\BuildTmp\<build_name.Project.Name>\package\site\</p>
+        <d>\\$(Server)\c$\www\example.com\site\</d>
+    </PropertyGroup>
+    
+    <RemoveDir Directories="$(d)" />
+    <MakeDir Directories="$(d)" />
+
+    <ItemGroup>
+        <UploadFiles Include="$(p)**\*.*" Exclude="" />
+    </ItemGroup>
+    
+    <Copy SourceFiles="@(UploadFiles)" DestinationFiles="@(UploadFiles->'$(d)%(RecursiveDir)%(Filename)%(Extension)')" />
+
+    <Iis7AppPool TaskAction="Start" Name="%(WebProject.AppPool)" Force="True" MachineName="$(Server)"/>
+    <Iis7Website TaskAction="Start" Name="%(WebProject.AppName)" Force="True" MachineName="$(Server)"/>
+  </Target>
+</Project>
+
+Здесь надо отметить, что в Windows 2012 безопасность настроена таким образом, что удаленное управление IIS через MSBuild не разрешается.
+Для начала необходимо установить дополнение роль Management Tools и IIS Management Console, после чего оказывается, что у нас не хватает прав на управление сайтом.
+Многие обманываются, начиная искать решение в правах (Администратор тоже не может) и в UAC (даже при отключенном, операция все равно не позволяется, выдавая всё ту же ошибку Acces denied 80070005).
+Проблема оказалась совсем не в этом, а в том, что по умолчанию, в Windows 2012 запрещен доступ к DCOM объектам, и как следствие - Management console IIS.
+Причём, сам DCOM разрешен, но заблокирован на файрволе.
+Так как отключение файрвола - не наш метод, а настраивать DCOM - не только морока, но и требует дополнительных прав на систему, просто добавим правило на файрвол, позволяющее любые соединения между сервером ТимСити Билдагента и Веб-сервером.
+
+    Inbound, Allow all, All programs, All ports, Local:Any, Remote: <agent_ip>
+
+
+### 5. Fix Physical Credentials ###
+MSBuildExtensions по какой-то причине могут устанавливать пользователя для запуска пула, но не для сайта. 
+Поэтому Physical Path Credentials придется править вручную, но нам на помощь приходит Powershell
+
+Создаем шаг:
+Runner type     = Powershell
+Version         = Any
+Bitness         = x64
+Error output    = warning
+Script          = Source Code
+Script Source:
+
+    Invoke-Command -ComputerName YOUR_WEB_SERVER_NAME -ScriptBlock {Import-Module webAdministration; $iisSitePath = "IIS:\Sites\" + "www.example.com"; $website = get-item $iisSitePath; $website.virtualDirectoryDefaults.userName = "DOMAIN\users"; $website.virtualDirectoryDefaults.password = "Passw0rd"; $website | set-item }
+
+Script execution mode = -File
+
+Тут главное не забыть на Web Server разрешить выполнение удаленного кода PowerShell
+
+    Set-ExecutionPolicy RemoteSigned (или даже Unrestricted)
+
+
+
+## Build Parameters ##
+
+WebSites.BuildConfig  =   Release
+WebSites.Project.Name  =  Example
+WebSites.Site.Name  = example.com
+
+env.VisualStudioVersion  10.0
+
