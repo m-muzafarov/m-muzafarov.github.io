@@ -37,8 +37,6 @@ comments: true
 
 P.S. Если параметр не оговорен в инструкции - его значение на ваш выбор.
 
-General Settings - 
-
 Version Control Settings - указываем TFS и заполняем согласно настройкам вашего TFS и пользовательских данных.
 Checkout directory  - CustomPath  <VCSDir>
 
@@ -91,7 +89,7 @@ Run platform    =   x64
 +   MSBuildExtensionPack - директория dll-ек. ExtensionPack последней версии. [Взять можно здесь](http://msbuildextensionpack.codeplex.com/releases)
 +   Deploy.xml
 
-
+{% highlight xml %}
 <?xml version="1.0" encoding="utf-8" ?>
 <Project DefaultTargets="Default" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
@@ -197,6 +195,7 @@ Run platform    =   x64
     <Iis7Website TaskAction="Start" Name="%(WebProject.AppName)" Force="True" MachineName="$(Server)"/>
   </Target>
 </Project>
+{% endhighlight %}
 
 Здесь надо отметить, что в Windows 2012 безопасность настроена таким образом, что удаленное управление IIS через MSBuild не разрешается.
 Для начала необходимо установить дополнение роль Management Tools и IIS Management Console, после чего оказывается, что у нас не хватает прав на управление сайтом.
@@ -237,4 +236,9 @@ WebSites.Project.Name  =  Example
 WebSites.Site.Name  = example.com
 
 env.VisualStudioVersion  10.0
+
+# Заключение #
+
+После всех манипуляций все должно заработать. Если появляются какие-то проблемы, то скорее всего связаны с рабочим окружением агента или деплойного сервера. 
+Также, стоит отметить, что билдагент должен быть запущен из под доменного пользователя с правами администратора на веб-сервере, а также на веб-сервере должен быть опубликован диск С:. В ином случае, стоит заранее позаботиться о предоставлении сетевого доступа и поменять пути в Deploy.xml параметре $(d)
 
