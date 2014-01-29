@@ -1,7 +1,7 @@
 ---
 layout: post
 status: publish
-published: false
+published: true
 title: TeamCity deploy
 author: M_Messiah
 author_login: M_Messiah
@@ -14,6 +14,8 @@ comments: true
 ---
 
 # TeamCity deploy #
+
+[Источник](http://habrahabr.ru/sandbox/77950/)
 
 Потратив много времени на поиски, разобрался наконец как осуществить деплой с помощью TeamCity, которая забирает исходники из TFS.
 
@@ -107,8 +109,6 @@ Run platform    =   x64
             <AppPool>www.example.com</AppPool>
             <PhysicalPath>C:\www\example.com\site</PhysicalPath>
             <AppRootDirectory>C:\www\example.com\site</AppRootDirectory>
-            <UserName>DOMAIN\user</UserName>
-            <UserPassword>Passw0rd</UserPassword>
         </WebProject>
         <!-- В моём случае между сайтами есть сетевая шара со статическими файлами, подключим их как Virtual Directory -->
         <VirtualDirectory Include="/Files">
@@ -137,8 +137,8 @@ Run platform    =   x64
         ManagedRuntimeVersion="v4.0"
         IdentityType="SpecificUser"
         PipelineMode="Integrated"
-        PoolIdentity="%(WebProject.UserName)"
-        IdentityPassword="%(WebProject.UserPassword)"
+        PoolIdentity="$(Username)"
+        IdentityPassword="$(Password)"
         Enable32BitAppOnWin64="True" <!-- Если приложение 32-х битное -->
         Force="True" 
         MachineName="$(Server)"  />
@@ -219,7 +219,7 @@ Error output    = warning
 Script          = Source Code
 Script Source:
 
-    Invoke-Command -ComputerName YOUR_WEB_SERVER_NAME -ScriptBlock {Import-Module webAdministration; $iisSitePath = "IIS:\Sites\" + "www.example.com"; $website = get-item $iisSitePath; $website.virtualDirectoryDefaults.userName = "DOMAIN\users"; $website.virtualDirectoryDefaults.password = "Passw0rd"; $website | set-item }
+    Invoke-Command -ComputerName YOUR_WEB_SERVER_NAME -ScriptBlock {Import-Module webAdministration; $iisSitePath = "IIS:\Sites\" + "www.example.com"; $website = get-item $iisSitePath; $website.virtualDirectoryDefaults.userName = "${env:Username}"; $website.virtualDirectoryDefaults.password = "${env:Password}"; $website | set-item }
 
 Script execution mode = -File
 
@@ -236,6 +236,11 @@ WebSites.Project.Name  =  Example
 WebSites.Site.Name  = example.com
 
 env.VisualStudioVersion  10.0
+env.Username = <Username>
+env.Password = <Passw0rd> (type = Password)
+
+Тогда TeamCity запомнит пароль, но при этом не будет его нигде отображать.
+
 
 # Заключение #
 
