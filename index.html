@@ -4,21 +4,39 @@ title: Home
 ---
 
 <div class="home" id="home">
-    {% for post in paginator.posts %}
-    <div class="panel panel-default">
-	    <div class="panel panel-heading">
-	      <span class="date">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a><a href="/categories/#{{ post.categories[0] }}" class="meta pull-right">{{ post.categories | array_to_sentence_string }}</a>
-	    </div>
-    	<div class="panel-body">{{ post.excerpt }}
-    	<a href="{{ post.url }}" class="meta pull-right">Read more...</a><br>
-    	</div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-9 col-md-10">
+        {% for post in paginator.posts %}
+        <div class="panel panel-default">
+    	    <div class="panel panel-heading">
+    	      <span class="date">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a><a href="/categories/#{{ post.categories[0] }}" class="meta pull-right">{{ post.categories | array_to_sentence_string }}</a>
+    	    </div>
+        	<div class="panel-body">{{ post.excerpt }}
+        	<a href="{{ post.url }}" class="meta pull-right">Read more...</a><br>
+        	</div>
+        </div>
+        {% endfor %}
+      </div>
+    <!-- Categories -->
+      <div class="col-sm-3 col-md-2 hidden-xs">
+        <h4 class="meta">Categories</h4>
+        <div class="list-group">
+        {% for category in site.categories | sort "category[0]" %}
+          <a class="menu list-group-item" href="/categories/#{{ category[0] }}">{{ category[0] | capitalize | replace: '_', ' ' }} <span class="badge">{{ category[1] | size }}</span></a>
+        {% endfor %}
+        </div>
+      </div>
+      <div class="visible-xs col-xs-12">
+          <a class="meta" href="/categories/"><h4>Categories</h4></a>
+      </div>
     </div>
-    {% endfor %}
     <!-- Pagination links -->
     {% if paginator.total_pages > 1 %}
-    <ul class="pull-right pagination">
+    <div class="row">
+    <div class="col-md-4 col-md-offset-7 col-sm-5 col-sm-offset-6 col-xs-10 col-xs-offset-2">
+    <ul class="pagination">
       {% if paginator.previous_page %}
-        <li><a href="{{ paginator.previous_page_path | replace: 'index.html', '' }}"><i class="glyphicon glyphicon-chevron-left"></i></a></li>
+        <li><a class="menu" href="{{ paginator.previous_page_path | replace: 'index.html', '' }}"><i class="glyphicon glyphicon-chevron-left"></i></a></li>
       {% else %}
         <li class="disabled"><span><i class="glyphicon glyphicon-chevron-left"></i></span></li>
       {% endif %}
@@ -34,21 +52,23 @@ title: Home
         {% endif %}
       {% for page in (left..right) %}
         {% if page == paginator.page %}
-          <li class="active"><span>{{ page }} <span class="sr-only">(current)</span></span>
+          <li class="active menu"><span>{{ page }} <span class="sr-only">(current)</span></span>
         {% elsif page == 1 %}
-          <li><a href="/">{{ page }}</a>
+          <li><a class="menu" href="/">{{ page }}</a>
         {% else %}
-          <li><a href="{{ site.paginate_path  | replace: ':num', page }}">{{ page }}</a>
+          <li><a class="menu" href="{{ site.paginate_path  | replace: ':num', page }}">{{ page }}</a>
         {% endif %}
         </li>
       {% endfor %}
 
       {% if paginator.next_page %}
-        <li><a href="{{ paginator.next_page_path }}"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+        <li><a class="menu" href="{{ paginator.next_page_path }}"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
       {% else %}
         <li class="disabled"><span><i class="glyphicon glyphicon-chevron-right"></i></span></li>
       {% endif %}
-      <li><a href="/categories/"><i class="glyphicon glyphicon-book"></i></a></li>
     </ul>
+    </div>
+    <div class="col-md-1 col-sm-1 hidden-xs"></div>
+    </div>
     {% endif %}
 </div>
