@@ -1,1 +1,93 @@
-.home{margin-bottom:2%;margin-left:2%;margin-right:2%}.page{margin-left:3%;margin-right:3%}.page-header{margin:0 3% 1% 2px;}.site{margin: 2% auto 2%;text-align:justify}.title{margin-top:0}.title a{color:#aaa;text-shadow:none}.header a.extra{color:#aaa;margin-left:1em}.meta{color:#aaa;font-weight:200}.footer{border-top:4px solid #eee;color:#666;font-size:80%;margin-left:1em;margin-right:2em;margin-top:10em;overflow:hidden}.footer .contact{float:left;margin-right:3em}.footer .contact a{color:#8085C1}.date,.pagination{font-weight:100}.title a:hover,.header a.extra:hover{color:#000}
+.home
+{
+    margin-bottom:2%;
+    margin-left:2%;
+    margin-right:2%
+}
+.page
+{
+    margin-left:3%;
+    margin-right:3%
+}
+.page-header
+{
+    margin:0 3% 1% 2px
+}
+.site
+{
+    margin: 2% auto 2%;
+    text-align:justify
+}
+.title
+{
+    margin-top:0
+}
+.title a
+{
+    color:#aaa;
+    font-size:130%;
+    text-shadow:none
+}
+.header a.extra
+{
+    color:#aaa;
+    margin-left:1em
+}
+.meta
+{
+    color:#aaa;
+    font-weight:200
+}
+.footer
+{
+    border-top:4px solid #eee;
+    color:#666;
+    font-size:80%;
+    margin-left:1em;
+    margin-right:2em;
+    margin-top:10em;
+    overflow:hidden
+}
+.footer .contact
+{
+    float:left;
+    margin-right:3em
+}
+.footer .contact a
+{
+    color:#8085C1
+}
+.date
+{
+    font-weight:100
+}
+.title a:hover,.header a.extra:hover
+{
+    color:#000
+}
+
+.menu {
+    font-weight:100;
+    background:#f5f5f5;
+}
+a.menu:hover{
+    background:#aaa;
+    color:#fff;
+}
+
+.pagination li a{
+    font-weight:100;
+    color:#000;
+}
+.pagination li a:hover,.pagination .active span:hover{
+    background:#aaa;
+    color:#fff;   
+    border-color:#bbb;
+}
+
+.pagination .active span{
+    background:#aaa;
+    border-color:#ddd;
+    font-weight:200;
+}
+
