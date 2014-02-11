@@ -33,9 +33,9 @@ title: Categories
 			{% endfor %}
 		</div>
 		<script>
-			$(function () {
-				$('#categories a:last').tab('show')
-			})
+		$(window).load(function() {
+			$('#categories a[href=\''+window.location.hash+'\']').tab('show')
+		});
 		</script>
 	</div>
 </div>

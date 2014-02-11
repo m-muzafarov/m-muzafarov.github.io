@@ -8,7 +8,7 @@ author_login: M_Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://brainstorage.me/M_Messiah
 date: 2014-02-07 15:00:00 +06:00
-categories: network, unix
+categories: network unix
 tags: []
 comments: true
 ---
