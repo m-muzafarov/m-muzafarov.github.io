@@ -1,21 +1,21 @@
-.home
+body
+{
+    padding: 2% 0% 2% 0%;
+    text-align: justify;
+}
+main
 {
     margin-bottom:2%;
     margin-left:2%;
     margin-right:2%
 }
-.page
-{
-    margin-left:3%;
-    margin-right:3%
-}
 .page-header
 {
-    margin:0 3% 1% 2px
+    margin: 0 3% 1% 2px;
 }
-.site
+article
 {
-    margin: 2% auto 2%;
+    margin: 0% 2% auto 2%;
     text-align:justify
 }
 .title
@@ -38,7 +38,7 @@
     color:#aaa;
     font-weight:200
 }
-.footer
+footer
 {
     border-top:4px solid #eee;
     color:#666;
@@ -48,12 +48,12 @@
     margin-top:10em;
     overflow:hidden
 }
-.footer .contact
+footer address
 {
     float:left;
     margin-right:3em
 }
-.footer .contact a
+footer address a
 {
     color:#8085C1
 }

@@ -2,13 +2,13 @@
 layout: default
 ---
 <h2>{{ page.title }}       <small class="meta">{{ page.date | date_to_string }}                 [<a class="meta pagination" href="/categories/#{{ page.categories[0] }}">{{ page.categories | array_to_sentence_string }}</a>]</small></h2>
-<div class="page">
-    <div class="post">
+<article>
+    <article>
     {{ content }}
-    </div>
+    </article>
 
     {% if page.comments %}
-    <div id="disqus_thread">
+    <aside id="disqus_thread">
      <script type="text/javascript">
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'm-messiah'; // required: replace example with your forum shortname
@@ -21,6 +21,6 @@ layout: default
                 tags && tags.appendChild(dsq);
             })();
         </script>
-    </div>
+    </aside>
     {% endif %}
-</div>
+</article>
