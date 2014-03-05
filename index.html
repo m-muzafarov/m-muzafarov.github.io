@@ -45,10 +45,11 @@ title: Home
         {% else %}
           {% assign left = 1 %}
         {% endif %}
-        {% if paginator.total_pages  > (paginator.page | plus: 3) %}
-          {% assign right = paginator.page | plus: 3 %}
-        {% else %}
+        {% assign rightborder = paginator.total_pages | minus: 3 %}
+        {% if paginator.page > rightborder %}
           {% assign right = paginator.total_pages %}
+        {% else %}
+          {% assign right = paginator.page | plus: 3 %}
         {% endif %}
       {% for page in (left..right) %}
         {% if page == paginator.page %}
