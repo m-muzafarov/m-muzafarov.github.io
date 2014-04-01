@@ -15,13 +15,12 @@ comments: true
 Задачка из курса Распределённых Объектных технологий.
 # Простой чат на протоколе STOMP (интерфейс для JMS) #
 ## Требования: ##
-<ol>
-	<li>Необходим запущенный JMS с поддержкой STOMP.</li>
-	<li>Необходим python2.7 (из-за библиотеки stomper)</li>
-	<li>Необходимы библиотеки stomper и twisted для python
-{% highlight bash %}pip install stomper twisted{% endhighlight %}
-</li>
-</ol>
+
+1.  Необходим запущенный JMS с поддержкой STOMP.
+2.  Необходим python2.7 (из-за библиотеки stomper)
+3.  Необходимы библиотеки stomper и twisted для python
+    {% highlight bash %}pip install stomper twisted{% endhighlight %}
+
 
 <!--more-->
 ## Запуск: ##
@@ -30,13 +29,13 @@ comments: true
 
 Соединяется на localhost:61613 (задаётся константами HOST, PORT).
 ## Доступные комманды: ##
-<ul>
-	<li>/CONNECT - сообщение о появлении пользователя.</li>
-	<li>/HISTORY - показ всей истории сессии.</li>
-	<li>/ME <status> - сообщение вроде статуса.</li>
-	<li>/QUIT - выход.</li>
-</ul>
-**chat.py**
+
++   /CONNECT - сообщение о появлении пользователя.
++	/HISTORY - показ всей истории сессии.
++	/ME <status> - сообщение вроде статуса.
++	/QUIT - выход.
+
+### chat.py ###
 {% highlight python %}#!/usr/bin/python
 # -*- coding: utf-8 -*-
 __author__ = 'Messiah'

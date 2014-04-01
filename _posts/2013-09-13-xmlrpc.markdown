@@ -14,13 +14,13 @@ comments: true
 ---
 Задачка из курса Распределённых Объектных технологий.
 
-Клиент принимает a,b,c коэффициенты квадратного уравнения ax&sup2;+bx+c=0 и вызывает функции сервера, для нахождения корней x1 и x2.
+Клиент принимает a,b,c коэффициенты квадратного уравнения ax&sup2;+bx+c=0 и вызывает функции сервера, для нахождения корней x<sub>1</sub> и x<sub>2</sub>.
 
 Сервер предоставляет XMLRPC метод решения.
 
 <!--more-->
 
-**Сервер:**
+## Сервер ##
 {% highlight python %}#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 import math
@@ -62,7 +62,7 @@ if __name__ == "__main__":
     # регистрируем функцию решателя в XMLRPC сервере
     server.register_function(S.solve, "solve")
     server.serve_forever(){% endhighlight %}
-**Клиент:**
+## Клиент ##
 {% highlight python %}#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 

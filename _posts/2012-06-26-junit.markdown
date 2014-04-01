@@ -58,7 +58,8 @@ assertEquals(z1, v.getZ());
 
 Для работы с JUnit необходимо добавить junit в качестве библиотеки. Это можно сделать воспользовавшись подсказкой Eclipse у строки импорта.
 
-Либо это можно сделать вручную через меню **Project - Properties - Java Build Path - Libraries - Add External JARs**, выбрать файл <ПутьДоEclipse>*** \plugins\org.junit*\junit.jar ***
+Либо это можно сделать вручную через меню __Project - Properties - Java Build Path - Libraries - Add External JARs__, выбрать файл <ПутьДоEclipse>___ \plugins\org.junit*\junit.jar ___
+
 # Как правильно писать тесты #
 Вот самые простые правила, которыми нужно руководствоваться:
 
