@@ -91,3 +91,12 @@ a.menu:hover{
     font-weight:200;
 }
 
+.bs_logo {
+    background-image: url(http://brainstorage.me/assets/logo_2x.png);
+    background-size: 140px 145px;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    display: block;
+    width: 150px;
+    height: 35px;
+}
