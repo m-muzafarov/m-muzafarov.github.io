@@ -12,7 +12,7 @@ categories: CTF
 comments: true
 ---
 
-<img width="700" src="http://school.uralctf.ru/static/header.png" alt="image"/>
+<img width="700" src="http://qctf.ru/static/school-2013.png" alt="image"/>
 
 6 апреля в Екатеринбурге состоялся первый на Урале CTF для школьников. Напомню, что CTF (Capture The Flag) - соревнования по защите информации. 
 
