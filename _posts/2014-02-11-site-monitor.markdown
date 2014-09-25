@@ -25,11 +25,10 @@ comments: true
 {% highlight bash %}
 #!/bin/bash
 
-HIT=0
 while true; do
     sleep 60
-    curl -s http://classic.dzzzr.ru/e-burg/?section=anons | iconv -f cp1251 -t utf8 | grep "Нет запланированных игр" > /dev/null || ANONS=1
-    if [ $ANONS -gt 0 ]; then
+    curl -s http://classic.dzzzr.ru/e-burg/?section=anons | iconv -f cp1251 -t utf8 | grep "Нет запланированных игр" > /dev/null
+    if [ $? -gt 0 ]; then
         terminal-notifier -message "Anons appears" -title "DozoR anons" -open http://classic.dzzzr.ru/e-burg/?section=anons
         exit 0
     fi

@@ -8,8 +8,8 @@ title: Home
       <div class="col-xs-12 col-sm-9 col-md-10">
         {% for post in paginator.posts %}
         <article class="panel panel-default">
-    	    <section class="panel panel-heading"><div style="padding-bottom: 10px">
-    	      <span class="date">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a> <a href="/categories/#{{ post.categories[0] }}" class="meta pull-right">{{ post.categories | array_to_sentence_string }}</a></div>
+    	    <section class="panel-heading">
+    	      <span class="date">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a> <a href="/categories/#{{ post.categories[0] }}" class="meta pull-right">{{ post.categories | array_to_sentence_string }}</a>
     	    </section>
         	<section class="panel-body">{{ post.excerpt }}
         	<a href="{{ post.url }}" class="meta pull-right">Read more...</a><br>
