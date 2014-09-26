@@ -13,22 +13,38 @@ title: Categories
 			{% endfor %}
 		</ul>
 		<div class="tab-content">
-			<div class="tab-pane fade in active" id="all">
-			<ul>
+			<div class="tab-pane fade in active categories" id="all">
+				<div class="row">
+					<div class="col-xs-5 col-sx-offset-1 text-right date">&nbsp;</div>
+					<div class="col-xs-5 text-left list-cell">&nbsp;</div>
+				</div>
 				{% for post in site.posts %}
-				<li>
-					<span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a>
-				</li>
+				<div class="row">
+					<div class="col-xs-5 col-sx-offset-1 text-right date">{{ post.date | date_to_string }}</div>
+					<div class="col-xs-5 text-left list-cell"><a href="{{ post.url }}">{{ post.title }}</a></div>
+				</div>
 				{% endfor %}
-			</ul>
+				<div class="row">
+					<div class="col-xs-5 col-sx-offset-1 text-right date">&nbsp;</div>
+					<div class="col-xs-5 text-left list-cell">&nbsp;</div>
+				</div>
 			</div>
 			{% for cat in site.categories %}
-			<div class="tab-pane fade" id="{{ cat[0] }}">
-			<ul>
+			<div class="tab-pane fade categories" id="{{ cat[0] }}">
+				<div class="row">
+					<div class="col-xs-5 col-sx-offset-1 text-right date">&nbsp;</div>
+					<div class="col-xs-5 text-left list-cell">&nbsp;</div>
+				</div>
 				{% for post in cat[1] %}
-					<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+				<div class="row">
+					<div class="col-xs-5 col-sx-offset-1 text-right date">{{ post.date | date_to_string }}</div>
+					<div class="col-xs-5 text-left list-cell"><a href="{{ post.url }}">{{ post.title }}</a></div>
+				</div>
 				{% endfor %}
-			</ul>
+				<div class="row">
+					<div class="col-xs-5 col-sx-offset-1 text-right date">&nbsp;</div>
+					<div class="col-xs-5 text-left list-cell">&nbsp;</div>
+				</div>
 			</div>
 			{% endfor %}
 		</div>

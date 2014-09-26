@@ -8,7 +8,7 @@ author_login: M_Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://brainstorage.me/M_Messiah
 date: 2014-02-28 16:00:00 +06:00
-categories: network master
+categories: network
 tags: []
 comments: true
 ---

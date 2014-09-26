@@ -21,7 +21,24 @@
               <div class="title col-md-1 col-sm-2 col-xs-6"><a href="http://decrypter.herokuapp.com" class="decrypter logo"></a></div>
               <div class="col-md-2 col-sm-3 col-xs-6"><a href="http://brainstorage.me/M_Messiah" class="brainstorage logo"></a></div>
           </header>
-          {{ content }}
+          <div class="row">
+            <div class="col-sm-9 col-md-10">
+              {{ content }}
+            </div>
+            <div class="col-sm-3 col-md-2 hidden-xs">
+              <nav>
+                <h4><a class="meta" href="/categories/">Categories</a></h4>
+                <div class="list-group">
+                {% for category in site.categories | sort "category[0]" %}
+                  <a class="menu list-group-item" href="/categories/#{{ category[0] }}">{{ category[0] | capitalize | replace: '_', ' ' }} <span class="badge">{{ category[1] | size }}</span></a>
+                {% endfor %}
+                </div>
+              </nav>
+              <nav class="visible-xs col-xs-12">
+                  <a class="meta" href="/categories/"><h4>Categories</h4></a>
+              </nav>
+              </div>
+            </div>
           <footer>
             <address>
                 <iframe src="http://ghbtns.com/github-btn.html?user=m-messiah&type=follow&count=true" height="30" width="168" frameborder="0" scrolling="0" style="width:168px; height: 30px;" allowTransparency="true"></iframe>

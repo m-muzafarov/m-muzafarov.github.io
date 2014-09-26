@@ -12,18 +12,27 @@ categories: Perl
 tags: []
 comments: true
 ---
-{% highlight perl %} package MyPack;
-$a = 1;
-#найти хэш с таким именем в пакете main можно так
- %main::
-#(и так можно до бесконечности :) )
-#например %main::main::main:: ...
- %MyPack::
-#$MyPack::a=1; так можно записать первые 2 строчки
-%main::MyPack::
- *$main::MyPack{'a'}{SCALAR}; // получение указателя на скаляр{% endhighlight %}
-#  #
-#  #
+{% highlight perl %}
+package MyPack;
+$a = 1; 
+# найти хэш с таким именем в пакете main можно так
+%main::func
+
+# и так можно до бесконечности :)
+# например
+%main::main::main::func
+
+%MyPack::func
+
+$MyPack::a=1; # так можно записать первые 2 строчки
+
+# например
+%main::MyPack::func
+
+ # получение указателя на скаляр:
+ *$main::MyPack{'a'}{SCALAR};
+ {% endhighlight %}
+
 # Подключение модуля #
 {% highlight perl %}use MyPack;{% endhighlight %}
 Чтобы выдавать в итоге выполнения модуля 1, необходимо в конце перлмодулей (то есть файлов *.pm) принято писать 1; Иначе может возникать ошибка типа модуль не загружен и.т.п.
@@ -31,11 +40,13 @@ $a = 1;
 Имена переменных лексической области видимости ограничиваются блоком.
 
 Если переменная на уровне файла, то видима до конца файла
-{% highlight perl %} $a=3;
- $a_mm='a';
+{% highlight perl %}
+$a=3;
+$a_mm='a';
 my ($a,@b) = (1,2,3);
 print "$a\n";
-print $main::a;{% endhighlight %}
+print $main::a;
+{% endhighlight %}
 Выведет:
 
 	1
