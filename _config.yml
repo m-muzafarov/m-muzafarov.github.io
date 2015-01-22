@@ -3,4 +3,4 @@ markdown: redcarpet
 highlighter: pygments
 excerpt_separator: <!--more-->
 paginate: 7
-baseurl: /blog
+paginate_path: "/blog/page:num/"

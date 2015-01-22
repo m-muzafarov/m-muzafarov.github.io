@@ -113,7 +113,7 @@ a.menu:hover{
 }
 
 .site_logo {
-    background-image: url(/blog/img/logo.png);
+    background-image: url(/img/logo.png);
     background-size: 230px 45px;
     width: 230px;
     height: 45px;
@@ -136,7 +136,7 @@ a.menu:hover{
 }
 
 .google-plus {
-    background-image: url(/blog/img/googleplus.png);
+    background-image: url(/img/googleplus.png);
     background-size: 26px 26px;
     width: 30px;
     height: 30px;

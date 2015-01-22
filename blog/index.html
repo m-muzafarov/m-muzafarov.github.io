@@ -7,7 +7,7 @@ title: Home
   {% for post in paginator.posts %}
   <article class="panel panel-default">
     <section class="panel-heading">
-      <span class="date">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a> <span class="pull-right">{% for cat in post.categories %}<a href="/blog/categories/#{{ cat }}" class="meta">{{ cat }}</a> {% endfor %}</span>
+      <span class="date">{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a> <span class="pull-right">{% for cat in post.categories %}<a href="/categories/#{{ cat }}" class="meta">{{ cat }}</a> {% endfor %}</span>
     </section>
   	<section class="panel-body">
       {{ post.excerpt }}
