@@ -29,4 +29,25 @@ html,body {
 
 .name {
     font-size: 400%;
+    font-weight: 400;
+    background-color: #808080;
+    -webkit-background-clip: text;
+       -moz-background-clip: text;
+            background-clip: text;
+    color: transparent;
+    text-shadow: rgba(255,255,255,0.6) 0px 3px 3px;
+}
+
+h4 {
+    font-weight: 100;
+}
+
+a {
+    color: #888;
+}
+
+a:hover, a:focus {
+    color: #444;
+    font-weight: 300;
+    text-decoration: none;
 }
