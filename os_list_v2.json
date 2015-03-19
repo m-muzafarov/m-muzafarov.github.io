@@ -1,6 +1,39 @@
 {
     "os_list": [
         {
+            "icon": "http://ructf.org/static/img/ructf_logo.png",
+            "feature_level": 35120124,
+            "marketing_info": "http://192.168.8.18:8000/raspbian/marketing.tar",
+            "nominal_size": 2760,
+            "os_info": "http://192.168.8.18:8000/raspbian/os.json",
+            "os_name": "Raspbian",
+            "partition_setup": "http://192.168.8.18:8000/raspbian/partition_setup.sh",
+            "partitions_info": "http://192.168.8.18:8000/raspbian/partitions.json",
+            "release_date": "2015-03-19",
+            "supported_hex_revisions": "2,3,4,5,6,7,8,9,d,e,f,10,11,12,14,19",
+            "tarballs": [
+                "http://192.168.8.18:8000/raspbian/boot.tar.xz",
+                "http://192.168.8.18:8000/raspbian/root.tar.xz"
+            ]
+        },
+        {
+            "description": "RuCTF",
+            "feature_level": 35120124,
+            "icon": "http://ructf.org/static/img/ructf_logo.png",
+            "marketing_info": "http://192.168.8.18:8000/raspbian/marketing.tar",
+            "nominal_size": 2760,
+            "os_info": "http://192.168.8.18:8000/raspbian/os.json",
+            "os_name": "RuCTF",
+            "partition_setup": "http://192.168.8.18:8000/raspbian/partition_setup.sh",
+            "partitions_info": "http://192.168.8.18:8000/raspbian/partitions.json",
+            "release_date": "2015-02-09",
+            "supported_hex_revisions": "2,3,4,5,6,7,8,9,d,e,f,10,11,12,14,19",
+            "tarballs": [
+                "http://192.168.8.18:8000/raspbian/boot.tar.xz",
+                "http://192.168.8.18:8000/raspbian/root.tar.xz"
+            ]
+        },
+        {
             "description": "OpenELEC is a fast and userfriendly Kodi Entertainment Center distribution.",
             "feature_level": 35120124,
             "icon": "http://downloads.raspberrypi.org/openelec_pi1/OpenELEC_Pi1.png",
@@ -15,131 +48,6 @@
             "tarballs": [
                 "http://downloads.raspberrypi.org/openelec_pi1/OpenELEC_RPi_System.tar.xz",
                 "http://downloads.raspberrypi.org/openelec_pi1/OpenELEC_RPi_Storage.tar.xz"
-            ]
-        },
-        {
-            "description": "OpenELEC is a fast and userfriendly Kodi Entertainment Center distribution.",
-            "feature_level": 0,
-            "icon": "http://downloads.raspberrypi.org/openelec_pi2/OpenELEC_Pi2.png",
-            "marketing_info": "http://downloads.raspberrypi.org/openelec_pi2/marketing.tar",
-            "nominal_size": 1024,
-            "os_info": "http://downloads.raspberrypi.org/openelec_pi2/os.json",
-            "os_name": "OpenELEC_Pi2",
-            "partition_setup": "http://downloads.raspberrypi.org/openelec_pi2/partition_setup.sh",
-            "partitions_info": "http://downloads.raspberrypi.org/openelec_pi2/partitions.json",
-            "release_date": "2015-02-09",
-            "supported_hex_revisions": "1040,1041",
-            "tarballs": [
-                "http://downloads.raspberrypi.org/openelec_pi2/OpenELEC_RPi2_System.tar.xz",
-                "http://downloads.raspberrypi.org/openelec_pi2/OpenELEC_RPi2_Storage.tar.xz"
-            ]
-        },
-        {
-            "description": "An Arch Linux port for ARM devices",
-            "feature_level": 33678332,
-            "icon": "http://downloads.raspberrypi.org/arch/Arch.png",
-            "marketing_info": "http://downloads.raspberrypi.org/arch/marketing.tar",
-            "nominal_size": 1600,
-            "os_info": "http://downloads.raspberrypi.org/arch/os.json",
-            "os_name": "Arch",
-            "partition_setup": "http://downloads.raspberrypi.org/arch/partition_setup.sh",
-            "partitions_info": "http://downloads.raspberrypi.org/arch/partitions.json",
-            "release_date": "2014-10-01",
-            "tarballs": [
-                "http://downloads.raspberrypi.org/arch/boot.tar.xz",
-                "http://downloads.raspberrypi.org/arch/root.tar.xz"
-            ]
-        },
-        {
-            "description": "XBMC media center distribution for Raspberry Pi",
-            "feature_level": 33678332,
-            "icon": "http://downloads.raspberrypi.org/raspbmc/RaspBMC.png",
-            "marketing_info": "http://downloads.raspberrypi.org/raspbmc/marketing.tar",
-            "nominal_size": 1580,
-            "os_info": "http://downloads.raspberrypi.org/raspbmc/os.json",
-            "os_name": "RaspBMC",
-            "partition_setup": "http://downloads.raspberrypi.org/raspbmc/partition_setup.sh",
-            "partitions_info": "http://downloads.raspberrypi.org/raspbmc/partitions.json",
-            "release_date": "2014-11-24",
-            "tarballs": [
-                "http://downloads.raspberrypi.org/raspbmc/boot.tar.xz",
-                "http://downloads.raspberrypi.org/raspbmc/root.tar.xz"
-            ]
-        },
-        {
-            "description": "Pidora 2014 is a Fedora Remix optimized for the Raspberry Pi",
-            "feature_level": 123900,
-            "icon": "http://downloads.raspberrypi.org/pidora/Pidora.png",
-            "marketing_info": "http://downloads.raspberrypi.org/pidora/marketing.tar",
-            "nominal_size": 2250,
-            "os_info": "http://downloads.raspberrypi.org/pidora/os.json",
-            "os_name": "Pidora",
-            "partition_setup": "http://downloads.raspberrypi.org/pidora/partition_setup.sh",
-            "partitions_info": "http://downloads.raspberrypi.org/pidora/partitions.json",
-            "release_date": "2014-07-03",
-            "tarballs": [
-                "http://downloads.raspberrypi.org/pidora/boot.tar.xz",
-                "http://downloads.raspberrypi.org/pidora/rootfs.tar.xz"
-            ]
-        },
-        {
-            "feature_level": 35120124,
-            "flavours": [
-                {
-                    "description": "A version of Raspbian that boots straight into Scratch",
-                    "feature_level": 35120124,
-                    "icon": "http://downloads.raspberrypi.org/raspbian/Raspbian_-_Boot_to_Scratch.png",
-                    "name": "Raspbian - Boot to Scratch",
-                    "supported_hex_revisions": "2,3,4,5,6,7,8,9,d,e,f,10,11,12,14,19,1040,1041"
-                },
-                {
-                    "description": "A Debian wheezy port, optimised for the Raspberry Pi",
-                    "feature_level": 35120124,
-                    "icon": "http://downloads.raspberrypi.org/raspbian/Raspbian.png",
-                    "name": "Raspbian",
-                    "supported_hex_revisions": "2,3,4,5,6,7,8,9,d,e,f,10,11,12,14,19,1040,1041"
-                }
-            ],
-            "icon": "http://downloads.raspberrypi.org/raspbian/Raspbian.png",
-            "marketing_info": "http://downloads.raspberrypi.org/raspbian/marketing.tar",
-            "nominal_size": 2760,
-            "os_info": "http://downloads.raspberrypi.org/raspbian/os.json",
-            "os_name": "Raspbian",
-            "partition_setup": "http://downloads.raspberrypi.org/raspbian/partition_setup.sh",
-            "partitions_info": "http://downloads.raspberrypi.org/raspbian/partitions.json",
-            "release_date": "2015-02-16",
-            "supported_hex_revisions": "2,3,4,5,6,7,8,9,d,e,f,10,11,12,14,19,1040,1041",
-            "tarballs": [
-                "http://downloads.raspberrypi.org/raspbian/boot.tar.xz",
-                "http://downloads.raspberrypi.org/raspbian/root.tar.xz"
-            ]
-        },
-        {
-            "description": "Adds an empty 512MB ext4 format partition to the partition layout.",
-            "icon": "http://downloads.raspberrypi.org/data_partition/Data_Partition.png",
-            "nominal_size": 512,
-            "os_info": "http://downloads.raspberrypi.org/data_partition/os.json",
-            "os_name": "Data Partition",
-            "partitions_info": "http://downloads.raspberrypi.org/data_partition/partitions.json",
-            "tarballs": [
-                "http://downloads.raspberrypi.org/data_partition/data.tar.xz"
-            ]
-        },
-        {
-            "description": "RISC OS is a very fast and compact system",
-            "feature_level": 35120124,
-            "icon": "http://downloads.raspberrypi.org/riscos_1760/RISC_OS.png",
-            "marketing_info": "http://downloads.raspberrypi.org/riscos_1760/marketing.tar",
-            "nominal_size": 1957,
-            "os_info": "http://downloads.raspberrypi.org/riscos_1760/os.json",
-            "os_name": "RISC OS",
-            "partitions_info": "http://downloads.raspberrypi.org/riscos_1760/partitions.json",
-            "release_date": "2015-02-17",
-            "riscos_offset": 1760,
-            "supported_hex_revisions": "2,3,4,5,6,7,8,9,d,e,f,10,11,12,14,19,1040,1041",
-            "tarballs": [
-                "http://downloads.raspberrypi.org/riscos_1760/RISC_OS_Boot.tar.xz",
-                "http://downloads.raspberrypi.org/riscos_1760/RISC_OS.xz"
             ]
         }
     ]
