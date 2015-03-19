@@ -5,7 +5,7 @@
             "feature_level": 35120124,
             "icon": "http://ructf.org/static/img/ructf_logo.png",
             "marketing_info": "http://192.168.8.18:8000/raspbian/marketing.tar",
-            "nominal_size": 2760,
+            "nominal_size": 7317,
             "os_info": "http://192.168.8.18:8000/raspbian/os.json",
             "os_name": "RuCTF",
             "partition_setup": "http://192.168.8.18:8000/raspbian/partition_setup.sh",
