@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blocks breaker</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <canvas id="canvas" width="450" height="450"></canvas>
+        <script>
+            $(document).ready(function(){
+                //Canvas
+                var canvas = $("#canvas")[0];
+                var ctx = canvas.getContext("2d");
+                var w = $("#canvas").width();
+                var h = $("#canvas").height();
+                // Cохраняем ширину ячейки в переменную для легкого управления
+                var cw = 10;
+                var ball;
+                var d = "stop";
+                var score;
+                var lives;
+                var pad;
+                var blocks;
+
+
+                function init() {
+                    pad =  {x:200, y:400, speed:4, l:70};
+                    create_blocks();
+                    //Мяч
+                    create_ball();
+                    //теперь выведем очки
+                    score = 0;
+                    lives = 5;
+                    if(typeof game_loop != "undefined") clearInterval(game_loop);
+                    game_loop = setInterval(paint, 1);
+                }
+                init();
+
+                function create_blocks() {
+                    blocks = [];
+                    for (var i = 0; i < 500; i++) {
+                        block = { x: Math.round(Math.random()*400 + 20), y: Math.round(Math.random()*200)};
+                        blocks.push(block);
+                    }
+                }
+
+                function create_ball() {
+                    ball = { x: Math.round(Math.random()*450), y: Math.round(Math.random()*150 + 200), angle:Math.round(Math.random()*100 + 40), speed: 2, r:7};
+                }
+
+                function paint() {
+                    if (lives > 0) {
+                        paint_blocks();
+                        move_pad();
+                        paint_pad();
+                        move_ball();
+
+                        //Выводим счет
+                        var score_text = "Жизни: " + lives + " Очки: " + score;
+                        ctx.fillStyle = "#ffffff";
+                        ctx.fillRect(0, h-15, 200, 15);
+                        ctx.fillStyle = "#6b0f1a";
+                        ctx.fillText(score_text, 5, h-5);
+                    }
+                }
+
+                function paint_blocks() {
+                    ctx.fillStyle = "#466995";
+                    for (var i = 0; i < blocks.length; i++)
+                        ctx.fillRect(blocks[i].x, blocks[i].y, cw, cw);
+
+                }
+
+                function paint_pad() {
+                    ctx.fillStyle = "#ffffff";
+                    ctx.fillRect(0, pad.y - 5, w, cw + 10);
+                    ctx.fillStyle = "#6b0f1a";
+                    ctx.fillRect(pad.x, pad.y, pad.l, cw);
+                    ctx.strokeStyle = "gray";
+                    ctx.strokeRect(pad.x, pad.y, pad.l, cw);
+                }
+
+                function move_pad() {
+                    if(d == "right") {
+                        pad.x += pad.speed;
+                    } else if(d == "left") {
+                        pad.x -= pad.speed;
+                    }
+                }
+
+                function move_ball() {
+                    if (ball.x > w - ball.r || ball.x < ball.r)
+                        ball.angle = 180 - ball.angle;
+                    if (ball.y > h - ball.r || ball.y < ball.r)
+                        ball.angle = 360 - ball.angle;
+
+                    if (ball.y > pad.y) {
+                        if (ball.x > pad.x && ball.x < pad.x + pad.l)
+                            ball.angle = 360 - ball.angle;
+                        else {
+                            lives -= 1;
+                            clear_ball();
+                            if (lives > 0) {
+                                alert("Жизней: " + lives);
+                                create_ball();
+                                return;
+                            }
+                            else {
+                                alert("Игра окончена. Ваш счет: " + score);
+                                return;
+                            }
+                        }
+                    }
+
+                    for (var i=0; i< blocks.length; i++) {
+                        if (ball.x > blocks[i].x - ball.r && ball.x < blocks[i].x + cw + ball.r && ball.y > blocks[i].y - ball.r && ball.y < blocks[i].y + cw + ball.r) {
+                            if (ball.y > blocks[i].y + cw || ball.y < blocks[i].y)
+                                ball.angle = 360 - ball.angle;
+                            else
+                                ball.angle = 180 - ball.angle;
+                            score += 1
+                            ctx.fillStyle = "#ffffff";
+                            ctx.fillRect(blocks[i].x, blocks[i].y, cw, cw);
+                            blocks.splice(i, 1);
+                            break;
+                        }
+                    }
+                    clear_ball();
+                    ball.x += Math.cos(ball.angle * Math.PI / 180) * ball.speed;
+                    ball.y += Math.sin(ball.angle * Math.PI / 180) * ball.speed;
+                    paint_ball();
+
+                }
+
+                function clear_ball() {
+                    ctx.beginPath();
+                    ctx.arc(ball.x, ball.y, ball.r + 1, 0, 2*Math.PI, false);
+                    ctx.fillStyle = "#ffffff";
+                    ctx.fill();
+                }
+                function paint_ball() {
+                    ctx.beginPath();
+                    ctx.arc(ball.x, ball.y, ball.r, 0, 2*Math.PI, false);
+                    ctx.fillStyle = "#797D81";
+                    ctx.fill();
+                }
+
+
+                $(document).keydown(function(e){
+                    var key = e.which;
+                    if(key == "37") d = "left";
+                    else if(key == "39") d = "right";
+                })
+                $(document).keyup(function(e){d = "stop";})
+
+            })
+        </script
+    </body>
+</html>
