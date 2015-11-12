@@ -6,7 +6,7 @@ title: Модульное тестирование
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://brainstorage.me/M_Messiah
+author_url: http://m-messiah.ru
 date: 2012-06-26 21:01:39.000000000 +06:00
 categories: Java
 tags: []
@@ -42,7 +42,6 @@ for (int i=0; i<friendsCount; i++)
 message += friend[i] + " ";
 return message; -4, -2, -4, -6, 8);
 checkMul(0, -100, 200, -12, 0, 1200, -2400);
- ...
 }
 // Вспомогательный метод. Служит для того, чтобы добавлять новые тестовые случаи было легко.
 private void checkMul(double x0, double y0, double z0, double factor, double x1, double y1, double z1) {
@@ -51,7 +50,8 @@ assertEquals(x1, v.getX());
 assertEquals(y1, v.getY());
 assertEquals(z1, v.getZ());
 }
-}{% endhighlight %}
+}
+{% endhighlight %}
 &nbsp;
 
 Запускать тесты можно прямо из среды разработки Eclipse. Для этого в окне Package Explorer&nbsp;нужно нажать правой кнопкой на файле с тестом и выбрать **'Run As -> JUnit Test'**
