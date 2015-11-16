@@ -1,35 +1,42 @@
 html,body {
     background-color: #fafafa !important;
     color: #555;
-    font-weight: 100;
+    font-weight: 200;
     height: 100%;
     width: 100%;
     border: 0 !important;
 }
 
-.mainpage {
-    height: 100vh;
+.page {
+    height: 110vh;
     width: 100%;
     margin: 0;
+    padding: 3vh 0;
+}
+
+.page2 {
+    background-color: #fff;
+}
+
+.page2 li {
+    padding-top: 1rem;
+}
+
+.twitter-embed {
+    max-height: 100vh !important;
 }
 
 .header {
     text-align: center;
-    height: 40vh;
-    line-height: 40vh;
-}
-
-.mainpanel {
-    margin: 3% 0;
-}
-
-.mainpanel-left {
-    border-right: 1px dashed #bbb;
+    height: 100vh;
+    line-height: 100vh;
 }
 
 .name {
-    font-size: 400%;
+    font-size: 7rem;
     font-weight: 400;
+    top:-3vh;
+    position:relative;
     background-color: #808080;
     -webkit-background-clip: text;
        -moz-background-clip: text;
@@ -38,9 +45,7 @@ html,body {
     text-shadow: rgba(255,255,255,0.6) 0px 3px 3px;
 }
 
-h4 {
-    font-weight: 100;
-}
+
 
 a {
     color: #777;
@@ -48,14 +53,6 @@ a {
 
 a:hover, a:focus {
     color: #333;
-    font-weight: 300;
+    font-weight: 400;
     text-decoration: none;
-}
-
-.text-panel {
-    max-width: 350px;
-}
-
-.text-panel > li {
-    margin-top: 1rem;
 }
