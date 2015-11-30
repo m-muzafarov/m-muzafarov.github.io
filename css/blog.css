@@ -19,6 +19,7 @@ main {
 }
 a {
     color:#444;
+    font-weight: 400;
 }
 a:hover {
     color:#777;
