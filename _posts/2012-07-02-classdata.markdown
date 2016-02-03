@@ -14,7 +14,7 @@ tags: []
 comments: true
 ---
 
-{% highlight cpp %}
+```cpp
 #include <iostream>
 using namespace std;
 class Date {
@@ -47,7 +47,7 @@ class Date {
 		int operator ==(Date Y) { return CompareDate(*this,Y);}
 		Date& operator +(int x) {this->day=(this->day+x)%30; return *this;}
 		};
-		
+
 int main() {
 	Date dt,dr;
 	Date A[3];
@@ -58,4 +58,6 @@ int main() {
 	dt.InputDate();
 	if (dt==dr) cout<<"\n Happy Birthday! \n"; else cout<<"\n Please wait \n";
 	return 0;
-}{% endhighlight %}
+}
+```
+

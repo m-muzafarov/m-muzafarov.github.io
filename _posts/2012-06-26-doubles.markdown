@@ -13,7 +13,8 @@ categories: Perl
 tags: []
 comments: true
 ---
-{% highlight perl %}
+
+```perl
 #!/usr/bin/perl -w
 $_="hello woooroold";
 /(?:
@@ -22,4 +23,5 @@ $_="hello woooroold";
  )*
  (?{ print 0+$c})
 /x;
-{% endhighlight %}
+```
+

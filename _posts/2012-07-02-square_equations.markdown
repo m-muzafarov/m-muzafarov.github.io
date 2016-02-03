@@ -14,7 +14,7 @@ tags: []
 comments: true
 ---
 
-{% highlight cpp %}
+```cpp
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -47,4 +47,6 @@ int main() {
 		cin>>i;
 	} while (i==1);
 	return 0;
-}{% endhighlight %}
+}
+```
+

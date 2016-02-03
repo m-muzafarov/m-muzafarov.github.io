@@ -12,7 +12,8 @@ categories: Java
 tags: []
 comments: true
 ---
-{% highlight java %}
+
+```java
 import java.util.Iterator;
 import java.util.Vector;
 public class Queue <E> extends Vector<E> {
@@ -34,7 +35,9 @@ for (Iterator<Integer> i = q.iterator();i.hasNext();)
 {System.out.print(i.next()+" ");}
 System.out.println("\n"+q.toString());
 }
-}{% endhighlight %}
+}
+```
+
 
 
 Исходники доступны на [GitHub](https://github.com/m-muzafarov/java_course/blob/master/Queue.java)

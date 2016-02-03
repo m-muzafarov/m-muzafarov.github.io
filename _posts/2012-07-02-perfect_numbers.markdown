@@ -14,8 +14,7 @@ tags: []
 comments: true
 ---
 
-
-{% highlight cpp %}
+```cpp
 #include <iostream>
 #include <cmath>
 #include <conio.h>
@@ -48,4 +47,6 @@ int main() {
 	else
 		lab: cout<<"I Can`t find a number in this [1,"<<b<<"] range... Error. \n";
 	_getch();
-}{% endhighlight %}
+}
+```
+

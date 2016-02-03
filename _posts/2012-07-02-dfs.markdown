@@ -14,8 +14,7 @@ tags: []
 comments: true
 ---
 
-
-{% highlight cpp %}
+```cpp
 #include "depth.h"
 #include <iostream>
 void fdepth(apex *graf,int m, int v) {
@@ -56,4 +55,6 @@ void fdepth(apex *graf,int m, int v) {
 	cout<<endl;
 	delete [] seen_apex;
 	delete [] ifseen_apex;
-}{% endhighlight %}
+}
+```
+

@@ -11,8 +11,10 @@ categories: Perl
 tags: []
 comments: true
 ---
-{% highlight perl %}
+
+```perl
 $|=1;
 for ($i=0;$i<101;$i++) {print "[$i%]\a\r"; sleep 1;}
 print "Complete!\n\a\a\a";
-{% endhighlight %}
+```
+

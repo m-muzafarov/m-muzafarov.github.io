@@ -14,7 +14,7 @@ tags: []
 comments: true
 ---
 
-{% highlight cpp %}
+```cpp
 #include "graph.h"
 #include "queue.h"
 #include <iostream>
@@ -47,4 +47,6 @@ void fwidth (apex* graf, int m, int v) {
 	cout<<endl;
 	delete [] mpr;
 	delete [] mpv;
-}{% endhighlight %}
+}
+```
+

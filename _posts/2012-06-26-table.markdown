@@ -15,12 +15,14 @@ comments: true
 ---
 Создание таблицы SQL
 
-
-{% highlight sql %} CREATE TABLE abon(
+```sql
+ CREATE TABLE abon(
 nomer [INT] NOT NULL,
  [Количество оплаченных занятий] [tinyint] NOT NULL,
 DATA [DATE] NOT NULL,
 IDstudent [INT] NOT NULL REFERENCES students (IDStudent),
 IdTrener [tinyint] NOT NULL REFERENCES treners (IDTrener),
 CONSTRAINT [PK_abon] PRIMARY KEY (nomer)
- ){% endhighlight %}
+ )
+```
+

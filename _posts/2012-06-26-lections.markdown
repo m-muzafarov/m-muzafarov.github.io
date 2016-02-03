@@ -122,40 +122,71 @@ Sql Server использует для хранения баз данных на
 ## Клиенты: ##
 SQL Server Management Studio
 ## Команды: ##
-{% highlight sql %}Create Table table_name
+
+```sql
+Create Table table_name
 ( {
  |column_name AS computed_column_expression
 | ::=[CONSTRAINT constraint_name}
-| [{PRIMARY KEY &hellip;&hellip;&hellip;&hellip;..{% endhighlight %}
+| [{PRIMARY KEY &hellip;&hellip;&hellip;&hellip;..
+```
+
 ## ЯЗЫК SQL: ##
 Выбор
-{% highlight sql %}SELECT FROM
-WHERE{% endhighlight %}
+
+```sql
+SELECT FROM
+WHERE
+```
+
 &nbsp;
 ### Пример: ###
-{% highlight sql %}SELECT * FROM USP WHERE ID=38725{% endhighlight %}
+
+```sql
+SELECT * FROM USP WHERE ID=38725
+```
+
 LIKE &ndash; символьные поля CHAR NCHAR
 
 >Я не понимаю, куда она торопится. Капец. Какой смысл так рассказывать?
 
- 
+
 
 >Гомоморфный образ группы, в честь победы коммунизма, изоморфен фактор группе по ядру гомоморфизма!
 
 ### Обновление записей: ###
-{% highlight sql %}UPDATE { имя таблицы} SET {что модифицировать}
+
+```sql
+UPDATE { имя таблицы} SET {что модифицировать}
 {{[FROM набор таблиц источников][WHERE &hellip; .. }}
 --E.g.
-Update authors SET authors.au_fname = &lsquo;Annie&rsquo; WHERE au_fname = &lsquo;Anne&rsquo;{% endhighlight %}
+Update authors SET authors.au_fname = &lsquo;Annie&rsquo; WHERE au_fname = &lsquo;Anne&rsquo;
+```
+
 ### Удаление ###
-{% highlight sql %}DELETE [FROM] &hellip; [WHERE &hellip; ]{% endhighlight %}
+
+```sql
+DELETE [FROM] &hellip; [WHERE &hellip; ]
+```
+
 E.g. DELETE authors &ndash; очищает все строки
-{% highlight sql %}DELETE FROM authors WHERE au_lname =&rsquo;McBadden&rsquo;{% endhighlight %}
+
+```sql
+DELETE FROM authors WHERE au_lname =&rsquo;McBadden&rsquo;
+```
+
 Удалить всю таблицу &ndash; TRUNCATE
-{% highlight sql %}SELECT * FROM authors ORDER BY au_lname ASC, au_fname ASC{% endhighlight %}
+
+```sql
+SELECT * FROM authors ORDER BY au_lname ASC, au_fname ASC
+```
+
 (сортировка по имени и фамилии по возрастанию)
 
-{% highlight sql %}SELECT 1 &lsquo;qq&rsquo; &ndash; {% endhighlight %} вывод на экран
+```sql
+SELECT 1 &lsquo;qq&rsquo; &ndash;
+```
+ вывод на экран
 ### Соединения: ###
 INNER JOIN - выбор и объединение строк из 2-х таблиц основываясь на условии совпадения значений некоторых полей строк
 
@@ -178,17 +209,35 @@ DATEADD(datepart, number, date) &ndash; добавляет дату
 DATEDIFF(datepart,startdate,enddate) &ndash; разница в единицах datepart
 
 ### Создание временных таблиц: ###
-{% highlight sql %}#nametable {% endhighlight %}&ndash; локальная таблица временная. Исчезает с прекращением сеанса
 
-{% highlight sql %}##nametable {% endhighlight %}&ndash; глобальная временная таблица.
+```sql
+#nametable
+```
+&ndash; локальная таблица временная. Исчезает с прекращением сеанса
+
+```sql
+##nametable
+```
+&ndash; глобальная временная таблица.
 
 @ - переменные.
-{% highlight sql %}Declare @sql_stmnt varchar(50)
+
+```sql
+Declare @sql_stmnt varchar(50)
 Set @sql_stmnt = &lsquo;select * from people&rsquo;
-Exec(@sql_stmnt){% endhighlight %}
+Exec(@sql_stmnt)
+```
+
 ### Условия: ###
-{% highlight sql %}IF логика { } [ELSE { } ]{% endhighlight %}
-{% highlight sql %}WHILE bool { } [break] { } [continue]{% endhighlight %}
+
+```sql
+IF логика { } [ELSE { } ]
+```
+
+```sql
+WHILE bool { } [break] { } [continue]
+```
+
 Курсор &ndash; сформированный пользователем табличный объект, откуда можно читать построчно.
 
 DECLARE cursor_name CURSOR
@@ -267,16 +316,24 @@ Having нужное between ### and ###
 Триггер &ndash; процедуры, хранимые в БД. Вызываются автоматически.
 
 Пример
-{% highlight sql %}Create table my_table( a int NULL, b int NULL)
+
+```sql
+Create table my_table( a int NULL, b int NULL)
 Go
-ALTER TRIGGER my_trig ON my_table{% endhighlight %}
+ALTER TRIGGER my_trig ON my_table
+```
+
 Функции пользователя: скалярные и возвращающие таблицу.
-{% highlight sql %}Create function abcd (@trener varchar (50))
+
+```sql
+Create function abcd (@trener varchar (50))
 Returns table
 As
 Return (select treners.fam, vidsporta.namesp
 from treners inner join vidsporta on treners.vidsp=vidsporta.vidsp
-where treners.fam=@trener){% endhighlight %}
+where treners.fam=@trener)
+```
+
 ### Вызов функции: ###
 Select * from abcd(&lsquo;Филин&rsquo;)
 ### Фантомы ###

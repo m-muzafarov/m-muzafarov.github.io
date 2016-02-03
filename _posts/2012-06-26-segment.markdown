@@ -15,8 +15,8 @@ comments: true
 ---
 Листинг
 
-
-{% highlight java %} public class Segment {
+```java
+ public class Segment {
 private iVector m_start, m_end;
 public Segment(iVector start, iVector end) {
 m_start = start;
@@ -68,7 +68,9 @@ Segment seg = new Segment(start, end);
 System.out.println(seg.distanceTo(point));
 }
 }
-}{% endhighlight %}
+}
+```
+
 &nbsp;
 
 Исходники доступны на [GitHub](https://github.com/m-muzafarov/java_course/blob/master/Vectors/Segment.java)

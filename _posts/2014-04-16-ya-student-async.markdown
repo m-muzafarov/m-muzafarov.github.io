@@ -75,7 +75,7 @@ comments: true
 
 В Python с помощью yield. Можно вставить yield и будет круто. И появилиь методы yield.send() и .throw() позволяющие передать значение внутрь.
 
-{% highlight python %}
+```python
     def foo():
         a = yield "Give me first num"
         b = yield "Give me second num"
@@ -88,8 +88,8 @@ comments: true
     "Give me second num"
     >>>a.send(2)
     ("Result:", 3)
+```
 
-{% endhighlight %}
 
 ### Модель акторов ###
 

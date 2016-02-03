@@ -8,11 +8,14 @@ author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://brainstorage.me/M_Messiah
 date: 2012-08-14 10:38:23.000000000 +06:00
-categories:
-- Linux
+categories: linux
 tags: []
 comments: true
 ---
 
 Вывести результат выполнения программы или что-то своё, если программа cвалилась:
-{% highlight bash %}command 2> /dev/null || echo "fictive result"{% endhighlight %}
+
+```bash
+command 2> /dev/null || echo "fictive result"
+```
+
