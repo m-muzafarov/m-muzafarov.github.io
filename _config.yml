@@ -1,5 +1,5 @@
 name: m_messiah
-markdown: redcarpet
+markdown: kramdown
 excerpt_separator: <!--more-->
 paginate: 7
 paginate_path: "/blog/page:num/"
