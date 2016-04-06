@@ -8,7 +8,7 @@ author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://brainstorage.me/M_Messiah
 date: 2013-11-14 15:53:58.000000000 +06:00
-categories: Python
+categories: python
 tags: []
 comments: true
 ---
@@ -27,18 +27,28 @@ comments: true
 
 # 1. HTTP #
 Первое - самое популярное, поэтому начну с него. Для работы буду использовать отличную библиотеку [requests](www.python-requests.org/en/latest/). Она есть как в pip, так и в easy_install и вообще на гитхабе лежит, если что.
-{% highlight python %}r = requests.get("http://example.com/stat",
+
+```python
+r = requests.get("http://example.com/stat",
                  auth=('user', 'pass'))
-print r.status_code, r.text{% endhighlight %}
+print r.status_code, r.text
+```
+
 Или если нужны параметры:
-{% highlight python %}payload = {'key1': 'value1', 'key2': 'value2'}
+
+```python
+payload = {'key1': 'value1', 'key2': 'value2'}
 cookies = {'sessionid': '45647567568'}
 r = requests.get("http://httpbin.org/get",
-                 params=payload, cookies=cookies){% endhighlight %}
+                 params=payload, cookies=cookies)
+```
+
 То же с POST, просто нужно вызывать requests.post(...)
 # 2. SSH #
 Для SSH будет использоваться библиотека [paramiko](https://github.com/paramiko/paramiko/) (мне она просто понравилась лаконичностью запросов)
-{% highlight python %}import paramiko
+
+```python
+import paramiko
 
 client = paramiko.SSHClient()
 client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -48,10 +58,14 @@ client.connect(hostname=address, port=port, timeout=3,
 stdin, stdout, stderr = client.exec_command('ls')
 for line in stdout:
     print '... ' + line.strip('\n')
-client.close(){% endhighlight %}
+client.close()
+```
+
 # 3. SFTP #
 Тут же, пока умеем работать с SSH:
-{% highlight python %}transport = paramiko.Transport((address, port))
+
+```python
+transport = paramiko.Transport((address, port))
 transport.connect(username='user', password='password')
 sftp = paramiko.SFTPClient.from_transport(transport)
 dirlist = sftp.listdir('.')
@@ -60,10 +74,14 @@ sftp.open('Input/status', 'w').write('OK\n')
 status = sftp.file("Input/status").read()
 
 sftp.get("Input/status", "new_status.txt")
-sftp.put("new_status.txt", "STATUS"){% endhighlight %}
+sftp.put("new_status.txt", "STATUS")
+```
+
 # 4. SMTP #
 Воспользуемся библиотекой smtplib
-{% highlight python %}try:
+
+```python
+try:
     smtp = smtplib.SMTP(host="example.com", port=25,
                         timeout=3)
 
@@ -79,4 +97,6 @@ except smtplib.SMTPRecipientsRefused as e:
 except smtplib.SMTPException as e:
     result = "Cannot login: " + str(e)
 except Exception as e:
-    result = str(e){% endhighlight %}
+    result = str(e)
+```
+

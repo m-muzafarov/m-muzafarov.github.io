@@ -14,7 +14,9 @@ tags: []
 comments: true
 ---
 Создание и заполнение базы
-{% highlight sql %}USE [master]
+
+```sql
+USE [master]
 IF EXISTS (SELECT name FROM sys.DATABASES WHERE name = N'presents')
 DROP DATABASE [presents]
 GO
@@ -59,10 +61,10 @@ GO
 CREATE TRIGGER DATA
 ON Act
 FOR INSERT
-AS 
+AS
 BEGIN
 	SET nocount ON
-	IF 
+	IF
 	((SELECT Data_act FROM inserted) < (getdate()))
 	BEGIN
 		ROLLBACK
@@ -73,10 +75,10 @@ GO
 CREATE TRIGGER data_1
 ON Manager
 FOR INSERT
-AS 
+AS
 BEGIN
 	SET nocount ON
-	IF 
+	IF
 	((SELECT Data_manager FROM inserted) < (getdate()))
 	BEGIN
 		ROLLBACK
@@ -104,21 +106,21 @@ BEGIN
 	SET @s= (SELECT Tovar.Price_tovar FROM tovar,inserted WHERE inserted.ID_tovara=Tovar.ID_Tovara)
 	UPDATE Client
 	SET Summa_Client = Summa_client + @s
-	FROM client, inserted AS i 
-	WHERE i.ID_Client = Client.ID_Client 
+	FROM client, inserted AS i
+	WHERE i.ID_Client = Client.ID_Client
 	SELECT @a = Client.Summa_Client
-	FROM client, inserted AS i 
-	WHERE i.ID_Client = Client.ID_Client 
+	FROM client, inserted AS i
+	WHERE i.ID_Client = Client.ID_Client
 	--Прописать скидки
 	DECLARE @h tinyint
-	SET @h= CASE 
+	SET @h= CASE
 		WHEN (@a>10000) THEN 15
 		WHEN (@a>5000) THEN 10
 		WHEN (@a>2000) THEN 7
 		WHEN (@a>1000) THEN 5
 		ELSE 0
 	END
-	UPDATE Client SET Sale_Client = @h FROM client, inserted AS i WHERE i.ID_Client = Client.ID_Client 
+	UPDATE Client SET Sale_Client = @h FROM client, inserted AS i WHERE i.ID_Client = Client.ID_Client
 END
 GO
 INSERT INTO Category VALUES (1,'Светильники');
@@ -211,4 +213,6 @@ INSERT INTO Act VALUES (16,'2012/09/15',0,15,15,20, 5);
 INSERT INTO Act VALUES (17,'2012/09/15',0,15,15,20, 5);
 INSERT INTO Act VALUES (18,'2012/09/15',0,15,15,20, 5);
 INSERT INTO Act VALUES (19,'2012/09/15',0,15,15,20, 5);
-INSERT INTO Act VALUES (20,'2012/09/15',0,15,15,20, 5);{% endhighlight %}
+INSERT INTO Act VALUES (20,'2012/09/15',0,15,15,20, 5);
+```
+

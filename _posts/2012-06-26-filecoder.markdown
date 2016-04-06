@@ -16,8 +16,8 @@ comments: true
 
 Листинг
 
-
-{% highlight java %} import java.io.BufferedOutputStream;
+```java
+ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -62,5 +62,7 @@ os.close();
 ex.printStackTrace();
 }
 }
-}{% endhighlight %}
+}
+```
+
 Исходники доступны на [GitHub](https://github.com/m-muzafarov/java_course/blob/master/FileCoder.java)

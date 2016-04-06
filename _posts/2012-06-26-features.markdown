@@ -20,18 +20,24 @@ comments: true
 Существует модуль Socket, который позволяет получить низкоуровненвый доступ к сетевым протоколам.
 Чтобы так не углубляться придумали модуль LWP::Simple
 ## LWP::Simple ##
-{% highlight perl %}use LWP::Simple;
+
+```perl
+use LWP::Simple;
  $pg=get $ARGV[0];
  $fnm='index.html';
 open FD, ">$fnm" or die "Can`t open $fnm:$' ";
 print FD $pg;
-close FD or die "Can`t close";{% endhighlight %}
+close FD or die "Can`t close";
+```
+
 Отлично, теперь есть сохранятель страниц.
 
 А как сделать зеркало?
 
 Попробуем...
-{% highlight perl %} #!/usr/bin/perl -w
+
+```perl
+ #!/usr/bin/perl -w
 use LWP::Simple;
  $_=get $ARGV[0];
  $dirnm=$ARGV[0];
@@ -41,7 +47,9 @@ mkdir $dirnm;
 open FD, ">$dirnm/$fnm" or die "Can`t open $fnm:$' ";
  $_=~s/<a href="($ARGV[0])"/<a href="$dirnm"/g;
 print FD;
-close FD or die "Can`t close";{% endhighlight %}
+close FD or die "Can`t close";
+```
+
 но самих файлов по этим внутренним ссылкам нет.
 
 Тут было некоторое регулярное выражение, а потом вызов для каждой ссылки.
@@ -49,16 +57,26 @@ close FD or die "Can`t close";{% endhighlight %}
 Так и рекурсивный вызов самого скрипта, меняя аргумент.
 
 Самый короткий способ(но читерский и только для UNIX)
-{% highlight perl %}#!/usr/bin/perl -w
-system "wget -r $ARGV[0]";{% endhighlight %}
+
+```perl
+#!/usr/bin/perl -w
+system "wget -r $ARGV[0]";
+```
+
 ## HTML::Parse ##
-{% highlight perl %}#!/usr/bin/perl -w
+
+```perl
+#!/usr/bin/perl -w
 use LWP::Simple;
 use HTML::Parse;
-print parse_html(get ($ARGV[0]))->format;{% endhighlight %}
+print parse_html(get ($ARGV[0]))->format;
+```
+
 Выводит на экран отформатиррованный сайт.
 ## URI::URL ##
-{% highlight perl %} #!/usr/bin/perl -w
+
+```perl
+ #!/usr/bin/perl -w
 use LWP::Simple;
 use HTML::Parse;
 use HTML::Element;
@@ -70,13 +88,17 @@ for (@{ $parsed_html->extract_links( ) }) {
  $url = new URI::URL $link;
  $full_url = $url->abs($ARGV[0]);
 print "$full_url\n";
-}{% endhighlight %}
+}
+```
+
 # Математика #
 ## Задача на полиномы ##
 Пусть есть скриптик, который преобразовывает полином из неправильной записи (например: 2x2y2) в стандартную: 2*x^2*y^2
 
 Как будем хранить полином?
-{% highlight perl %} package Polynom;
+
+```perl
+ package Polynom;
 sub canon{
 my ($cl,$plnm)=@_;
  $plnm=~s/\*//g;
@@ -86,5 +108,7 @@ my %me=();
  $plnm=~s/(\w)(\d+)?/($1)x(defined ($2)?$2:1)/ge;
  $me{$plnm}=$k;
 return %me;}
-1;{% endhighlight %}
+1;
+```
+
 

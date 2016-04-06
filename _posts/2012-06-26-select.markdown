@@ -16,8 +16,8 @@ comments: true
 
 а также вид спорта и тренера, с суммами меньшими средней за октябрь
 
-
-{% highlight sql %} SELECT students.IDStudent, students.Фамилия, students.ВУЗ, students.Курс, VidSporta.NameSport AS 'Вид спорта', treners.Фамилия AS 'Тренер', abon.[Количество оплаченных занятий]*VidSporta.Stoimost AS 'Сумма'
+```sql
+ SELECT students.IDStudent, students.Фамилия, students.ВУЗ, students.Курс, VidSporta.NameSport AS 'Вид спорта', treners.Фамилия AS 'Тренер', abon.[Количество оплаченных занятий]*VidSporta.Stoimost AS 'Сумма'
 FROM VidSporta,treners,abon,students
 WHERE abon.IdTrener=treners.IDTrener AND treners.IDSporta=VidSporta.idsport
 AND abon.IDstudent=students.IDStudent AND
@@ -25,4 +25,6 @@ abon.[Количество оплаченных занятий]*VidSporta.Stoimo
  (SELECT AVG(abon.[Количество оплаченных занятий]*VidSporta.Stoimost)
 FROM VidSporta,treners,abon,students
 WHERE abon.IdTrener=treners.IDTrener AND treners.IDSporta=VidSporta.idsport
-AND MONTH(abon.DATA)=10 ){% endhighlight %}
+AND MONTH(abon.DATA)=10 )
+```
+

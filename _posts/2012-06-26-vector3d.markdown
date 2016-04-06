@@ -14,7 +14,8 @@ tags: []
 comments: true
 ---
 
-{% highlight java %}public final class Vector3D implements iVector {
+```java
+public final class Vector3D implements iVector {
         private Double m_x, m_y, m_z;
         public Vector3D() {
                 m_x = 0.0;
@@ -73,7 +74,9 @@ comments: true
         // Vector3D temp;
         // temp=a.sub(b);
         // temp.printV(); }
-}{% endhighlight %}
+}
+```
+
 
 
 Исходники доступны на [GitHub](https://github.com/m-muzafarov/java_course/blob/master/Vectors/Vector3D.java)

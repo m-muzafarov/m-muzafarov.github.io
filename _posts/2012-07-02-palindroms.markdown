@@ -15,7 +15,9 @@ categories: cpp
 tags: []
 comments: true
 ---
-{% highlight cpp %} // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+```cpp
+ // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  // ~~ Задача №14 ~~
  // ~~ По заданному числу М строится последовательность, ~~
@@ -67,4 +69,6 @@ cin>>m;
 cout<<revers(m)<<endl;
 cout<<"Kol-vo? ";
 cin>>k;
-if (palindrom(m,k)==true) cout<<"Palindrom byl \n"; else cout<<"Palindroma ne bylo \n";  }{% endhighlight %}
+if (palindrom(m,k)==true) cout<<"Palindrom byl \n"; else cout<<"Palindroma ne bylo \n";  }
+```
+

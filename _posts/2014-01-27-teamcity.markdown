@@ -8,7 +8,7 @@ author_login: M_Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://brainstorage.me/M_Messiah
 date: 2014-01-27 15:00:00 +06:00
-categories: Algorithms
+categories: algorithms
 tags: [msbuild,csharp,teamcity]
 comments: true
 ---
@@ -101,7 +101,7 @@ Command line parameters:
 +   MSBuildExtensionPack - директория dll-ек. ExtensionPack последней версии. [Взять можно здесь](http://msbuildextensionpack.codeplex.com/releases)
 +   Deploy.xml
 
-{% highlight xml %}
+```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <Project DefaultTargets="Default" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
@@ -129,9 +129,9 @@ Command line parameters:
             <ApplicationPath>/</ApplicationPath>
             <PhysicalPath>\\web\Files\example.com\FilesSys</PhysicalPath>
         </VirtualDirectory>
-        <HttpResponseHeaders Include="X-Server"> 
-            <Value>%(Servers.Identity)</Value> 
-        </HttpResponseHeaders> 
+        <HttpResponseHeaders Include="X-Server">
+            <Value>%(Servers.Identity)</Value>
+        </HttpResponseHeaders>
     </ItemGroup>
 
     <Import Project="$(ExtensionTasksPath)MSBuild.ExtensionPack.tasks"/>
@@ -142,7 +142,7 @@ Command line parameters:
     </Target>
 
     <Target Name="Single">
-    <Iis7AppPool TaskAction="Create" 
+    <Iis7AppPool TaskAction="Create"
         Name="%(WebProject.AppPool)"
         ManagedRuntimeVersion="v4.0"
         IdentityType="SpecificUser"
@@ -150,9 +150,9 @@ Command line parameters:
         PoolIdentity="$(Username)"
         IdentityPassword="$(Password)"
         Enable32BitAppOnWin64="True" <!-- Если приложение 32-х битное -->
-        Force="True" 
+        Force="True"
         MachineName="$(Server)"  />
-    
+
     <Iis7Website TaskAction="Create"
         Name="%(WebProject.AppName)"
         Path="%(WebProject.PhysicalPath)"
@@ -164,7 +164,7 @@ Command line parameters:
         MachineName="$(Server)" />
 
     <Iis7Website TaskAction="AddResponseHeaders"
-        Name="%(WebProject.AppName)" HttpResponseHeaders="@(HttpResponseHeaders)"/> 
+        Name="%(WebProject.AppName)" HttpResponseHeaders="@(HttpResponseHeaders)"/>
 
     <!-- Добавляем биндинги для сайта -->
     <Iis7Binding TaskAction="Add"
@@ -182,7 +182,7 @@ Command line parameters:
         BindingInformation="*:88:$(Server)"
         ContinueOnError="false"
         MachineName="$(Server)" />
-        
+
     <!-- Останавливаем пул и сайт, копируем файлы и запускаем сайт -->
     <Iis7AppPool TaskAction="Stop" Name="%(WebProject.AppPool)" Force="True" MachineName="$(Server)"/>
     <Iis7Website TaskAction="Stop" Name="%(WebProject.AppName)" Force="True" MachineName="$(Server)"/>
@@ -191,21 +191,22 @@ Command line parameters:
         <p>C:\\BuildAgent\temp\BuildTmp\<build_name.Project.Name>\package\site\</p>
         <d>\\$(Server)\c$\www\example.com\site\</d>
     </PropertyGroup>
-    
+
     <RemoveDir Directories="$(d)" />
     <MakeDir Directories="$(d)" />
 
     <ItemGroup>
         <UploadFiles Include="$(p)**\*.*" Exclude="" />
     </ItemGroup>
-    
+
     <Copy SourceFiles="@(UploadFiles)" DestinationFiles="@(UploadFiles->'$(d)%(RecursiveDir)%(Filename)%(Extension)')" />
 
     <Iis7AppPool TaskAction="Start" Name="%(WebProject.AppPool)" Force="True" MachineName="$(Server)"/>
     <Iis7Website TaskAction="Start" Name="%(WebProject.AppName)" Force="True" MachineName="$(Server)"/>
   </Target>
 </Project>
-{% endhighlight %}
+```
+
 
 Здесь надо отметить, что в Windows 2012 безопасность настроена таким образом, что удаленное управление IIS через MSBuild не разрешается.
 Для начала необходимо установить дополнение роль Management Tools и IIS Management Console, после чего оказывается, что у нас не хватает прав на управление сайтом.
@@ -222,7 +223,7 @@ Command line parameters:
 
 
 ### 5. Fix Physical Credentials ###
-MSBuildExtensions по какой-то причине могут устанавливать пользователя для запуска пула, но не для сайта. 
+MSBuildExtensions по какой-то причине могут устанавливать пользователя для запуска пула, но не для сайта.
 Поэтому Physical Path Credentials придется править вручную, но нам на помощь приходит Powershell
 
 Создаем шаг:
@@ -261,5 +262,5 @@ Script execution mode = -File
 
 # Заключение #
 
-После всех манипуляций все должно заработать. Если появляются какие-то проблемы, то скорее всего связаны с рабочим окружением агента или деплойного сервера. 
+После всех манипуляций все должно заработать. Если появляются какие-то проблемы, то скорее всего связаны с рабочим окружением агента или деплойного сервера.
 Также, стоит отметить, что билдагент должен быть запущен из под доменного пользователя с правами администратора на веб-сервере, а также на веб-сервере должен быть опубликован диск С:. В ином случае, стоит заранее позаботиться о предоставлении сетевого доступа и поменять пути в Deploy.xml параметре $(d)

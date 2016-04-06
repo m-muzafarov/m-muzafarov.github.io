@@ -12,7 +12,8 @@ categories: Perl
 tags: []
 comments: true
 ---
-{% highlight perl %}
+
+```perl
 #!/usr/bin/perl -w
  $_=<<"EOD"
 192.168.137.1
@@ -27,4 +28,5 @@ EOD
 @ip= /(?:\d{1,3}\.){3}\d{1,3}(?<!\d\.)(?!\.\d|\d|\.\w)/g;
  $,=$/;
 print @ip;
-{% endhighlight %}
+```
+

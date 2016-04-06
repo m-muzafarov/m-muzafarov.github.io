@@ -35,16 +35,22 @@ comments: true
 	<li>Удалить (rm -r) -> ./main.sh delete</li>
 </ul>
 **Запуск всех задач подряд**
-{% highlight bash %}#!/bin/bash
 
-./main.sh run Uno && ./main.sh run Double && ./main.sh run Triple || echo "Something shit happens."{% endhighlight %}
+```bash
+#!/bin/bash
+
+./main.sh run Uno && ./main.sh run Double && ./main.sh run Triple || echo "Something shit happens."
+```
+
 **main.sh**
-{% highlight bash %}#!/bin/bash
+
+```bash
+#!/bin/bash
 export HADOOP_HOME=/usr/local/hadoop
 export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-i386/jre/
 export HADOOP_USER=hduser
 
-case "$1" in 
+case "$1" in
     run)
         sudo -u ${HADOOP_USER} ${HADOOP_HOME}/bin/hadoop jar ${HADOOP_HOME}/contrib/streaming/hadoop-streaming.jar \
          -file mapper${2}.py -mapper mapper${2}.py -file reducer.py -reducer reducer.py \
@@ -61,15 +67,19 @@ case "$1" in
         sudo -u ${HADOOP_USER} ${HADOOP_HOME}/bin/hadoop fs -ls $2
         ;;
     copy)
-        sudo -u ${HADOOP_USER} ${HADOOP_HOME}/bin/hadoop dfs -copyFromLocal books books 
+        sudo -u ${HADOOP_USER} ${HADOOP_HOME}/bin/hadoop dfs -copyFromLocal books books
         ;;
     *)
         echo "Usage $0 {run|show|delete|copy|ls} " >&2
         exit 3
         ;;
-esac{% endhighlight %}
+esac
+```
+
 **mapperUno.py**
-{% highlight python %}#!/usr/bin/env python3
+
+```python
+#!/usr/bin/env python3
 
 import sys
 import re
@@ -87,9 +97,13 @@ def main(separator='\t'):
             print('{}{}{}'.format(triplet, separator, 1))
 
 if __name__ == "__main__":
-    main(){% endhighlight %}
+    main()
+```
+
 **mapperDouble.py**
-{% highlight python %}#!/usr/bin/env python3
+
+```python
+#!/usr/bin/env python3
 
 import sys
 import re
@@ -110,9 +124,13 @@ def main(separator='\t'):
             print('{}{}{}'.format(triplet, separator, 1))
 
 if __name__ == "__main__":
-    main(){% endhighlight %}
+    main()
+```
+
 **mapperTriple.py**
-{% highlight python %}#!/usr/bin/env python3
+
+```python
+#!/usr/bin/env python3
 
 import sys
 import re
@@ -134,9 +152,13 @@ def main(separator='\t'):
             print('{}{}{}'.format(triplet, separator, 1))
 
 if __name__ == "__main__":
-    main(){% endhighlight %}
+    main()
+```
+
 **reducer.py**
-{% highlight python %}#!/usr/bin/env python3
+
+```python
+#!/usr/bin/env python3
 
 from itertools import groupby
 from operator import itemgetter
@@ -158,6 +180,8 @@ def main(separator='\t'):
             pass
 
 if __name__ == "__main__":
-    main(){% endhighlight %}
+    main()
+```
+
 
 [GitHub](https://github.com/m-muzafarov/ROT/tree/master/Task3)

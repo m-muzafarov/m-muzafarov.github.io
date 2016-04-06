@@ -14,7 +14,7 @@ tags: []
 comments: true
 ---
 
-{% highlight java %}
+```java
 public final class Vector implements iVector {
     private double[] m_v;
     public Vector(int n) {
@@ -47,7 +47,7 @@ public final class Vector implements iVector {
                 } catch (Exception e) {
                         e.printStackTrace(System.err);
                 }
-                for (int i = 0; i < a; i++) 
+                for (int i = 0; i < a; i++)
                         res += m_v[i] * v.getComponent(i);
                 return res;
         }
@@ -72,7 +72,9 @@ public final class Vector implements iVector {
                         a[i]=m_v[i] - v.getComponent(i);
                 return new Vector(a);
         }
-}{% endhighlight %}
+}
+```
+
 
 
 Исходники доступны на [GitHub](https://github.com/m-muzafarov/java_course/blob/master/Vectors/Vector.java)

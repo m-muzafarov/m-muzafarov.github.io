@@ -12,13 +12,32 @@ categories: Perl
 tags: []
 comments: true
 ---
-{% highlight perl %}%h = (k1 => 1, k2=>2, k3=> 3);{% endhighlight %}
+
+```perl
+%h = (k1 => 1, k2=>2, k3=> 3);
+```
+
 **Функции:**
-{% highlight perl %}@k=keys %h; #массив ключей
-@v=values %h; #массив значений{% endhighlight %}
+
+```perl
+@k=keys %h; #массив ключей
+@v=values %h; #массив значений
+```
+
 Как следствие,
-{% highlight perl %}for ($i=0;$i<@k; $i++) { print "Error\n" unless $h{$k[$i]} eq $v[$i];}{% endhighlight %}
+
+```perl
+for ($i=0;$i<@k; $i++) { print "Error\n" unless $h{$k[$i]} eq $v[$i];}
+```
+
 будет работать.
-{% highlight perl %}each %h; #В массивном контексте выводит каждую пару (итератор), а в скалярном - только каждое значение.{% endhighlight %}
-{% highlight perl %}while (($k,$v)= each %h) {print "$k\t=>$v\n";} # выводит весь хэш-массив.{% endhighlight %}
+
+```perl
+each %h; #В массивном контексте выводит каждую пару (итератор), а в скалярном - только каждое значение.
+```
+
+```perl
+while (($k,$v)= each %h) {print "$k\t=>$v\n";} # выводит весь хэш-массив.
+```
+
 Для множественного оператора присваивания в скалярном контексте соглашение, что будет возвращать количество присвоенных справа значений.

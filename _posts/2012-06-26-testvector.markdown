@@ -12,7 +12,9 @@ categories: Java
 tags: []
 comments: true
 ---
-{% highlight java %}import junit.framework.TestCase;
+
+```java
+import junit.framework.TestCase;
 public class TestVector extends TestCase {
 public void testScalar() {
 Vector3D A = new Vector3D( 1, 2, 3 );
@@ -23,7 +25,9 @@ public void testDimension() {
 Vector3D A = new Vector3D( 1, 2, 3);
 assertTrue(A.dimension() == 3);
 }
-}{% endhighlight %}
+}
+```
+
 &nbsp;
 
 Исходники доступны на [GitHub](https://github.com/m-muzafarov/java_course/blob/master/Vectors/TestVector.java)

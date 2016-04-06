@@ -15,7 +15,8 @@ comments: true
 ---
 
 # queue.h #
-{% highlight cpp %}
+
+```cpp
 #ifndef QUEUE_H //Esli imya otsutstvuet v preprocessore, to tekst budet rabotat`
 #define QUEUE_H
 struct knot {int x; knot* next;};
@@ -26,9 +27,11 @@ void _read_compon (knot*& st, int& x);
 void _del_compon (knot*& st);
 void _destr (knot*& st);
 #endif
-{% endhighlight %}
+```
+
 # queue.cpp #
-{% highlight cpp %}
+
+```cpp
 #include "queue.h"
 #include "width.h"
 //struct knot {int x; knot* next};
@@ -39,7 +42,7 @@ void _add_compon (knot*& st, int x) {
 	us->x=x;
 	us->next=0;
 	if (!st) st=us;
-	else { 
+	else {
 		knot* r=st;
 		while (r->next) r=r->next;
 		r->next=us;
@@ -54,4 +57,5 @@ void _del_compon (knot*& st) {
 void _destr (knot*& st) {
 	while (!_check_empty (st)) _del_compon(st);
 }
-{% endhighlight %}
+```
+

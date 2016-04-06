@@ -21,9 +21,15 @@ Python 2
 Отправляет в RabbitMQ (порт 5672) выражение - сумму двух чисел.
 
 Запуск:
-{% highlight bash %}python2 master.py [a [b]]{% endhighlight %}
+
+```bash
+python2 master.py [a [b]]
+```
+
 Если какие-то аргументы не указаны - генерируется случайное число от MinINT64 до MaxINT64.
-{% highlight python %}#!/usr/bin/python
+
+```python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys
 
@@ -58,14 +64,18 @@ if __name__ == '__main__':
         main(sys.argv[1], sys.argv[2])
     else:
         main(random.randint(INT64_MIN, INT64_MAX),
-             random.randint(INT64_MIN, INT64_MAX)){% endhighlight %}
+             random.randint(INT64_MIN, INT64_MAX))
+```
+
 ## <a href="https://github.com/m-muzafarov/ROT/tree/master/Task7#slavepy" name="slavepy"></a>slave.py ##
 Слушает RabbitMQ очередь.
 
 Если получает сообщение с темой 'calc' - пытается его посчитать.
 
 Если получилось - выводит результат.
-{% highlight python %}#!/usr/bin/python
+
+```python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 __author__ = 'Messiah'
 from pika import BlockingConnection, ConnectionParameters
@@ -97,6 +107,8 @@ def main():
         return
 
 if __name__ == '__main__':
-    main(){% endhighlight %}
+    main()
+```
+
 
 [GitHub](https://github.com/m-muzafarov/ROT/tree/master/Task7)

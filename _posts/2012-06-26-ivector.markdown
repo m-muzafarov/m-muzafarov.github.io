@@ -12,7 +12,8 @@ categories: Java
 tags: []
 comments: true
 ---
-{% highlight java %}
+
+```java
 public interface iVector {
 public int dimension(); // размерность
 double getComponent(int i); // возвращает компоненту вектора
@@ -22,5 +23,7 @@ iVector multiply(double factor);
 iVector add(iVector v);
 iVector sub(iVector v);
 }
-}{% endhighlight %}
+}
+```
+
 &nbsp;

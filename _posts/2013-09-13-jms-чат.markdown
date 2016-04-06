@@ -19,12 +19,20 @@ comments: true
 1.  Необходим запущенный JMS с поддержкой STOMP.
 2.  Необходим python2.7 (из-за библиотеки stomper)
 3.  Необходимы библиотеки stomper и twisted для python
-    {% highlight bash %}pip install stomper twisted{% endhighlight %}
+
+```bash
+pip install stomper twisted
+```
+
 
 
 <!--more-->
 ## Запуск: ##
-{% highlight bash %}python2 chat.py <Nickname> [MEM]{% endhighlight %}
+
+```bash
+python2 chat.py <Nickname> [MEM]
+```
+
 Где MEM - желаемое количество отображаемых строк.
 
 Соединяется на localhost:61613 (задаётся константами HOST, PORT).
@@ -36,7 +44,9 @@ comments: true
 +	/QUIT - выход.
 
 ### chat.py ###
-{% highlight python %}#!/usr/bin/python
+
+```python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 __author__ = 'Messiah'
 # based on stomper example for stomping"
@@ -204,10 +214,14 @@ if __name__ == '__main__':
             print "MEM can be only integers"
             exit(2)
     start(nickname=sys.argv[1])
-{% endhighlight %}
+```
+
 
 Примитивный stomp-server:
 
-{% highlight bash %}coilmq -b 0.0.0.0 -p 61613{% endhighlight %}
+```bash
+coilmq -b 0.0.0.0 -p 61613
+```
+
 
 [GitHub](https://github.com/m-muzafarov/ROT/tree/master/Task5)

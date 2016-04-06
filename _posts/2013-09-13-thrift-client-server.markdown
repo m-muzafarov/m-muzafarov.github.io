@@ -16,7 +16,9 @@ Client написан на C++, server - на Python. Thrift позволяет 
 <!--more-->
 ## thrift ##
 Описывает две функции: ping и подсчёт количества тэгов.
-{% highlight cpp %}#!/usr/local/bin/thrift
+
+```cpp
+#!/usr/local/bin/thrift
 
 namespace cpp Parser
 namespace py Parser
@@ -24,10 +26,14 @@ namespace py Parser
 service Parser {
   void ping(),
   i32 count(1:string page, 2:string tag)
-}{% endhighlight %}
+}
+```
+
 ## server ##
 Python для парсинга страниц на количество тэгов. Принимает на вход текст страницы и искомый тэг. На выходе возвращает количество таких тэгов на странице.
-{% highlight python %}#!/usr/bin/python
+
+```python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 __author__ = 'Messiah'
 
@@ -70,10 +76,14 @@ try:
     server.serve()
 except KeyboardInterrupt:
     print "Kill signal received..."
-print "done!"{% endhighlight %}
+print "done!"
+```
+
 ## client ##
 С++. Принимает на вход URL и тэг. Скачивает страницу, отправляет текст серверу, возвращает количество искомых тегов.
-{% highlight cpp %}#include "./gen-cpp/Parser.h"
+
+```cpp
+#include "./gen-cpp/Parser.h"
 #include <iostream>
 #include <curl/curl.h>
 #include <thrift/transport/TSocket.h>
@@ -117,18 +127,24 @@ int main(int argc, char **argv) {
     cout << tag << " = " << c << endl;
     transport->close();
     return 0;
-}{% endhighlight %}
+}
+```
+
 # Компиляция и зависимости #
 Требует установленного thrift, libcurl, g++
 
 Для С++ thrift успешно собирается по инструкции с сайта. Python у меня его не увидел (возможно недособрал) - решается установкой python-thrift:
 
-{% highlight bash %}pip install thrift {% endhighlight %}
+```bash
+pip install thrift
+```
+
 
 Сборка происходит с помощью утилиты make.
 
 **Makefile**
-{% highlight bash %}
+
+```bash
 .PHONY: build thrift client clean
 
 build: thrift client
@@ -142,8 +158,8 @@ client: thrift client.cpp
 
 clean:
 	rm -rf ./gen-*/ client
+```
 
-{% endhighlight %}
 На выходе будет доступно два исполняемых файла: server.py и client.elf
 
 [GitHub](https://github.com/m-muzafarov/ROT/tree/master/Task8)

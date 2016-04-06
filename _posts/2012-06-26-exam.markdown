@@ -19,13 +19,14 @@ comments: true
 
 ## Строка с дефисами ##
 
-{% highlight perl %}
+```perl
 use re 'eval';
 $_=<>;
 /
 ***
 /gx;
-{% endhighlight %}
+```
+
 
 Сама задачка:
 Написать регвыр который будет выцеплять из строки все слова внутри которых есть дефис
@@ -48,7 +49,8 @@ $_=<>;
 Весь код писать вместо ***
 
 ### Обычная версия ###
-{% highlight perl %}
+
+```perl
 use re 'eval';
  $_=<>;
  /(?:
@@ -58,19 +60,20 @@ use re 'eval';
  (?{ $,="\n"; if (keys %h) {print keys (%h);} else {print "No -"}})
  /gx;
  <>
-{% endhighlight %}
+```
+
 
 ### Укороченная версия ###
 
-{% highlight perl %}
+```perl
 use re 'eval';
  $_ = <>;
  /
  ((([A-z]+-)+[A-z]+)(?{$h{$2}++||print $2})|.)*(?{ %h || print "No -"})
  /gx;
  <>
+```
 
-{% endhighlight %}
 
 ## Список уникальных товаров по характеристике ##
 
@@ -83,18 +86,24 @@ use re 'eval';
 Требуется по заданному цвету вывести количества различных названий.
 
 Программа должна иметь вид:
-{% highlight perl %}use re 'eval'; $_ = join ",<файл>; / .../gxms{% endhighlight %}
+
+```perl
+use re 'eval'; $_ = join ",<файл>; / .../gxms
+```
+
 
 ### Решение ###
 
-{% highlight perl %} use re 'eval';
+```perl
+ use re 'eval';
  %names=();
 # $_="myass is red\nyour green\nhi there red\nbye blue\nanton red\nanton red\n";
 open F,"input.txt";
  $_=join '',<F>;
  /(^([\w ]+?)\s(\w+)\n)(??{ %names->{"$3"}{"$2"}=1;})/gxm;
 for $color(keys(%names)) { print "$color - > ".keys(%{$names{$color}})."\n";}
-{% endhighlight %}
+```
+
 
 ## Класс скаляр ##
 
@@ -105,7 +114,8 @@ for $color(keys(%names)) { print "$color - > ".keys(%{$names{$color}})."\n";}
 P.S. 1 и '1' - это разные значения.
 
 ### Код класса ###
-{% highlight perl %}
+
+```perl
 package MySc;
 my %values;
 use Tie::Scalar;
@@ -123,13 +133,19 @@ else {
 sub getvalues { return (keys %{$values{$_[0]}});}
 sub DESTROY{
 delete $values{$_[0]};}
-1;{% endhighlight %}
+1;
+```
+
 
 ### Программа ###
-{% highlight perl %}#!/usr/bin/perl -w
+
+```perl
+#!/usr/bin/perl -w
 use MySc;
  $,=" ";
  $a_o= tie $a, 'MySc';
 for (1, 4, 6, '1',4, undef, '', \$a_o){
  $a=$_;}
-print ($a_o->getvalues());{% endhighlight %}
+print ($a_o->getvalues());
+```
+

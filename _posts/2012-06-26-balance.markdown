@@ -14,8 +14,7 @@ tags: []
 comments: true
 ---
 
-
-{% highlight java %}
+```java
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -40,7 +39,7 @@ public class StringValidator {
             {
                     for (int j=0;j<open.length();j++)
                             if (s.charAt(i) == open.charAt(j))
-                                    stack.push(open.charAt(j)); 
+                                    stack.push(open.charAt(j));
                     for (int j=0;j<close.length();j++)
                             if (s.charAt(i) == close.charAt(j)) {
                                     if (stack.isEmpty()) {
@@ -81,6 +80,7 @@ public class StringValidator {
     //  System.out.println(getErrorMessage());
     //  }
 }
-{% endhighlight %}
+```
+
 
 Исходники доступны на [GitHub](https://github.com/m-muzafarov/java_course/blob/master/StringValidator.java)

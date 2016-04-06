@@ -37,7 +37,9 @@ Master выводит на консоль ответ (выражение = от�
 В Master.run() есть закомментированная строка возведения в степень, которая более наглядно показывает асинхронность происходящего.
 
 **master.py**
-{% highlight python %}#!/usr/bin/python3
+
+```python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 from IN import INT64_MAX, INT64_MIN
 
@@ -87,9 +89,13 @@ class Master():
 
 if __name__ == "__main__":
     M = Master(5000, 6000)
-    M.run(){% endhighlight %}
+    M.run()
+```
+
 **worker.py**
-{% highlight python %}#!/usr/bin/python3
+
+```python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 __author__ = 'Messiah'
@@ -123,6 +129,8 @@ class Worker():
 
 if __name__ == "__main__":
     W = Worker(5000, 6000)
-    W.run(){% endhighlight %}
+    W.run()
+```
+
 
 [GitHub](https://github.com/m-muzafarov/ROT/tree/master/Task6)

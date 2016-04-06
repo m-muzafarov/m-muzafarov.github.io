@@ -22,7 +22,8 @@ comments: true
 <!--more-->
 
 Код без изменений - для проверки, появился ли анонс на следующую игру DozoR.
-{% highlight bash %}
+
+```bash
 #!/bin/bash
 
 while true; do
@@ -33,4 +34,5 @@ while true; do
         exit 0
     fi
 done;
-{% endhighlight %}
+```
+

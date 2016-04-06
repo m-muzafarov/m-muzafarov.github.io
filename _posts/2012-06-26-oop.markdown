@@ -19,7 +19,9 @@ comments: true
 
 # Сделаем класс треугольник. #
 ## 1. Triangle.pm ##
-{% highlight perl %}package Triangle;
+
+```perl
+package Triangle;
 use strict;
 use overload ('==' => \&equal,
  '""' => \&tostr);
@@ -48,10 +50,14 @@ sub tostr{
 my $self = shift;
 return ("<".$self->[0].", ".$self->[1].", ".$self->[2].">");
 }
-1;{% endhighlight %}
+1;
+```
+
 &nbsp;
 ## 2. STriangle.pm ##
-{% highlight perl %}package STriangle;
+
+```perl
+package STriangle;
 use strict;
 require Triangle;
 our @ISA=qw(Triangle);
@@ -60,10 +66,14 @@ my $me=shift;
 my $p2=0.5*$me->P();
 return sqrt($p2*($p2-$me->[0])*($p2-$me->[1])*($p2-$me->[2]));
 }
-1;{% endhighlight %}
+1;
+```
+
 &nbsp;
 ## 3. main.pl ##
-{% highlight perl %}#!/usr/bin/perl -w
+
+```perl
+#!/usr/bin/perl -w
  $\=$/;
 use STriangle;
  $tr_o = new STriangle(5,4,3);
@@ -73,7 +83,9 @@ print "p= ",$tr_o->P()," S= ",$tr_o->S(),"\n";
  $tr_l = new STriangle(4,3,5);
 print $tr_o->equal($tr_l);
 print $tr_o==$tr_l;
-print $tr_o->tostr();{% endhighlight %}
+print $tr_o->tostr();
+```
+
 # Results #
 
 	ARRAY(0x8d4ec80)
@@ -93,7 +105,9 @@ print $tr_o->tostr();{% endhighlight %}
 
 ## Простейший пример ##
 ### MyScalar.pm ###
-{% highlight perl %}package MyScalar;
+
+```perl
+package MyScalar;
 my $cnt = 0;
 sub TIESCALAR {
 my $me;
@@ -105,16 +119,24 @@ my ($me, $v) = @_;
  $$me=$v;
 }
 sub cnt {return $cnt;}
-1;{% endhighlight %}
+1;
+```
+
 ## Основная программа ##
-{% highlight perl %}#!/usr/bin/perl -w
+
+```perl
+#!/usr/bin/perl -w
 use MyScalar;
  $a_a = tie $a, 'MyScalar';
 for (1, 12.5, -13, 81e-1, -1_0_0) {$a=$_;}
-print "'-'-->a = ",$a_a->cnt(), "\n";{% endhighlight %}
+print "'-'-->a = ",$a_a->cnt(), "\n";
+```
+
 ## Модифицированный ##
 ### MyScalar1.pm ###
-{% highlight perl %}package MyScalar1;
+
+```perl
+package MyScalar1;
 sub TIESCALAR {
 my %me={ val => undef, cnt => 0};
 print 'TIESCALAR:',\$me,"\n";
@@ -126,20 +148,28 @@ my ($me, $v) = @_;
  $me->{val}=$v;
 }
 sub cnt {return $_[0]->{cnt};}
-1;{% endhighlight %}
+1;
+```
+
 &nbsp;
 ### Тест для мода ###
-{% highlight perl %}#!/usr/bin/perl -w
+
+```perl
+#!/usr/bin/perl -w
 use MyScalar1;
  $a_a = tie $a, 'MyScalar1';
  $b_b = tie $b, 'MyScalar1';
 print '$a_a'."$a_a\n";
 for (1, 12.5, -13, 81e-1, -1_0_0) {$a=$_; $b=-$_;}
-print "'-'-->a = ",$a_a->cnt(), "\n";{% endhighlight %}
+print "'-'-->a = ",$a_a->cnt(), "\n";
+```
+
 ## С помощью списка ##
 Готовая реализация
 ### MyScalar3.pm ###
-{% highlight perl %}package MyScalar3;
+
+```perl
+package MyScalar3;
 my %cnts ;
 use Tie::Scalar;
  @ISA = qw(Tie::StdScalar);
@@ -151,13 +181,19 @@ my ($me, $v) = @_;
 sub cnt {return $cnts{$_[0]};}
 sub DESTROY{
 delete $cnts{$_[0]};}
-1;{% endhighlight %}
+1;
+```
+
 &nbsp;
 ### Основная программа ###
-{% highlight perl %} #!/usr/bin/perl -w
+
+```perl
+ #!/usr/bin/perl -w
 use MyScalar;
  $a_a = tie $a, 'MyScalar';
  $b_b = tie $b, 'MyScalar';
 for (1, 12.5, -13, 81e-1, -1_0_0) {$a=$_; $b=-$_;}
-print "'-'-->a = ",$a_a->cnt(), "\n";{% endhighlight %}
+print "'-'-->a = ",$a_a->cnt(), "\n";
+```
+
 &nbsp;

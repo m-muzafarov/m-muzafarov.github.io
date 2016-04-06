@@ -17,8 +17,8 @@ comments: true
 1.  В таблице рабочих, соответствующему сотруднику добавляет +1 к опыту.
 2.  Копирует поля ИД, Измерение, Результат и Номер станции из Журнала и вставляет в таблицу Результатов (авто-заполнение результатов)
 
-
-{% highlight sql %}CREATE TRIGGER journaling
+```sql
+CREATE TRIGGER journaling
 ON dbo.journal
 FOR INSERT
 AS
@@ -36,4 +36,6 @@ DECLARE @e DECIMAL (8,2)
 SELECT @id=i.ID, @b=i.measure, @e=i.resultat FROM inserted AS i
 SELECT @a= (SELECT workers.IDStation FROM workers WHERE workers.ID=@c)
 INSERT INTO resultat VALUES (@id,@a,@b,@e)
-END{% endhighlight %}
+END
+```
+
