@@ -15,15 +15,12 @@ comments: true
 # Проблема
 
 Столкнулся с проблемой создания snapshot в ploop:
-```
+
+```bash
 Creating snapshot {$ID}
-
 Storing /vz/private/ploop/$VEID/Snapshots.xml.tmp
-
 Error in is_old_snapshot_format (snapshot.c:39): Snapshot is in old format
-
 Failed to create snapshot: Error in is_old_snapshot_format (snapshot.c:39): Snapshot is in old format [38]
-
 Failed to create snapshot
 ```
 
