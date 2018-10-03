@@ -6,7 +6,7 @@ title: Класс Дата
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://brainstorage.me/M_Messiah
+author_url: https://github.com/m-messiah
 excerpt: "Class Data C++"
 date: 2012-07-02 11:52:57.000000000 +06:00
 categories: cpp

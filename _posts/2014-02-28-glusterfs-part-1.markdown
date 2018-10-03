@@ -6,7 +6,7 @@ title: GlusterFS Cache. Part 1
 author: M_Messiah
 author_login: M_Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://brainstorage.me/M_Messiah
+author_url: https://github.com/m-messiah
 date: 2014-02-28 16:00:00 +06:00
 categories: network
 tags: []

@@ -6,7 +6,7 @@ title: XMLRPC
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://brainstorage.me/M_Messiah
+author_url: https://github.com/m-messiah
 date: 2013-09-13 13:56:50.000000000 +06:00
 categories: ROT
 tags: []

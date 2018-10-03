@@ -5,7 +5,7 @@ title: Wordpress to Jekyll
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://brainstorage.me/M_Messiah
+author_url: https://github.com/m-messiah
 date: 2014-01-15 15:43:00.000000000 +06:00
 categories: web
 tags: []

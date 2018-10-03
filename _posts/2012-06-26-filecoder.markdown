@@ -6,7 +6,7 @@ title: Конвертер кодировок
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://brainstorage.me/M_Messiah
+author_url: https://github.com/m-messiah
 excerpt: "Решение задачи о конвертировании кодировки файла на Java"
 date: 2012-06-26 21:49:59.000000000 +06:00
 categories: Java

@@ -6,7 +6,7 @@ title: База подарков
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://brainstorage.me/M_Messiah
+author_url: https://github.com/m-messiah
 excerpt: "Создание и заполнение базы SQL для индивидуального ДЗ."
 date: 2012-06-26 23:55:38.000000000 +06:00
 categories: SQL

@@ -6,7 +6,7 @@ title: Интересности
 author: M_Messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://brainstorage.me/M_Messiah
+author_url: https://github.com/m-messiah
 excerpt: "Сеть и математика"
 date: 2012-06-26 22:40:52.000000000 +06:00
 categories: Perl
