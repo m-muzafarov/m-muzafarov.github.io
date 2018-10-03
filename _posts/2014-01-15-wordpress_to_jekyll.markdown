@@ -2,7 +2,7 @@
 layout: post
 published: true
 title: Wordpress to Jekyll
-author: M_Messiah
+author: m-messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://brainstorage.me/M_Messiah

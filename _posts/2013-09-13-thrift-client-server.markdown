@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: Thrift client-server
-author: M_Messiah
+author: m-messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://brainstorage.me/M_Messiah

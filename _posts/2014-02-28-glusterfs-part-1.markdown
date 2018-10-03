@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: GlusterFS Cache. Part 1
-author: M_Messiah
+author: m-messiah
 author_login: M_Messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://brainstorage.me/M_Messiah
