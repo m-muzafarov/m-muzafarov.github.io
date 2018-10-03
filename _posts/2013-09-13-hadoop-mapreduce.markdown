@@ -6,7 +6,7 @@ title: Hadoop MapReduce
 author: m-messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://brainstorage.me/M_Messiah
+author_url: https://github.com/m-messiah
 date: 2013-09-13 15:52:03.000000000 +06:00
 categories: ROT
 tags: []

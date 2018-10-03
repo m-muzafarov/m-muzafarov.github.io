@@ -6,7 +6,7 @@ title: Я.Студент. Параллельные вычисления
 author: m-messiah
 author_login: M_Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://brainstorage.me/M_Messiah
+author_url: https://github.com/m-messiah
 date: 2014-03-31 20:00:00 +06:00
 categories: algorithms yandex
 tags: []

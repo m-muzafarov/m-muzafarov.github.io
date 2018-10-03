@@ -6,7 +6,7 @@ title: Решение квадратных уравнений
 author: m-messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://brainstorage.me/M_Messiah
+author_url: https://github.com/m-messiah
 excerpt: "Решение квадратных уравнений на C++"
 date: 2012-07-02 11:36:01.000000000 +06:00
 categories: cpp

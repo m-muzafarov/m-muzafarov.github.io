@@ -6,7 +6,7 @@ title: AMQP калькулятор
 author: m-messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://brainstorage.me/M_Messiah
+author_url: https://github.com/m-messiah
 date: 2013-09-13 16:24:42.000000000 +06:00
 categories: ROT
 tags: []

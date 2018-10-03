@@ -6,7 +6,7 @@ title: Представление графа
 author: m-messiah
 author_login: Messiah
 author_email: m.muzafarov@gmail.com
-author_url: http://brainstorage.me/M_Messiah
+author_url: https://github.com/m-messiah
 excerpt: "Класс Граф на C++"
 date: 2012-07-02 12:04:54.000000000 +06:00
 categories: cpp
