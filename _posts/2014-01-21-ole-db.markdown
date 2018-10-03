@@ -3,7 +3,7 @@ layout: post
 status: publish
 published: true
 title: OLE DB
-author: M_Messiah
+author: m-messiah
 author_email: m.muzafarov@gmail.com
 author_url: http://brainstorage.me/M_Messiah
 date: 2014-01-21 16:00:00 +06:00
