@@ -5,7 +5,7 @@ published: true
 title: Инструкция. Как создавать ботов в Telegram
 excerpt_separator: ""
 author: m-messiah
-author_login: m_messiah
+author_login: m-messiah
 author_email: m.muzafarov@gmail.com
 author_url: https://m-messiah.ru
 date: 2015-07-10 10:20:00 +03:00

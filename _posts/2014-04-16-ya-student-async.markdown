@@ -4,7 +4,7 @@ status: publish
 published: true
 title: Я.Студент. Асинхронность и параллелизм
 author: m-messiah
-author_login: M_Messiah
+author_login: m-messiah
 author_email: m.muzafarov@gmail.com
 author_url: https://github.com/m-messiah
 date: 2014-04-16 18:00:00 +06:00

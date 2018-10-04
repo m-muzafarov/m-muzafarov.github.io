@@ -4,7 +4,7 @@ status: publish
 published: true
 title: Числа-палиндромы
 author: m-messiah
-author_login: Messiah
+author_login: m-messiah
 author_email: m.muzafarov@gmail.com
 author_url: https://github.com/m-messiah
 excerpt: "<h1>Задача №14</h1>

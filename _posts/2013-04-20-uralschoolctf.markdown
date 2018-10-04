@@ -4,7 +4,7 @@ status: publish
 published: true
 title: Ural SchoolCTF
 author: m-messiah
-author_login: M_Messiah
+author_login: m-messiah
 author_email: m.muzafarov@gmail.com
 author_url: https://github.com/m-messiah
 date: 2013-04-20 15:00:00 +06:00

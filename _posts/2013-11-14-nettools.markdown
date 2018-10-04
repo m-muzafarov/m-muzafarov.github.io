@@ -4,7 +4,7 @@ status: publish
 published: true
 title: Наработки для сети
 author: m-messiah
-author_login: Messiah
+author_login: m-messiah
 author_email: m.muzafarov@gmail.com
 author_url: https://github.com/m-messiah
 date: 2013-11-14 15:53:58.000000000 +06:00

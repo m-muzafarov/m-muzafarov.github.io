@@ -5,7 +5,7 @@ published: true
 title: Ipgeobase + Nginx
 excerpt_separator: ""
 author: m-messiah
-author_login: m_messiah
+author_login: m-messiah
 author_email: m.muzafarov@gmail.com
 author_url: https://m-messiah.ru
 date: 2015-08-05 15:50:00 +03:00

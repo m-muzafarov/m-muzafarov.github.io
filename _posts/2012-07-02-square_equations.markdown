@@ -4,7 +4,7 @@ status: publish
 published: true
 title: Решение квадратных уравнений
 author: m-messiah
-author_login: Messiah
+author_login: m-messiah
 author_email: m.muzafarov@gmail.com
 author_url: https://github.com/m-messiah
 excerpt: "Решение квадратных уравнений на C++"
