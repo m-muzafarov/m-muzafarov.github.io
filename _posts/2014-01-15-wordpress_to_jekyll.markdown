@@ -3,7 +3,7 @@ layout: post
 published: true
 title: Wordpress to Jekyll
 author: m-messiah
-author_login: Messiah
+author_login: m-messiah
 author_email: m.muzafarov@gmail.com
 author_url: https://github.com/m-messiah
 date: 2014-01-15 15:43:00.000000000 +06:00

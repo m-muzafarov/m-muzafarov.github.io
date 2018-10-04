@@ -4,7 +4,7 @@ status: publish
 published: true
 title: TestVector
 author: m-messiah
-author_login: Messiah
+author_login: m-messiah
 author_email: m.muzafarov@gmail.com
 author_url: https://github.com/m-messiah
 date: 2012-06-26 21:47:33.000000000 +06:00
