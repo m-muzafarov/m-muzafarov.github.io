@@ -158,7 +158,7 @@ LIKE &ndash; символьные поля CHAR NCHAR
 
 ```sql
 UPDATE { имя таблицы} SET {что модифицировать}
-{{[FROM набор таблиц источников][WHERE &hellip; .. }}
+{ [FROM набор таблиц источников][WHERE &hellip; .. }
 --E.g.
 Update authors SET authors.au_fname = &lsquo;Annie&rsquo; WHERE au_fname = &lsquo;Anne&rsquo;
 ```

@@ -19,7 +19,7 @@
     <body>
           <header class="page-header row">
               <div class="col-md-10 col-sm-9 col-xs-7"><a href="/" class="site_logo logo"></a></div>
-              <div class="title col-md-2 col-sm-3 col-xs-6"><a href="https://decrypter.m-messiah.ru" class="decrypter logo"></a></div>
+              <div class="title col-md-2 col-sm-3 col-xs-6"><a href="https://decrypter.herokuapp.com" class="decrypter logo"></a></div>
           </header>
           <div class="row">
             <div class="col-sm-9 col-md-10">
@@ -29,7 +29,7 @@
               <nav>
                 <h4><a class="meta" href="/categories/">Categories</a></h4>
                 <div class="list-group">
-                {% for category in site.categories | sort "category[0]" %}
+                {% for category in site.categories %}
                   <a class="menu list-group-item" href="/categories/#{{ category[0] }}">{{ category[0] | capitalize | replace: '_', ' ' }} <span class="badge">{{ category[1] | size }}</span></a>
                 {% endfor %}
                 </div>
