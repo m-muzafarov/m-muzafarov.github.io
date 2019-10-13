@@ -1,1 +1,4 @@
-_site_site/_site/*.idea.idea/*.DS_Store*.sublime-project
+_site_site/_site/*.idea.idea/*.DS_Store*.sublime-project
+/.jekyll-cache/
+
+/_site/

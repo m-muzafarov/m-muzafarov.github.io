@@ -129,7 +129,7 @@ NFS абстрагирован от локальных файловых сист
 
 ## Презентация ##
 
-<div><iframe src="https://docs.google.com/presentation/d/17g7TlaeqOOZDYN_AyADUVuuing046npr0y4uaTZNkPk/embed?start=false&loop=false&delayms=5000" frameborder="0" width="683" height="541" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div>
+<div><iframe src="https://docs.google.com/presentation/d/17g7TlaeqOOZDYN_AyADUVuuing046npr0y4uaTZNkPk/embed?start=false&loop=false&delayms=5000" frameborder="0" width="100%" height="541" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div>
 
 
 ## Список литературы: #
